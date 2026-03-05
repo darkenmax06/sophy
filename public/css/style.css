@@ -1533,7 +1533,8 @@ body.lightmode .digital-process-banner{
     display: block;
     position: relative;
     width: 100%;
-    height: 1.15em;
+    min-height: 1.2em;
+    height: 1.2em;
     filter: url(#morphing-threshold);
 }
 
@@ -1543,7 +1544,8 @@ body.lightmode .digital-process-banner{
     top: 0;
     width: 100%;
     display: inline-block;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
     background-clip: text;
     -webkit-background-clip: text;
     background-image: linear-gradient(90deg, #009BFF 0%, #FF66CC 50%, #FFB040 100%);
@@ -4692,9 +4694,6 @@ body.lightmode .cta-service-banner::before{
     .nav-btn{
         display: block;
     }
-    .title-heading-banner{
-        background-image: linear-gradient(340deg, var(--accent-transparent) 10%, var(--primary) 100%);
-    }
     .about-img-layout{
         width: 100%;
     }
@@ -5067,6 +5066,12 @@ body.lightmode .cta-service-banner::before{
 @media screen and (max-width: 767px){
     h1{
         font-size: var(--font-size-10xl);
+    }
+
+    /* Morphing text: give enough room for text that wraps on mobile */
+    .morphing-text-container {
+        height: auto;
+        min-height: 2.6em;
     }
     h2{
         font-size: var(--font-size-9xl);

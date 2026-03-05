@@ -190,13 +190,13 @@ export default {
     services_card2_el3: "Active human support",
 
     plan3_title: "Collaborator",
-    plan3_description: "Free forever! Collect 100% of your royalty splits.",
+    plan3_description: "Free forever. Collect 100% of your royalty splits. Upgrade any time to create your own releases.",
     plan3_price: "Free",
     plan3_year: "/ forever",
     plan3_button: "Request access",
-    plan3_el1: "100% of your royalties",
-    plan3_el2: "Distribution to all stores",
-    plan3_el3: "YouTube Content ID included",
+    plan3_el1: "100% of your royalty splits",
+    plan3_el2: "Distribution to more stores",
+    plan3_el3: "Instant Royalty Advance",
 
     questions_title: "Frequently Asked Questions",
     questions_sub_title:
@@ -332,17 +332,17 @@ We recommend submitting your release at least 2 or 3 weeks before your desired r
     ideal_for_artists: "Free forever",
 
     long_description:
-      "The Collaborator plan is completely free and allows you to collect 100% of your royalty splits. Get access to professional distribution, analytics, monetization tools and much more at no cost.",
+      "Free forever. Collect 100% of your royalty splits. Upgrade any time to create your own releases and take your career to the next level.",
 
     short_description_title: "Short Description",
 
     short_description_text:
-      "The Collaborator plan is free forever. It includes distribution to all stores, 100% royalty share, automatic royalty splits, analytics & trends, YouTube Content ID, Spotify Discovery Mode, YouTube channel monetization, publishing administration, copyright registration, AI artwork generator, and many more professional tools at zero cost.",
+      "The COLLABORATOR plan is 100% free and built for artists who collaborate with others and want to collect 100% of their royalty splits. Get distribution to more stores, Instant Royalty Advance, YouTube Content ID, Spotify Discovery Mode, Publishing Administration, AI Artwork Generator, and over 35 professional tools — all at no cost. When you're ready to create your own releases, simply upgrade your plan at any time.",
 
     whats_included: "What's included",
 
     included_description:
-      "Everything you need to distribute, monetize, and grow \u2014 completely free.",
+      "Over 39 professional tools for distribution, monetization, analytics, and catalog management \u2014 all included in the free plan.",
 
     includes: [
       "Distribution to more stores",
@@ -389,12 +389,12 @@ We recommend submitting your release at least 2 or 3 weeks before your desired r
     why_choose: "Why choose Collaborator?",
 
     why_choose_text:
-      "The COLLABORATOR plan is completely free and gives you immediate access to professional distribution, monetization, and analytics tools. Perfect for artists who collaborate with others and want to collect 100% of their splits at no cost.",
+      "The COLLABORATOR plan is ideal for artists who participate in collaborations and want to collect 100% of their royalty splits without spending anything. You get instant access to a complete suite of professional tools: global distribution, Instant Royalty Advance, YouTube Content ID, Spotify Discovery Mode, Publishing Administration, and much more. And when you're ready to create your own releases, you can upgrade your plan at any time.",
 
-    benefit_1: "100% royalty share, free forever.",
-    benefit_2: "Distribution to all major stores.",
-    benefit_3: "YouTube Content ID and channel monetization included.",
-    benefit_4: "Automatic royalty splits among collaborators.",
+    benefit_1: "Collect 100% of your royalty splits, free forever.",
+    benefit_2: "Instant Royalty Advance and multiple payout methods.",
+    benefit_3: "YouTube Content ID, Spotify Discovery Mode, and channel monetization.",
+    benefit_4: "Upgrade any time to create your own releases.",
 
     break_barriers: "Break barriers with us",
 

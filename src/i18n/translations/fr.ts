@@ -160,13 +160,13 @@ export default {
     services_card2_el3: "Support humain actif",
 
     plan3_title: "Collaborateur",
-    plan3_description: "Gratuit pour toujours ! Percevez 100% de vos splits de redevances.",
+    plan3_description: "Gratuit pour toujours. Percevez 100% de vos splits de redevances. Passez à un plan supérieur à tout moment pour créer vos propres sorties.",
     plan3_price: "Gratuit",
     plan3_year: "/ pour toujours",
     plan3_button: "Demander l'accès",
-    plan3_el1: "100% de vos redevances",
-    plan3_el2: "Distribution dans toutes les boutiques",
-    plan3_el3: "YouTube Content ID inclus",
+    plan3_el1: "100% de vos splits de redevances",
+    plan3_el2: "Distribution dans plus de boutiques",
+    plan3_el3: "Avance instantanée sur redevances",,
 
     questions_title: "Questions fréquentes",
     questions_sub_title: "Avez-vous des doutes ? Voici quelques-unes des plus courantes",
@@ -287,15 +287,15 @@ Nous vous recommandons de soumettre votre lancement au moins 2 ou 3 semaines ava
 
     ideal_for_artists: "Gratuit pour toujours",
 
-    long_description: "Le plan Collaborateur est entièrement gratuit et vous permet de percevoir 100% de vos splits de redevances. Accédez à des outils professionnels de distribution, d'analytiques, de monétisation et bien plus encore, sans frais.",
+    long_description: "Gratuit pour toujours. Percevez 100% de vos splits de redevances. Passez à un plan supérieur à tout moment pour créer vos propres sorties et faire passer votre carrière au niveau supérieur.",
 
     short_description_title: "Brève description",
 
-    short_description_text: "Le plan Collaborateur est gratuit pour toujours. Il inclut la distribution dans toutes les boutiques, 100% des redevances, des splits automatiques, des analytiques et tendances, YouTube Content ID, Spotify Discovery Mode, la monétisation de chaîne YouTube, l'administration éditoriale, l'enregistrement des droits d'auteur, un générateur de couvertures IA et bien d'autres outils professionnels sans aucun coût.",
+    short_description_text: "Le plan COLLABORATEUR est 100% gratuit et conçu pour les artistes qui collaborent avec d'autres musiciens et souhaitent percevoir 100% de leurs splits de redevances. Accédez à la distribution dans plus de boutiques, à l'Avance instantanée sur redevances, YouTube Content ID, Spotify Discovery Mode, l'Administration éditoriale, le Générateur de couvertures IA et plus de 35 outils professionnels — entièrement gratuits. Lorsque vous êtes prêt à créer vos propres sorties, passez simplement à un plan supérieur à tout moment.",
 
     whats_included: "Ce qui est inclus",
 
-    included_description: "Tout ce dont vous avez besoin pour distribuer, monétiser et grandir — complètement gratuit.",
+    included_description: "Plus de 39 outils professionnels de distribution, monétisation, analytiques et gestion de catalogue — tous inclus dans le plan gratuit.",
 
     includes: [
       "Distribution à plus de boutiques",
@@ -341,12 +341,12 @@ Nous vous recommandons de soumettre votre lancement au moins 2 ou 3 semaines ava
 
     why_choose: "Pourquoi choisir Collaborateur ?",
 
-    why_choose_text: "Le plan COLLABORATEUR est entièrement gratuit et vous donne un accès immédiat aux outils professionnels de distribution, de monétisation et d'analytiques. Parfait pour les artistes qui collaborent avec d'autres musiciens et souhaitent percevoir 100% de leurs splits sans aucun frais.",
+    why_choose_text: "Le plan COLLABORATEUR est idéal pour les artistes qui participent à des collaborations et souhaitent percevoir 100% de leurs splits de redevances sans rien dépenser. Vous obtenez un accès instantané à une suite complète d'outils professionnels : distribution mondiale, Avance instantanée sur redevances, YouTube Content ID, Spotify Discovery Mode, Administration éditoriale et bien plus encore. Et lorsque vous êtes prêt à créer vos propres sorties, vous pouvez passer à un plan supérieur à tout moment.",
 
-    benefit_1: "100% de redevances, gratuit pour toujours.",
-    benefit_2: "Distribution dans toutes les boutiques principales.",
-    benefit_3: "YouTube Content ID et monétisation de chaîne inclus.",
-    benefit_4: "Divisions automatiques de redevances entre collaborateurs.",
+    benefit_1: "Percevez 100% de vos splits de redevances, gratuit pour toujours.",
+    benefit_2: "Avance instantanée sur redevances et multiples méthodes de paiement.",
+    benefit_3: "YouTube Content ID, Spotify Discovery Mode et monétisation de chaîne.",
+    benefit_4: "Passez à un plan supérieur à tout moment pour créer vos propres sorties.",
 
     break_barriers: "Franchissez les barrières avec nous",
 

@@ -160,13 +160,13 @@ export default {
     services_card2_el3: "Suporte humano ativo",
 
     plan3_title: "Colaborador",
-    plan3_description: "Grátis para sempre! Receba 100% dos seus splits de royalties.",
+    plan3_description: "Grátis para sempre. Receba 100% dos seus splits de royalties. Atualize o plano a qualquer momento para criar seus próprios lançamentos.",
     plan3_price: "Grátis",
     plan3_year: "/ para sempre",
     plan3_button: "Solicitar acesso",
-    plan3_el1: "100% dos seus royalties",
-    plan3_el2: "Distribuição para todas as lojas",
-    plan3_el3: "YouTube Content ID incluído",
+    plan3_el1: "100% dos seus splits de royalties",
+    plan3_el2: "Distribuição para mais lojas",
+    plan3_el3: "Adiantamento instantâneo de royalties",
 
     questions_title: "Perguntas frequentes",
     questions_sub_title: "Tem alguma dúvida? Aqui estão algumas das mais comuns",
@@ -288,17 +288,17 @@ Recomendamos enviar seu lançamento pelo menos 2 ou 3 semanas antes da data de l
     ideal_for_artists: "Grátis para sempre",
 
     long_description:
-      "O plano Colaborador é completamente gratuito e permite que você receba 100% dos seus splits de royalties. Acesse ferramentas profissionais de distribuição, análises, monetização e muito mais, sem custo algum.",
+      "Grátis para sempre. Receba 100% dos seus splits de royalties. Atualize o plano a qualquer momento para criar seus próprios lançamentos e levar sua carreira ao próximo nível.",
 
     short_description_title: "Breve descrição",
 
     short_description_text:
-      "O plano Colaborador é grátis para sempre. Inclui distribuição para todas as lojas, 100% de participação nos royalties, splits automáticos, análises e tendências, YouTube Content ID, Spotify Discovery Mode, monetização de canal do YouTube, administração editorial, registro de direitos autorais, gerador de capas com IA e muitas outras ferramentas profissionais sem nenhum custo.",
+      "O plano COLABORADOR é 100% gratuito e feito para artistas que colaboram com outros músicos e querem receber 100% dos seus splits de royalties. Acesse distribuição para mais lojas, Adiantamento instantâneo de royalties, YouTube Content ID, Spotify Discovery Mode, Administração editorial, Gerador de capas com IA e mais de 35 ferramentas profissionais — tudo sem custo. Quando estiver pronto para criar seus próprios lançamentos, basta atualizar o plano a qualquer momento.",
 
     whats_included: "O que inclui",
 
     included_description:
-      "Tudo o que você precisa para distribuir, monetizar e crescer — completamente grátis.",
+      "Mais de 39 ferramentas profissionais de distribuição, monetização, análises e gestão de catálogo — todas incluídas no plano gratuito.",
 
     includes: [
       "Distribuição para mais lojas",
@@ -345,12 +345,12 @@ Recomendamos enviar seu lançamento pelo menos 2 ou 3 semanas antes da data de l
     why_choose: "Por que escolher Colaborador?",
 
     why_choose_text:
-      "O plano COLABORADOR é completamente gratuito e oferece acesso imediato a ferramentas profissionais de distribuição, monetização e análises. Perfeito para artistas que colaboram com outros músicos e querem receber 100% dos seus splits sem gastar nada.",
+      "O plano COLABORADOR é ideal para artistas que participam de colaborações e querem receber 100% dos seus splits de royalties sem investir nada. Você obtém acesso instantâneo a uma suite completa de ferramentas profissionais: distribuição global, Adiantamento instantâneo de royalties, YouTube Content ID, Spotify Discovery Mode, Administração editorial e muito mais. E quando estiver pronto para criar seus próprios lançamentos, você pode atualizar o plano a qualquer momento.",
 
-    benefit_1: "100% de participação em royalties, grátis para sempre.",
-    benefit_2: "Distribuição para todas as lojas principais.",
-    benefit_3: "YouTube Content ID e monetização de canal incluídos.",
-    benefit_4: "Splits automáticos de royalties entre colaboradores.",
+    benefit_1: "Receba 100% dos seus splits de royalties, grátis para sempre.",
+    benefit_2: "Adiantamento instantâneo de royalties e múltiplos métodos de pagamento.",
+    benefit_3: "YouTube Content ID, Spotify Discovery Mode e monetização de canal.",
+    benefit_4: "Atualize o plano a qualquer momento para criar seus próprios lançamentos.",
 
     break_barriers: "Quebre barreiras conosco",
 

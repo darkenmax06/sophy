@@ -189,13 +189,13 @@ export default {
     services_card2_el3: "Soporte humano activo",
 
     plan3_title: "Colaborador",
-    plan3_description: "\u00a1Gratis para siempre! Cobra el 100% de tus splits de regal\u00edas.",
+    plan3_description: "Gratis para siempre. Cobra el 100% de tus splits de regal\u00edas. Sube de plan cuando quieras para crear tus propios lanzamientos.",
     plan3_price: "Gratis",
     plan3_year: "/ para siempre",
     plan3_button: "Solicitar acceso",
-    plan3_el1: "100% de tus regal\u00edas",
-    plan3_el2: "Distribuci\u00f3n a todas las tiendas",
-    plan3_el3: "YouTube Content ID incluido",
+    plan3_el1: "100% de tus splits de regal\u00edas",
+    plan3_el2: "Distribuci\u00f3n a m\u00e1s tiendas",
+    plan3_el3: "Adelanto instant\u00e1neo de regal\u00edas",
 
     questions_title: "Preguntas Frecuentes",
     questions_sub_title: "\u00bfTienes dudas? Aqu\u00ed algunas de las m\u00e1s comunes",
@@ -332,17 +332,17 @@ export default {
     ideal_for_artists: "Gratis para siempre",
 
     long_description:
-      "El plan Colaborador es completamente gratuito y te permite cobrar el 100% de tus splits de regal\u00edas. Accede a herramientas profesionales de distribuci\u00f3n, anal\u00edticas, monetizaci\u00f3n y mucho m\u00e1s, sin costo alguno.",
+      "Gratis para siempre. Cobra el 100% de tus splits de regal\u00edas. Sube de plan cuando quieras para crear tus propios lanzamientos y llevar tu carrera al siguiente nivel.",
 
     short_description_title: "Descripci\u00f3n breve",
 
     short_description_text:
-      "El plan Colaborador es gratis para siempre. Incluye distribuci\u00f3n a todas las tiendas, 100% de participaci\u00f3n en las regal\u00edas, splits autom\u00e1ticos de regal\u00edas, anal\u00edticas y tendencias, YouTube Content ID, Spotify Discovery Mode, monetizaci\u00f3n de canal de YouTube, administraci\u00f3n editorial, registro de derechos de autor, generador de portadas con IA y muchas m\u00e1s herramientas profesionales sin costo alguno.",
+      "El plan COLABORADOR es 100% gratuito y est\u00e1 dise\u00f1ado para artistas que colaboran con otros m\u00fasicos y quieren cobrar el 100% de sus splits de regal\u00edas. Accede a distribuci\u00f3n en m\u00e1s tiendas, adelantos instant\u00e1neos de regal\u00edas, YouTube Content ID, Spotify Discovery Mode, administraci\u00f3n editorial, generador de portadas con IA y m\u00e1s de 35 herramientas profesionales, todo gratis. Cuando est\u00e9s listo para crear tus propios lanzamientos, sube de plan sin perder acceso a lo acumulado.",
 
     whats_included: "Qu\u00e9 incluye",
 
     included_description:
-      "Todo lo que necesit\u00e1s para distribuir, monetizar y crecer \u2014 completamente gratis.",
+      "M\u00e1s de 39 herramientas profesionales de distribuci\u00f3n, monetizaci\u00f3n, anal\u00edticas y gesti\u00f3n \u2014 todas incluidas en el plan gratuito.",
 
     includes: [
       "Distribuci\u00f3n a m\u00e1s tiendas",
@@ -389,12 +389,12 @@ export default {
     why_choose: "\u00bfPor qu\u00e9 elegir Colaborador?",
 
     why_choose_text:
-      "El plan COLABORADOR es completamente gratuito y te da acceso inmediato a herramientas profesionales de distribuci\u00f3n, monetizaci\u00f3n y an\u00e1lisis. Perfecto para artistas que colaboran con otros m\u00fasicos y quieren cobrar el 100% de sus splits sin gastar nada.",
+      "El plan COLABORADOR es la opci\u00f3n ideal para artistas que participan en colaboraciones y quieren cobrar el 100% de sus splits de regal\u00edas sin invertir nada. Obtienes acceso instant\u00e1neo a una suite completa de herramientas profesionales: desde distribuci\u00f3n global y adelantos de regal\u00edas hasta YouTube Content ID, Spotify Discovery Mode, administraci\u00f3n editorial y mucho m\u00e1s. Y cuando est\u00e9s listo para crear tus propios lanzamientos, puedes subir de plan en cualquier momento.",
 
-    benefit_1: "100% de participaci\u00f3n en regal\u00edas, gratis para siempre.",
-    benefit_2: "Distribuci\u00f3n a todas las tiendas principales.",
-    benefit_3: "YouTube Content ID y monetizaci\u00f3n de canal incluidos.",
-    benefit_4: "Splits autom\u00e1ticos de regal\u00edas entre colaboradores.",
+    benefit_1: "Cobra el 100% de tus splits de regal\u00edas, gratis para siempre.",
+    benefit_2: "Adelanto instant\u00e1neo de regal\u00edas y m\u00faltiples m\u00e9todos de pago.",
+    benefit_3: "YouTube Content ID, Spotify Discovery Mode y monetizaci\u00f3n de canal.",
+    benefit_4: "Sube de plan en cualquier momento para crear tus propios lanzamientos.",
 
     break_barriers: "Rompe barreras con nosotros",
 

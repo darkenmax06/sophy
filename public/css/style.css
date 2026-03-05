@@ -1612,7 +1612,7 @@ body.lightmode .navbar-icon-wrapper{
 /* Animated rainbow border (approx 3px) + glass inner */
 .navbar-icon-wrapper.login-btn{
     /* border thickness achieved with outer padding */
-    padding: 3px; /* border width */
+    padding: 2px; /* border width (reduced) */
     border-radius: 12px;
     display: inline-flex;
     background: linear-gradient(90deg, #009BFF 0%, #FF66CC 50%, #FFB040 100%);

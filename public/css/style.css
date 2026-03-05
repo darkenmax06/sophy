@@ -5298,24 +5298,6 @@ header{
     z-index: 10;
 }
 
-/* Header shader container */
-.navbar-wrapper{
-    position: relative;
-    overflow: hidden;
-}
-
-.navbar-wrapper .header-gradient{
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.navbar-wrapper .navbar-container{
-    position: relative;
-    z-index: 1;
-}
-
 #lang-selector{
     display: flex;
     flex-direction: column;

@@ -1659,6 +1659,28 @@ body.lightmode .navbar-icon-wrapper{
     100%{background-position: 0% 50%;}
 }
 
+/* Header-wide uppercase and centered text for header elements */
+.navbar-wrapper{
+    text-transform: uppercase;
+}
+
+/* Center login label inside the inner glass block */
+.navbar-icon-wrapper.login-btn .login-inner h6{
+    text-align: center;
+    margin: 0;
+}
+
+/* Apply same rainbow gradient effect to small icons (theme toggle) */
+.rainbow-icon{
+    background: linear-gradient(90deg, #009BFF 0%, #FF66CC 50%, #FFB040 100%);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: rainbowShift 3s linear infinite;
+}
+
 /* 17.3 Testimonial Reviewer */
 
 .testimonial-reviewer{

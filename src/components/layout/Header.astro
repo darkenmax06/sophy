@@ -48,13 +48,12 @@ const { lang, t, currentPath } = Astro.props;
                 <LangSelector currentLang={lang} currentPath={currentPath} />
                 <div class="navbar-action-button">
                     <button id="themeSwitch" class="themeswitch" aria-label="Toggle Theme">
-                        <i id="themeIcon" class="fas fa-moon"></i>
+                        <i id="themeIcon" class="fas fa-moon rainbow-icon"></i>
                     </button>
                 </div>
 
                 <a href="https://portal.sophymusic.com" class="navbar-icon-wrapper login-btn">
                     <span class="login-inner">
-                        <i class="fa-solid fa-right-to-bracket login-icon" aria-hidden="true"></i>
                         <h6 class="rainbow-text">{t.nav.button}</h6>
                     </span>
                 </a>

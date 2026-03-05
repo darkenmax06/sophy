@@ -6,7 +6,7 @@ export default {
     link2: "About Us",
     dropdown_plans: "Plans",
     plan1: "Solo Sound",
-    plan2: "Two Fusion",
+    plan2: "Collaborator",
     plan3: "Label Epic",
     link3: "Contact",
     button: "Log In",
@@ -21,7 +21,7 @@ export default {
     links3: "Contact",
     plans: "Plans",
     plans1: "Solo Sound",
-    plans2: "Two Fusion",
+    plans2: "Collaborator",
     plans3: "Label Epic",
     info: "Contact Information",
     email: "info@sophymusic.com",
@@ -41,7 +41,7 @@ export default {
     about: "About Us",
     plans: "Plans",
     solo_sound: "Solo Sound",
-    two_fusion: "Two Fusion",
+    two_fusion: "Collaborator",
     label_epic: "Label Epic",
     contact: "Contact",
   },
@@ -172,7 +172,7 @@ export default {
     plan2_el1:
       "Complete management and distribution suite for a record label with an unlimited number of artists.",
     plan2_el2: "Easy-to-use advanced interface",
-    plan2_el3: "Includes everything in Two Fusion, plus",
+    plan2_el3: "Includes everything in Collaborator, plus",
     plan2_el4: "Unlimited artist profiles under your label",
     plan2_el5:
       "Complete label dashboard with filters by artist, release, and territory",
@@ -189,14 +189,14 @@ export default {
     services_card2_el2: "Simple market study",
     services_card2_el3: "Active human support",
 
-    plan3_title: "Two Fusion",
-    plan3_description:
-      "Ideal if you manage two artists or have a dual music project.",
-    plan3_year: "/Per year",
+    plan3_title: "Collaborator",
+    plan3_description: "Free forever! Collect 100% of your royalty splits.",
+    plan3_price: "Free",
+    plan3_year: "/ forever",
     plan3_button: "Request access",
-    plan3_el1: "Management of up to 2 artist profiles in a single account.",
-    plan3_el2: "Priority in release review and delivery.",
-    plan3_el3: "Automatic royalty splits among collaborators.",
+    plan3_el1: "100% of your royalties",
+    plan3_el2: "Distribution to all stores",
+    plan3_el3: "YouTube Content ID included",
 
     questions_title: "Frequently Asked Questions",
     questions_sub_title:
@@ -326,42 +326,75 @@ We recommend submitting your release at least 2 or 3 weeks before your desired r
   },
 
   two: {
-    two_fusion: "Two Fusion",
+    two_fusion: "Collaborator",
     home: "Home",
 
-    ideal_for_artists: "Ideal for individual artists",
+    ideal_for_artists: "Free forever",
 
     long_description:
-      "Perfect for small labels, managers, or projects with two artists under the same account. Includes everything from the SOLO SOUND plan, but with a more pro level to manage multiple profiles without complication.",
+      "The Collaborator plan is completely free and allows you to collect 100% of your royalty splits. Get access to professional distribution, analytics, monetization tools and much more at no cost.",
 
     short_description_title: "Short Description",
 
     short_description_text:
-      "Designed for small labels or teams managing up to two artists under the same account. Includes everything from the SOLO SOUND plan, but with extra benefits: you manage up to 2 artist profiles, you have a shared dashboard to easily switch between them, and you enjoy priority in revisions and deliveries. Plus, you access professional tools like advanced smart links, automatic royalty splits, and email and WhatsApp support during business hours. Perfect for duos, managers, and micro labels.",
+      "The Collaborator plan is free forever. It includes distribution to all stores, 100% royalty share, automatic royalty splits, analytics & trends, YouTube Content ID, Spotify Discovery Mode, YouTube channel monetization, publishing administration, copyright registration, AI artwork generator, and many more professional tools at zero cost.",
 
     whats_included: "What's included",
 
     included_description:
-      "Includes everything from the SOLO SOUND plan, but with a more pro level to manage multiple profiles without complication.",
+      "Everything you need to distribute, monetize, and grow \u2014 completely free.",
 
-    include_1: "Up to 2 artist profiles in a single account.",
-    include_2: "Shared dashboard to switch between artists simply.",
-    include_3: "Unlimited releases for both artists.",
-    include_4: "Priority in content review and delivery.",
-    include_5:
-      "Automatic royalty splits among collaborators (producers, artists, etc.).",
-    include_6: "Advanced smart links: pre-save, short links, QR, and more.",
-    include_7: "Monthly performance report (per artist and per release).",
+    includes: [
+      "Distribution to more stores",
+      "Instant Royalty Advance",
+      "ISRC & UPC codes",
+      "100% royalty share",
+      "Analytics & Trends",
+      "Global Market Reach",
+      "Pitch Portal",
+      "Reports & Data",
+      "Sales Dashboard",
+      "Royalty Splits",
+      "Greenlist & Blocklist",
+      "Usage Discovery",
+      "Chart Registration",
+      "Publishing Administration",
+      "Cover Song Licensing",
+      "Audio Recognition",
+      "Promotional Assets",
+      "Audience Management",
+      "YouTube Channel Monetization",
+      "YouTube Content ID",
+      "Contests & Giveaways",
+      "Spotify Discovery Mode",
+      "Delivery Logs",
+      "Multiple Payout Methods",
+      "Send Money Directly",
+      "Instant Access to Spotify for Artists",
+      "Team Management Access",
+      "Two Factor Authentication",
+      "Copyright Registration",
+      "Storage & File Conversion",
+      "Store Codes & Proprietary ID's",
+      "Catalog Migration",
+      "Bulk Catalog Ingestion",
+      "Bulk Royalty Split Creation",
+      "Artist & Label Preferences",
+      "AI Artwork Generator",
+      "Advanced Uploader",
+      "Label & Artist Services",
+      "Funding Compatibility",
+    ],
 
-    why_choose: "Why choose Two Fusion?",
+    why_choose: "Why choose Collaborator?",
 
     why_choose_text:
-      "TWO FUSION is ideal if you manage two artists or have a dual music project. It allows you to keep everything organized in one space, with professional tools, priority on deliveries, and advanced functions to collaborate, split royalties, and optimize the release of both artists.",
+      "The COLLABORATOR plan is completely free and gives you immediate access to professional distribution, monetization, and analytics tools. Perfect for artists who collaborate with others and want to collect 100% of their splits at no cost.",
 
-    benefit_1: "Management of up to 2 artist profiles in a single account.",
-    benefit_2: "Priority in release review and delivery.",
-    benefit_3: "Automatic royalty splits among collaborators.",
-    benefit_4: "Shared dashboard to alternate between artists easily.",
+    benefit_1: "100% royalty share, free forever.",
+    benefit_2: "Distribution to all major stores.",
+    benefit_3: "YouTube Content ID and channel monetization included.",
+    benefit_4: "Automatic royalty splits among collaborators.",
 
     break_barriers: "Break barriers with us",
 

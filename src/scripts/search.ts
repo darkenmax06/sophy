@@ -42,13 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       title: 'Solo Sound',
       description:
-        'Plan ideal para artistas individuales. Distribución en más de 450 plataformas, canciones y álbumes ilimitados, códigos ISRC y UPC incluidos. Te quedas con el 100% de tus regalías. $10/año.',
+        'Plan ideal para artistas individuales. Distribución en más de 450 plataformas, canciones y álbumes ilimitados, códigos ISRC y UPC incluidos. Te quedas con el 100% de tus regalías. $20/año.',
       path: 'solo-sound',
     },
     {
-      title: 'Two Fusion',
+      title: 'Colaborador',
       description:
-        'Ideal si gestionas dos artistas o tienes un proyecto musical dual. Gestión de hasta 2 perfiles de artista, prioridad en revisión y entrega, reparto de regalías automáticas. $20/año.',
+        'Plan gratuito para siempre. Cobra el 100% de tus splits de regalías. Distribución a todas las tiendas, YouTube Content ID, Spotify Discovery Mode, splits automáticos, analíticas y más de 39 herramientas profesionales sin costo.',
       path: 'two-fusion',
     },
     {

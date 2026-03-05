@@ -5,7 +5,7 @@ export default {
     link2: "Sobre nosotros",
     dropdown_plans: "Planes",
     plan1: "Solo sound",
-    plan2: "Two fusion",
+    plan2: "Colaborador",
     plan3: "Label epic",
     link3: "Contacto",
     button: "Iniciar sesion",
@@ -19,7 +19,7 @@ export default {
     links3: "Contacto",
     plans: "Planes",
     plans1: "Solo sound",
-    plans2: "Two fusion",
+    plans2: "Colaborador",
     plans3: "Label Epic",
     info: "Informacion de contacto",
     email: "info@sophymusic.com",
@@ -39,7 +39,7 @@ export default {
     about: "Sobre nosotros",
     plans: "Planes",
     solo_sound: "Solo Sound",
-    two_fusion: "Two Fusion",
+    two_fusion: "Colaborador",
     label_epic: "Label Epic",
     contact: "Contacto",
   },
@@ -171,7 +171,7 @@ export default {
     plan2_el1:
       "Suite completa de gesti\u00f3n y distribuci\u00f3n para un sello discogr\u00e1fico con un n\u00famero ilimitado de artistas.",
     plan2_el2: "Interfaz avanzada y f\u00e1cil de usar",
-    plan2_el3: "Incluye todo lo de Two Fusion, m\u00e1s",
+    plan2_el3: "Incluye todo lo del Colaborador, m\u00e1s",
     plan2_el4: "Perfiles de artistas ilimitados bajo tu sello",
     plan2_el5:
       "Panel de control completo de sello con filtros por artista, lanzamiento y territorio",
@@ -188,14 +188,14 @@ export default {
     services_card2_el2: "Estudio de mercado simple",
     services_card2_el3: "Soporte humano activo",
 
-    plan3_title: "Two Fusion",
-    plan3_description:
-      "Ideal si gestionas dos artistas o tienes un proyecto musical dual.",
-    plan3_year: "/Por a\u00f1o",
+    plan3_title: "Colaborador",
+    plan3_description: "\u00a1Gratis para siempre! Cobra el 100% de tus splits de regal\u00edas.",
+    plan3_price: "Gratis",
+    plan3_year: "/ para siempre",
     plan3_button: "Solicitar acceso",
-    plan3_el1: "Gesti\u00f3n de hasta 2 perfiles de artista en una sola cuenta.",
-    plan3_el2: "Prioridad en revisi\u00f3n y entrega de lanzamientos.",
-    plan3_el3: "Reparto de regal\u00edas autom\u00e1ticas entre colaboradores.",
+    plan3_el1: "100% de tus regal\u00edas",
+    plan3_el2: "Distribuci\u00f3n a todas las tiendas",
+    plan3_el3: "YouTube Content ID incluido",
 
     questions_title: "Preguntas Frecuentes",
     questions_sub_title: "\u00bfTienes dudas? Aqu\u00ed algunas de las m\u00e1s comunes",
@@ -326,43 +326,75 @@ export default {
   },
 
   two: {
-    two_fusion: "Two Fusion",
+    two_fusion: "Colaborador",
     home: "Inicio",
 
-    ideal_for_artists: "Ideal para artistas individuales",
+    ideal_for_artists: "Gratis para siempre",
 
     long_description:
-      "Perfecto para sellos peque\u00f1os, managers o proyectos con dos artistas bajo una misma cuenta. Incluye todo lo del plan SOLO SOUND, pero con un nivel m\u00e1s profesional para gestionar m\u00faltiples perfiles sin complicaciones.",
+      "El plan Colaborador es completamente gratuito y te permite cobrar el 100% de tus splits de regal\u00edas. Accede a herramientas profesionales de distribuci\u00f3n, anal\u00edticas, monetizaci\u00f3n y mucho m\u00e1s, sin costo alguno.",
 
     short_description_title: "Descripci\u00f3n breve",
 
     short_description_text:
-      "Pensado para sellos peque\u00f1os o equipos que gestionan hasta dos artistas bajo una misma cuenta. Incluye todo lo del plan SOLO SOUND, con beneficios adicionales: gesti\u00f3n de hasta 2 perfiles de artista, un panel compartido para alternar f\u00e1cilmente entre ellos y prioridad en revisiones y entregas. Adem\u00e1s, acced\u00e9s a herramientas profesionales como smart links avanzados, splits autom\u00e1ticos de regal\u00edas y soporte por email y WhatsApp en horario laboral. Ideal para d\u00faos, managers y micro-labels.",
+      "El plan Colaborador es gratis para siempre. Incluye distribuci\u00f3n a todas las tiendas, 100% de participaci\u00f3n en las regal\u00edas, splits autom\u00e1ticos de regal\u00edas, anal\u00edticas y tendencias, YouTube Content ID, Spotify Discovery Mode, monetizaci\u00f3n de canal de YouTube, administraci\u00f3n editorial, registro de derechos de autor, generador de portadas con IA y muchas m\u00e1s herramientas profesionales sin costo alguno.",
 
     whats_included: "Qu\u00e9 incluye",
 
     included_description:
-      "Incluye todo lo del plan SOLO SOUND, con un enfoque m\u00e1s profesional para manejar m\u00faltiples perfiles sin complicaciones.",
+      "Todo lo que necesit\u00e1s para distribuir, monetizar y crecer \u2014 completamente gratis.",
 
-    include_1: "Hasta 2 perfiles de artista en una sola cuenta.",
-    include_2: "Panel compartido para alternar entre artistas de forma simple.",
-    include_3: "Lanzamientos ilimitados para ambos artistas.",
-    include_4: "Prioridad en revisi\u00f3n y entrega de contenido.",
-    include_5:
-      "Splits autom\u00e1ticos de regal\u00edas entre colaboradores (productores, artistas, etc.).",
-    include_6:
-      "Smart links avanzados: pre-save, short links, c\u00f3digos QR y m\u00e1s.",
-    include_7: "Reporte mensual de desempe\u00f1o (por artista y por lanzamiento).",
+    includes: [
+      "Distribuci\u00f3n a m\u00e1s tiendas",
+      "Adelanto de regal\u00edas instant\u00e1neo",
+      "C\u00f3digos ISRC & UPC",
+      "100% de participaci\u00f3n en regal\u00edas",
+      "Anal\u00edticas y tendencias",
+      "Alcance global de mercado",
+      "Portal de pitching",
+      "Informes y datos",
+      "Panel de ventas",
+      "Reparto de regal\u00edas",
+      "Greenlist y Blocklist",
+      "Descubrimiento de uso",
+      "Registro de charts",
+      "Administraci\u00f3n editorial",
+      "Licencias de versiones cover",
+      "Reconocimiento de audio",
+      "Activos promocionales",
+      "Gesti\u00f3n de audiencia",
+      "Monetizaci\u00f3n de canal de YouTube",
+      "YouTube Content ID",
+      "Concursos y sorteos",
+      "Spotify Discovery Mode",
+      "Registros de entrega",
+      "M\u00faltiples m\u00e9todos de pago",
+      "Env\u00eda dinero directamente",
+      "Acceso instant\u00e1neo a Spotify for Artists",
+      "Acceso a gesti\u00f3n de equipo",
+      "Autenticaci\u00f3n de dos factores",
+      "Registro de derechos de autor",
+      "Almacenamiento y conversi\u00f3n de archivos",
+      "C\u00f3digos de tienda e IDs propietarios",
+      "Migraci\u00f3n de cat\u00e1logo",
+      "Ingesta masiva de cat\u00e1logo",
+      "Creaci\u00f3n masiva de splits de regal\u00edas",
+      "Preferencias de artista y sello",
+      "Generador de portadas con IA",
+      "Cargador avanzado",
+      "Servicios de artista y sello",
+      "Compatibilidad de financiamiento",
+    ],
 
-    why_choose: "\u00bfPor qu\u00e9 elegir Two Fusion?",
+    why_choose: "\u00bfPor qu\u00e9 elegir Colaborador?",
 
     why_choose_text:
-      "TWO FUSION es ideal si gestion\u00e1s dos artistas o desarroll\u00e1s un proyecto musical dual. Te permite mantener todo organizado en un solo espacio, con herramientas profesionales, prioridad en entregas y funciones avanzadas para colaborar, dividir regal\u00edas y optimizar el lanzamiento de ambos artistas.",
+      "El plan COLABORADOR es completamente gratuito y te da acceso inmediato a herramientas profesionales de distribuci\u00f3n, monetizaci\u00f3n y an\u00e1lisis. Perfecto para artistas que colaboran con otros m\u00fasicos y quieren cobrar el 100% de sus splits sin gastar nada.",
 
-    benefit_1: "Gesti\u00f3n de hasta 2 perfiles de artista desde una sola cuenta.",
-    benefit_2: "Prioridad en revisi\u00f3n y entrega de lanzamientos.",
-    benefit_3: "Splits autom\u00e1ticos de regal\u00edas entre colaboradores.",
-    benefit_4: "Panel compartido para alternar f\u00e1cilmente entre artistas.",
+    benefit_1: "100% de participaci\u00f3n en regal\u00edas, gratis para siempre.",
+    benefit_2: "Distribuci\u00f3n a todas las tiendas principales.",
+    benefit_3: "YouTube Content ID y monetizaci\u00f3n de canal incluidos.",
+    benefit_4: "Splits autom\u00e1ticos de regal\u00edas entre colaboradores.",
 
     break_barriers: "Rompe barreras con nosotros",
 

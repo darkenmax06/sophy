@@ -1,0 +1,103 @@
+---
+export const prerender = true;
+
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { getTranslations, locales, type Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = getTranslations(lang);
+const af = t.fraud;
+---
+<LegalLayout
+  lang={lang}
+  title={af['antifraud.page_title']}
+  dataPage="fraud"
+  bannerTitle={af['antifraud.banner_title']}
+  breadcrumbHome={af['antifraud.breadcrumb_home']}
+  breadcrumbCurrent={af['antifraud.breadcrumb_current']}
+>
+    <section class="antifraud" id="antifraud">
+        <div class="antifraud__container">
+            <div class="antifraud__c">
+                <div class="antifraud__textbox sc for__animate">
+                    <h2 class="antifraud__title">{af['antifraud.main_title']}</h2>
+                    <p class="antifraud__intro">{af['antifraud.intro_text']}</p>
+
+                    <div class="antifraud__content">
+                        <p><strong>{af['antifraud.label_effective_date']}</strong> {af['antifraud.date_effective']}</p>
+                        <p><strong>{af['antifraud.label_last_updated']}</strong> {af['antifraud.date_updated']}</p>
+                        <p><strong>Sophy Music LLC</strong><br>
+                        8206 Louisiana Blvd Ne, Ste A #8279, Albuquerque, New Mexico 87113 Us<br>
+                        {af['antifraud.label_website']} <a href="https://www.sophymusic.com" target="_blank">www.sophymusic.com</a></p>
+
+                        <h3>{af['antifraud.section1_title']}</h3>
+                        <p>{af['antifraud.section1_content']}</p>
+
+                        <h3>{af['antifraud.section2_title']}</h3>
+                        <p>{af['antifraud.section2_content']}</p>
+                        <ul>
+                            <li>{af['antifraud.section2_list1']}</li>
+                            <li>{af['antifraud.section2_list2']}</li>
+                            <li>{af['antifraud.section2_list3']}</li>
+                            <li>{af['antifraud.section2_list4']}</li>
+                            <li>{af['antifraud.section2_list5']}</li>
+                            <li>{af['antifraud.section2_list6']}</li>
+                            <li>{af['antifraud.section2_list7']}</li>
+                        </ul>
+
+                        <h3>{af['antifraud.section3_title']}</h3>
+                        <p>{af['antifraud.section3_content']}</p>
+                        <ul>
+                            <li>{af['antifraud.section3_list1']}</li>
+                            <li>{af['antifraud.section3_list2']}</li>
+                            <li>{af['antifraud.section3_list3']}</li>
+                            <li>{af['antifraud.section3_list4']}</li>
+                        </ul>
+
+                        <h3>{af['antifraud.section4_title']}</h3>
+                        <p>{af['antifraud.section4_content']}</p>
+                        <ol>
+                            <li>{af['antifraud.section4_list1']}</li>
+                            <li>{af['antifraud.section4_list2']}</li>
+                            <li>{af['antifraud.section4_list3']}</li>
+                            <li>{af['antifraud.section4_list4']}</li>
+                        </ol>
+
+                        <h3>{af['antifraud.section5_title']}</h3>
+                        <p>{af['antifraud.section5_content1']}</p>
+                        <ul>
+                            <li>{af['antifraud.section5_list1']}</li>
+                            <li>{af['antifraud.section5_list2']}</li>
+                            <li>{af['antifraud.section5_list3']}</li>
+                            <li>{af['antifraud.section5_list4']}</li>
+                            <li>{af['antifraud.section5_list5']}</li>
+                        </ul>
+                        <p>{af['antifraud.section5_content2']}</p>
+
+                        <h3>{af['antifraud.section6_title']}</h3>
+                        <p>{af['antifraud.section6_content']}</p>
+
+                        <h3>{af['antifraud.section7_title']}</h3>
+                        <p>{af['antifraud.section7_content']}</p>
+
+                        <h3>{af['antifraud.section8_title']}</h3>
+                        <p>{af['antifraud.section8_content']}</p>
+
+                        <h3>{af['antifraud.section9_title']}</h3>
+                        <p>
+                            {af['antifraud.section9_intro']}<br>
+                            <strong>Sophy Music LLC</strong><br>
+                            {af['antifraud.label_email']} <a href="mailto:fraud@sophymusic.com">fraud@sophymusic.com</a><br>
+                            {af['antifraud.label_address']} 8206 Louisiana Blvd Ne, Ste A #8279, Albuquerque, New Mexico 87113 Us<br>
+                            {af['antifraud.label_website_contact']} <a href="https://www.sophymusic.com" target="_blank">www.sophymusic.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</LegalLayout>

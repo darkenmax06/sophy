@@ -1,0 +1,61 @@
+---
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Sidebar from '../components/layout/Sidebar.astro';
+import SearchForm from '../components/layout/SearchForm.astro';
+import { getTranslations, locales, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+  title: string;
+  dataPage?: string;
+}
+
+const { lang, title, dataPage = '' } = Astro.props;
+const t = getTranslations(lang);
+const currentPath = Astro.url.pathname;
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css">
+    {locales.map((locale) => (
+        <link rel="alternate" hreflang={locale} href={`/${locale}${currentPath.replace(/^\/[a-z]{2}/, '')}`} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`/es${currentPath.replace(/^\/[a-z]{2}/, '')}`} />
+</head>
+<body data-page={dataPage}>
+    <script is:inline>
+        if (localStorage.getItem('lightmode') === 'active') {
+            document.body.classList.add('lightmode');
+        }
+    </script>
+
+    <header>
+        <Header lang={lang} t={t} currentPath={currentPath} />
+    </header>
+
+    <aside>
+        <SearchForm />
+    </aside>
+
+    <aside>
+        <Sidebar lang={lang} t={t} />
+    </aside>
+
+    <main>
+        <slot />
+    </main>
+
+    <footer>
+        <Footer lang={lang} t={t} />
+    </footer>
+
+    <script is:inline src="/js/vendor/jquery.min.js"></script>
+    <script is:inline src="/js/vendor/bootstrap.bundle.min.js"></script>
+</body>
+</html>

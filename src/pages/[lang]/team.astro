@@ -1,0 +1,69 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, locales, type Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = getTranslations(lang);
+const tm = t.team;
+
+const members = [1, 2, 3, 4, 5, 6];
+---
+<BaseLayout lang={lang} title={tm.banner_title} dataPage="team">
+    <!-- Section Banner -->
+    <div class="section-banner">
+        <div class="banner-layout-wrapper">
+            <div class="banner-layout">
+                <div class="d-flex flex-column text-center align-items-center gspace-2">
+                    <h2 class="title-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">{tm.banner_title}</h2>
+                    <nav class="breadcrumb">
+                        <a href={`/${lang}`} class="gspace-2">{tm.breadcrumb_home}</a>
+                        <span class="separator-link">/</span>
+                        <p class="current-page">{tm.breadcrumb_current}</p>
+                    </nav>
+                </div>
+                <div class="spacer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Team -->
+    <div class="section">
+        <div class="hero-container">
+            <div class="d-flex flex-column justify-content-center text-center gspace-5">
+                <div class="d-flex flex-column gspace-2">
+                    <h2 class="title-heading heading-container heading-container-medium animate-box animated animate__animated" data-animate="animate__fadeInDown">{tm.main_title}</h2>
+                    <p class="heading-container heading-container-medium">{tm.intro}</p>
+                </div>
+                <div class="row row-cols-xl-3 row-cols-md-2 row-cols-1 grid-spacer-2">
+                    {members.map((n) => (
+                        <div class="col">
+                            <div class="card card-team animate-box animated animate__animated" data-animate="animate__fadeInUp">
+                                <div class="team-img">
+                                    <div class="team-placeholder" style="width:100%;height:280px;background:var(--card-bg);display:flex;align-items:center;justify-content:center;border-radius:12px;">
+                                        <i class="fa-solid fa-user" style="font-size:4rem;opacity:0.3;"></i>
+                                    </div>
+                                </div>
+                                <div class="team-info">
+                                    <h5>{tm.placeholder_name}</h5>
+                                    <p>{tm.placeholder_role}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import '../../scripts/scroll-animations';
+        import '../../scripts/theme-toggle';
+        import '../../scripts/sidebar-menu';
+    </script>
+</BaseLayout>

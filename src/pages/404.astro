@@ -1,0 +1,34 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, defaultLocale } from '../i18n';
+
+const lang = defaultLocale;
+const t = getTranslations(lang);
+const e = t.error404;
+---
+<BaseLayout lang={lang} title={e.title} dataPage="404">
+    <div class="section">
+        <div class="hero-container">
+            <div class="d-flex flex-column justify-content-center align-items-center text-center gspace-3" style="min-height:60vh;">
+                <h1 style="font-size:8rem;font-weight:800;opacity:0.15;">{e.title}</h1>
+                <h2 class="title-heading">{e.heading}</h2>
+                <p class="heading-container heading-container-medium">{e.text}</p>
+                <a href={`/${lang}/`} class="btn btn-accent">
+                    <div class="btn-title">
+                        <span>{e.button}</span>
+                    </div>
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import '../scripts/theme-toggle';
+        import '../scripts/sidebar-menu';
+    </script>
+</BaseLayout>

@@ -1,0 +1,49 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, locales, type Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = getTranslations(lang);
+const sr = t.search;
+---
+<BaseLayout lang={lang} title={sr.banner_title} dataPage="search">
+    <!-- Section Banner -->
+    <div class="section-banner">
+        <div class="banner-layout-wrapper">
+            <div class="banner-layout">
+                <div class="d-flex flex-column text-center align-items-center gspace-2">
+                    <h2 class="title-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">{sr.banner_title}</h2>
+                    <nav class="breadcrumb">
+                        <a href={`/${lang}`} class="gspace-2">{sr.breadcrumb_home}</a>
+                        <span class="separator-link">/</span>
+                        <p class="current-page">{sr.breadcrumb_current}</p>
+                    </nav>
+                </div>
+                <div class="spacer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Search Results -->
+    <div class="section">
+        <div class="hero-container">
+            <div class="d-flex flex-column gspace-3">
+                <h3 id="result-title"></h3>
+                <div id="search-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import '../../scripts/search';
+        import '../../scripts/scroll-animations';
+        import '../../scripts/theme-toggle';
+        import '../../scripts/sidebar-menu';
+    </script>
+</BaseLayout>

@@ -1,0 +1,89 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  lang: Locale;
+  t: any;
+}
+
+const { lang, t } = Astro.props;
+---
+<div class="section-footer">
+    <div class="bg-footer-wrapper">
+        <div class="bg-footer pb-20 ">
+            <div class="hero-container position-relative z-2">
+                <div style="padding-bottom: 40px;" class="d-flex flex-column gspace-2">
+                    <div class="row row-cols-xl-4 row-cols-md-2 row-cols-1 grid-spacer-5">
+                        <div class="col col-xl-4">
+                            <div class="footer-logo-container">
+                                <div class="logo-container-footer">
+                                    <img src="/image/logo.png" alt="Logo" class="site-logo img-fluid">
+                                </div>
+                                <h4>{t.footer.title}</h4>
+                                <p>{t.footer.text}</p>
+                            </div>
+                        </div>
+                        <div class="col col-xl-2">
+                            <div class="footer-quick-links">
+                                <h5>{t.footer.links_title}</h5>
+                                <ul class="footer-list">
+                                    <li><a href={`/${lang}/`}>{t.footer.links1}</a></li>
+                                    <li><a href={`/${lang}/about`}>{t.footer.links2}</a></li>
+                                    <li><a href={`/${lang}/contact`}>{t.footer.links3}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-xl-3">
+                            <div class="footer-services-container">
+                                <h5>{t.footer.plans}</h5>
+                                <ul class="footer-list">
+                                    <li><a href={`/${lang}/solo-sound`}>{t.footer.plans1}</a></li>
+                                    <li><a href={`/${lang}/two-fusion`}>{t.footer.plans2}</a></li>
+                                    <li><a href={`/${lang}/label-epic`}>{t.footer.plans3}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-xl-3">
+                            <div class="footer-contact-container">
+                                <h5>{t.footer.info}</h5>
+                                <ul class="contact-list">
+                                    <li>{t.footer.email}</li>
+                                    <li>{t.footer.address}</li>
+                                </ul>
+                                <div class="d-flex flex-column gspace-1">
+                                    <h5>{t.footer.social}</h5>
+                                    <div class="social-container">
+                                        <div class="social-item-wrapper">
+                                            <a target="_blank" href="https://www.facebook.com/share/1Fqhe3xkwi/?mibextid=wwXIfr" class="social-item">
+                                                <i class="fa-brands fa-facebook"></i>
+                                            </a>
+                                        </div>
+                                        <div class="social-item-wrapper">
+                                            <a target="_blank" href="https://www.youtube.com/@sophymusicdo" class="social-item">
+                                                <i class="fa-brands fa-youtube"></i>
+                                            </a>
+                                        </div>
+                                        <div class="social-item-wrapper">
+                                            <a target="_blank" href="https://www.instagram.com/sophymusicglobal" class="social-item">
+                                                <i class="fa-brands fa-instagram"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright-container pb-8">
+                    <span class="copyright">{t.footer.copyright}</span>
+                    <div class="d-flex flex-row gspace-2">
+                        <a href={`/${lang}/terms-of-use`} class="legal-link">{t.footer.terms}</a>
+                        <a href={`/${lang}/privacy-policy`} class="legal-link">{t.footer.privacy}</a>
+                        <a href={`/${lang}/anti-fraud-policy`} class="legal-link">{t.footer.fraud}</a>
+                        <a href={`/${lang}/gdpr`} class="legal-link">GDPR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

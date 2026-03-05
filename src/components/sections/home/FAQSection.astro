@@ -1,0 +1,63 @@
+---
+interface Props {
+  t: any;
+}
+const { t } = Astro.props;
+const idx = t.index;
+
+const faqs = [
+  { id: "faq1", qKey: "question1_q", aKey: "question1_a", expanded: true },
+  { id: "faq2", qKey: "question2_q", aKey: "question2_a", expanded: false },
+  { id: "faq3", qKey: "question3_q", aKey: "question3_a", expanded: false },
+  { id: "faq4", qKey: "question4_q", aKey: "question4_a", expanded: false },
+  { id: "faq5", qKey: "question5_q", aKey: "question5_a", expanded: false },
+  { id: "faq6", qKey: "question6_q", aKey: "question6_a", expanded: false },
+];
+---
+<div class="section">
+    <div class="hero-container">
+        <div class="row row-cols-xl-2 row-cols-1 grid-spacer-5">
+            <div class="col col-xl-5">
+                <div class="faq-title-container">
+                    <div class="sub-heading">
+                        <i class="fa-regular fa-circle-dot"></i>
+                        <span>{idx.questions_title}</span>
+                    </div>
+                    <h2 class="title-heading">{idx.questions_sub_title}</h2>
+                </div>
+            </div>
+            <div class="col col-xl-7">
+                <div class="d-flex flex-column">
+                    <div class="accordion" id="faqAccordion1">
+                        {faqs.map((faq, i) => (
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button
+                                        class={`accordion-button${faq.expanded ? '' : ' collapsed'}`}
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target={`#${faq.id}`}
+                                        aria-expanded={faq.expanded ? 'true' : 'false'}
+                                        aria-controls={faq.id}
+                                    >
+                                        {(idx as any)[faq.qKey]}
+                                    </button>
+                                </h2>
+                                <div
+                                    id={faq.id}
+                                    class={`accordion-collapse collapse${faq.expanded ? ' show' : ''}`}
+                                    data-bs-parent="#faqAccordion1"
+                                >
+                                    <div class="accordion-body">
+                                        <div class="accordion-spacer"></div>
+                                        <p set:html={(idx as any)[faq.aKey]}></p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

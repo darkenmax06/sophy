@@ -1,0 +1,93 @@
+---
+interface Props {
+  t: any;
+  lang: string;
+}
+const { t, lang } = Astro.props;
+const idx = t.index;
+---
+<div class="section">
+    <div class="hero-container">
+        <div class="d-flex flex-column flex-xl-row gspace-5">
+            <div class="chooseus-card-container">
+                <div class="d-flex flex-column gspace-2">
+                    <div class="card card-chooseus animate-box animated fast animate__animated" data-animate="animate__fadeInLeft">
+                        <div class="chooseus-icon-wrapper">
+                            <div class="chooseus-spacer above"></div>
+                            <div class="chooseus-icon-layout">
+                                <div class="chooseus-icon">
+                                    <img src="/image/Icon-2.png" alt="Why Choose Us Icon" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="chooseus-spacer below"></div>
+                        </div>
+                        <div class="chooseus-content">
+                            <h4 class="chooseus-title">{idx.distribution_card1_title}</h4>
+                            <p>{idx.distribution_card1_text}</p>
+                        </div>
+                    </div>
+                    <div class="card card-chooseus animate-box animated animate__animated" data-animate="animate__fadeInLeft">
+                        <div class="chooseus-icon-wrapper">
+                            <div class="chooseus-spacer above"></div>
+                            <div class="chooseus-icon-layout">
+                                <div class="chooseus-icon">
+                                    <img src="/image/icon-1.png" alt="Why Choose Us Icon" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="chooseus-spacer below"></div>
+                        </div>
+                        <div class="chooseus-content">
+                            <h4 class="chooseus-title">{idx.distribution_card2_title}</h4>
+                            <p>{idx.distribution_card2_text}</p>
+                        </div>
+                    </div>
+                    <div class="card card-chooseus animate-box animated slow animate__animated" data-animate="animate__fadeInLeft">
+                        <div class="chooseus-icon-wrapper">
+                            <div class="chooseus-spacer above"></div>
+                            <div class="chooseus-icon-layout">
+                                <div class="chooseus-icon">
+                                    <img src="/image/Icon-3.png" alt="Why Choose Us Icon" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="chooseus-spacer below"></div>
+                        </div>
+                        <div class="chooseus-content">
+                            <h4 class="chooseus-title">{idx.distribution_card3_title}</h4>
+                            <p>{idx.distribution_card3_text}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chooseus-content-container">
+                <div class="d-flex flex-column gspace-5">
+                    <div class="d-flex flex-column gspace-2">
+                        <div class="sub-heading animate-box animated animate__animated" data-animate="animate__fadeInDown">
+                            <i class="fa-regular fa-circle-dot"></i>
+                            <span>{idx.choose_us_title1}</span>
+                        </div>
+                        <h2 class="title-heading animate-box animated animate__animated" data-animate="animate__fadeInDown">{idx.choose_us_title2}</h2>
+                        <p class="mb-0 animate-box animated animate__animated" data-animate="animate__fadeInDown">{idx.choose_us_content}</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="/image/au.jpg" alt="Why Choose Us Image" class="chooseus-img">
+                        <div class="card-chooseus-cta-layout">
+                            <div class="chooseus-cta-spacer"></div>
+                            <div class="d-flex flex-column align-items-end">
+                                <div class="chooseus-cta-spacer"></div>
+                                <div class="card-chooseus-cta-wrapper">
+                                    <div class="card card-chooseus-cta animate-box animated animate__animated" data-animate="animate__fadeInUp">
+                                        <h5>{idx.choose_us_card_title}</h5>
+                                        <div class="link-wrapper">
+                                            <a href={`/${lang}/contact`}>{idx.choose_us_card_button}</a>
+                                            <i class="fa-solid fa-circle-arrow-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

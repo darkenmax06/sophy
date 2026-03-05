@@ -1,0 +1,66 @@
+---
+interface Props {
+  t: any;
+  lang: string;
+}
+const { t, lang } = Astro.props;
+const idx = t.index;
+---
+<div class="section">
+    <div class="hero-container">
+        <div class="d-flex flex-column flex-xl-row gspace-5">
+            <div class="expertise-img-layout">
+                <div class="image-container expertise-img">
+                    <img src="/image/plane.jpg" alt="Expertise Image" class="img-fluid animate-box animated animate__animated" data-animate="animate__fadeInUp">
+                    <div class="expertise-layout">
+                        <div class="d-flex flex-column">
+                            <div class="card-expertise-wrapper">
+                                <div class="card card-expertise animate-box animated animate__animated" data-animate="animate__fadeInDown">
+                                    <h4>{idx.strategy_box_title}</h4>
+                                    <p>{idx.strategy_box_text}</p>
+                                    <div class="d-flex align-items-center flex-row gspace-2 expertise-link">
+                                        <a href={`/${lang}/contact`}>{idx.strategy_box_button}</a>
+                                        <i class="fa-solid fa-circle-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="expertise-spacer"></div>
+                        </div>
+                        <div class="expertise-spacer"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="expertise-title">
+                <div class="sub-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">
+                    <i class="fa-regular fa-circle-dot"></i>
+                    <span>{idx.experience_title}</span>
+                </div>
+                <h2 class="title-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">{idx.experience_subtitle}</h2>
+                <p>{idx.experience_text}</p>
+                <div class="d-flex flex-column flex-md-row gspace-2">
+                    <div class="expertise-list">
+                        <h5>{idx.experience_list_text}</h5>
+                        <ul class="check-list">
+                            <li>{idx.experience_list_1}</li>
+                            <li>{idx.experience_list_2}</li>
+                            <li>{idx.experience_list_3}</li>
+                            <li>{idx.experience_list_4}</li>
+                            <li>{idx.experience_list_5}</li>
+                            <li>{idx.experience_list_6}</li>
+                        </ul>
+                    </div>
+                    <div class="card card-expertise card-expertise-counter animate-box animated animate__animated" data-animate="animate__fadeInUp">
+                        <div class="d-flex flex-row gspace-2 align-items-center">
+                            <div class="d-flex flex-row align-items-center">
+                                <span class="counter" data-target="10"></span>
+                                <span class="counter-detail">+</span>
+                            </div>
+                            <h6>{idx.experience_years_title}</h6>
+                        </div>
+                        <p>{idx.experience_years_text}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

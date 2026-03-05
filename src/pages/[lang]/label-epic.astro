@@ -1,0 +1,162 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, locales, type Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = getTranslations(lang);
+const l = t.label;
+---
+<BaseLayout lang={lang} title={l.page_title} dataPage="label">
+    <!-- Section Banner -->
+    <div class="section-banner">
+        <div class="banner-layout-wrapper">
+            <div class="banner-layout">
+                <div class="d-flex flex-column text-center align-items-center gspace-2">
+                    <h2 class="title-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">{l.hero_tag}</h2>
+                    <nav class="breadcrumb">
+                        <a href={`/${lang}`} class="gspace-2">{l.breadcrumb_inicio}</a>
+                        <span class="separator-link">/</span>
+                        <p class="current-page">{l.breadcrumb_label_epic}</p>
+                    </nav>
+                </div>
+                <div class="spacer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Services -->
+    <div class="section pb-20">
+        <div class="hero-container">
+            <div class="d-flex flex-column gspace-5">
+                <div class="image-container">
+                    <img src="/image/le1 (2).jpg" alt="Service Image" class="single-service-img">
+                    <div class="single-service-title-layout">
+                        <div class="">
+                            <div class="single-service-spacer"></div>
+                            <div class="single-service-title-wrapper">
+                                <div class="single-service-title">
+                                    <div class="sub-heading animate-box animated slow animate__animated" data-animate="animate__fadeInRight">
+                                        <i class="fa-regular fa-circle-dot"></i>
+                                        <span>{l.hero_tag}</span>
+                                    </div>
+                                    <h3 class="title-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">{l.hero_title}</h3>
+                                    <p>{l.hero_text}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-service-spacer"></div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-xl-2 row-cols-1 grid-spacer-5">
+                    <div class="col col-xl-8">
+                        <div class="d-flex flex-column gspace-2">
+                            <h4>{l.desc_breve_title}</h4>
+                            <p>{l.desc_breve_text}</p>
+
+                            <div class="row row-cols-md-2 row-cols-1 grid-spacer-2 grid-spacer-md-3">
+                                <div class="col">
+                                    <div class="image-container">
+                                        <img src="/image/le22.jpg" alt="Service Image" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="image-container">
+                                        <img src="/image/le2 (2).jpg" alt="Service Image" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card service-included">
+                                <h4>{l.incluye_title}</h4>
+                                <div class="underline-accent-short"></div>
+                                <p>{l.incluye_text}</p>
+                                <div class="row row-cols-md-2 row-cols-1 grid-spacer-2">
+                                    <div class="col">
+                                        <ul class="check-list">
+                                            <li>{l.incluye_li_1}</li>
+                                            <li>{l.incluye_li_2}</li>
+                                            <li>{l.incluye_li_3}</li>
+                                            <li>{l.incluye_li_4}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col">
+                                        <ul class="check-list">
+                                            <li>{l.incluye_li_5}</li>
+                                            <li>{l.incluye_li_6}</li>
+                                            <li>{l.incluye_li_7}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4>{l.porque_title}</h4>
+                            <p>{l.porque_text}</p>
+
+                            <div class="row row-cols-2">
+                                <div class="col">
+                                    <div class="d-flex flex-column gspace-2">
+                                        <div class="d-flex flex-column flex-md-row align-items-center text-center text-md-start gspace-1">
+                                            <i class="fa-regular fa-2x fa-circle-check accent-color"></i>
+                                            <div class="d-flex flex-column gspace-0">
+                                                <p>{l.porque_li_1}</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-column flex-md-row align-items-center text-center text-md-start gspace-1">
+                                            <i class="fa-regular fa-2x fa-circle-check accent-color"></i>
+                                            <div class="d-flex flex-column gspace-0">
+                                                <p>{l.porque_li_2}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="d-flex flex-column gspace-2">
+                                        <div class="d-flex flex-column flex-md-row align-items-center text-center text-md-start gspace-1">
+                                            <i class="fa-regular fa-2x fa-circle-check accent-color"></i>
+                                            <div class="d-flex flex-column gspace-0">
+                                                <p>{l.porque_li_3}</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-column flex-md-row align-items-center text-center text-md-start gspace-1">
+                                            <i class="fa-regular fa-2x fa-circle-check accent-color"></i>
+                                            <div class="d-flex flex-column gspace-0">
+                                                <p>{l.porque_li_4}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col col-xl-4">
+                        <div class="d-flex flex-column flex-md-row flex-xl-column justify-content-between gspace-5">
+                            <div class="cta-service-banner">
+                                <div class="spacer"></div>
+                                <h3 class="title-heading">{l.cta_title}</h3>
+                                <p>{l.cta_text}</p>
+                                <div class="link-wrapper">
+                                    <a href={`/${lang}/contact`}>{l.cta_button}</a>
+                                    <i class="fa-solid fa-circle-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import '../../scripts/scroll-animations';
+        import '../../scripts/theme-toggle';
+        import '../../scripts/sidebar-menu';
+    </script>
+</BaseLayout>

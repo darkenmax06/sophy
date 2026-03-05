@@ -1,0 +1,159 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, locales, type Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = getTranslations(lang);
+const c = t.contact;
+---
+<BaseLayout lang={lang} title={c['contact.title']} dataPage="contact">
+    <!-- Section Banner -->
+    <div class="section-banner">
+        <div class="banner-layout-wrapper">
+            <div class="banner-layout">
+                <div class="d-flex flex-column text-center align-items-center gspace-2">
+                    <h2 class="title-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">
+                        {c['contact.banner.title']}
+                    </h2>
+                    <nav class="breadcrumb">
+                        <a href={`/${lang}`} class="gspace-2">{c['breadcrumb.home']}</a>
+                        <span class="separator-link">/</span>
+                        <p class="current-page">{c['breadcrumb.current']}</p>
+                    </nav>
+                </div>
+                <div class="spacer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Contact -->
+    <div class="section">
+        <div class="hero-container">
+            <div class="row row-cols-xl-2 row-cols-1 g-5">
+                <div class="col col-xl-5">
+                    <div class="contact-title-wrapper">
+                        <div class="card contact-title">
+                            <div class="sub-heading">
+                                <i class="fa-regular fa-circle-dot"></i>
+                                <span>{c['contact.subheading']}</span>
+                            </div>
+                            <h2 class="title-heading">{c['contact.heading']}</h2>
+                            <p>{c['contact.description']}</p>
+
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/sophymusicglobal" target="_blank" class="d-flex flex-column flex-md-row align-items-center text-md-start text-center gspace-2">
+                                <div>
+                                    <div class="icon-wrapper">
+                                        <div class="icon-box">
+                                            <i class="fa-brands fa-instagram"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid">
+                                    <span>{c['contact.phone.label']}</span>
+                                    <h5>{c['contact.phone.value']}</h5>
+                                </div>
+                            </a>
+
+                            <!-- Email -->
+                            <a href="mailto:info@sophymusic.com" target="_blank" class="d-flex flex-column flex-md-row align-items-center text-md-start text-center gspace-2">
+                                <div>
+                                    <div class="icon-wrapper">
+                                        <div class="icon-box">
+                                            <i class="fa-solid fa-envelope accent-color"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid">
+                                    <span>{c['contact.email.label']}</span>
+                                    <h5>{c['contact.email.value']}</h5>
+                                </div>
+                            </a>
+
+                            <!-- Address -->
+                            <div class="d-flex flex-column flex-md-row align-items-center text-md-start text-center gspace-2">
+                                <div>
+                                    <div class="icon-wrapper">
+                                        <div class="icon-box">
+                                            <i class="fa-solid fa-location-dot accent-color"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid">
+                                    <span>{c['contact.address.label']}</span>
+                                    <h5>{c['contact.address.value']}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-xl-7">
+                    <!-- Success -->
+                    <div id="success-message" class="alert success hidden">
+                        <span class="check-icon"><i class="fa-solid fa-2xl fa-check"></i></span>
+                        <p>{c['contact.success']}</p>
+                    </div>
+
+                    <!-- Error -->
+                    <div id="error-message" class="alert error hidden">
+                        <span class="cross-icon"><i class="fa-solid fa-2xl fa-xmark"></i></span>
+                        <p>{c['contact.error']}</p>
+                    </div>
+
+                    <div class="form-layout-wrapper">
+                        <div class="card form-layout">
+                            <h3 class="title-heading">{c['contact.form.title']}</h3>
+                            <form action="/api/contact" method="post" id="contactForm" class="form">
+                                <div class="row row-cols-md-2 row-cols-1 g-3">
+                                    <div class="col">
+                                        <input type="text" name="first-name" id="first-name"
+                                               placeholder={c['contact.form.firstName']} required>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="last-name" id="last-name"
+                                               placeholder={c['contact.form.lastName']} required>
+                                    </div>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-1 g-3">
+                                    <div class="col">
+                                        <input type="email" name="email" id="email"
+                                               placeholder={c['contact.form.email']} required>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="subject" id="subject"
+                                               placeholder={c['contact.form.subject']} required>
+                                    </div>
+                                </div>
+                                <textarea name="message" id="message" rows="5"
+                                          placeholder={c['contact.form.message']} required></textarea>
+                                <div class="form-button-container">
+                                    <button type="submit" class="btn btn-accent">
+                                        <span class="btn-title">
+                                            <span>{c['contact.form.send']}</span>
+                                        </span>
+                                        <span class="icon-circle">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import '../../scripts/scroll-animations';
+        import '../../scripts/theme-toggle';
+        import '../../scripts/sidebar-menu';
+        import '../../scripts/contact-form';
+    </script>
+</BaseLayout>

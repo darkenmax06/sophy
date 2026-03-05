@@ -1,0 +1,156 @@
+---
+interface Props {
+  t: any;
+  lang: string;
+}
+const { t, lang } = Astro.props;
+const idx = t.index;
+---
+<div class="section" id="servicios">
+    <div class="hero-container">
+        <div class="d-flex flex-column justify-content-center text-center gspace-5">
+            <div class="d-flex flex-column gspace-2 animate-box animated animate__animated" data-animate="animate__fadeInUp">
+                <div class="sub-heading align-self-center">
+                    <i class="fa-regular fa-circle-dot"></i>
+                    <span>{idx.services_title}</span>
+                </div>
+                <h2 class="title-heading heading-container heading-container-short">{idx.services_sub_title}</h2>
+            </div>
+            <div class="row row-cols-xl-3 row-cols-1 grid-spacer-2">
+                <!-- Column 1: Solo Sound -->
+                <div class="col">
+                    <div class="pricing-container">
+                        <div class="w-100 d-gri card card-pricing-title animate-box animated animate__animated" data-animate="animate__fadeInLeft">
+                            <div class="spacer"></div>
+                            <div class="content">
+                                <h3 class="title-heading fa-2x">{idx.services_card1_title}</h3>
+                                <div class="link-wrapper">
+                                    <a href={`/${lang}/contact`}>{idx.services_card1_button}</a>
+                                    <i class="fa-solid fa-arrow-circle-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-pricing animate-box animated animate__animated" data-animate="animate__fadeInUp">
+                            <h4>{idx.plan1_title}</h4>
+                            <p>{idx.plan1_description}</p>
+                            <div class="d-flex flex-row gspace-1 align-items-center h-100">
+                                <h3>$10</h3>
+                                <p>{idx.plan1_year}</p>
+                            </div>
+                            <a href={`/${lang}/contact`} class="btn btn-accent">
+                                <div class="btn-title">
+                                    <span>{idx.plan1_button}</span>
+                                </div>
+                                <div class="icon-circle">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                            </a>
+                            <ul class="check-list">
+                                <li><a href={`/${lang}/solo-sound`}>{idx.plan1_el1}</a></li>
+                                <li><a href={`/${lang}/solo-sound`}>{idx.plan1_el2}</a></li>
+                                <li><a href={`/${lang}/solo-sound`}>{idx.plan1_el3}</a></li>
+                            </ul>
+                            <div class="link-wrapper align-self-center">
+                                <a href={`/${lang}/solo-sound`}>{idx.services_card1_view_more}</a>
+                                <i class="fa-solid fa-arrow-circle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column 2: Label Epic (highlighted) -->
+                <div class="col">
+                    <div class="card card-pricing pricing-highlight animate-box animated slow animate__animated" data-animate="animate__fadeInUp">
+                        <div class="spacer"></div>
+                        <h4>{idx.plan2_title}</h4>
+                        <p>{idx.plan2_description}</p>
+                        <div class="d-flex flex-row gspace-1 align-items-center">
+                            <h3>$50</h3>
+                            <p>{idx.plan2_year}</p>
+                        </div>
+                        <a href={`/${lang}/contact`} class="btn btn-accent">
+                            <div class="btn-title">
+                                <span>{idx.plan2_button}</span>
+                            </div>
+                            <div class="icon-circle">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </a>
+                        <div class="core-benefits">
+                            <div class="benefit">
+                                <strong>{idx.plan2_el1}</strong>
+                            </div>
+                            <div class="benefit">
+                                <strong>{idx.plan2_el2}</strong>
+                            </div>
+                            <div class="benefit">
+                                <strong>{idx.plan2_el3}</strong>
+                            </div>
+                        </div>
+                        <ul class="check-list">
+                            <li><strong>{idx.plan2_el4}</strong></li>
+                            <li><strong>{idx.plan2_el5}</strong></li>
+                            <li><strong>{idx.plan2_el6}</strong></li>
+                            <li><strong>{idx.plan2_el7}</strong></li>
+                            <li><strong>{idx.plan2_el8}</strong></li>
+                            <li><strong>{idx.plan2_el9}</strong></li>
+                        </ul>
+                        <div class="link-wrapper align-self-center">
+                            <a href={`/${lang}/label-epic`}>{idx.services_card1_view_more}</a>
+                            <i class="fa-solid fa-arrow-circle-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column 3: Two Fusion -->
+                <div class="col">
+                    <div class="pricing-container">
+                        <div class="card pricing-highlight-box animate-box animated animate__animated" data-animate="animate__fadeInRight">
+                            <div class="d-flex flex-column gspace-2 w-100">
+                                <h5>{idx.services_card2_title}</h5>
+                                <div class="d-flex flex-column gspace-2">
+                                    <div class="pricing-highlights">
+                                        <strong>{idx.services_card2_el1}</strong>
+                                        <i class="fa-solid fa-arrow-circle-right"></i>
+                                    </div>
+                                    <div class="pricing-highlights">
+                                        <strong style="text-align: start;">{idx.services_card2_el2}</strong>
+                                        <i class="fa-solid fa-arrow-circle-right"></i>
+                                    </div>
+                                    <div class="pricing-highlights">
+                                        <strong>{idx.services_card2_el3}</strong>
+                                        <i class="fa-solid fa-arrow-circle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spacer"></div>
+                        </div>
+                        <div class="card card-pricing animate-box animated animate__animated" data-animate="animate__fadeInUp">
+                            <h4>{idx.plan3_title}</h4>
+                            <p>{idx.plan3_description}</p>
+                            <div class="d-flex flex-row gspace-1 align-items-center h-100">
+                                <h3>$20</h3>
+                                <p>{idx.plan3_year}</p>
+                            </div>
+                            <a href={`/${lang}/contact`} class="btn btn-accent">
+                                <div class="btn-title">
+                                    <span>{idx.plan3_button}</span>
+                                </div>
+                                <div class="icon-circle">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                            </a>
+                            <ul class="check-list">
+                                <li><a href={`/${lang}/two-fusion`}>{idx.plan3_el1}</a></li>
+                                <li><a href={`/${lang}/two-fusion`}>{idx.plan3_el2}</a></li>
+                                <li><a href={`/${lang}/two-fusion`}>{idx.plan3_el3}</a></li>
+                            </ul>
+                            <div class="link-wrapper align-self-center">
+                                <a href={`/${lang}/two-fusion`}>{idx.services_card1_view_more}</a>
+                                <i class="fa-solid fa-arrow-circle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

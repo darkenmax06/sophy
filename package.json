@@ -1,0 +1,31 @@
+{
+  "name": "astro-app",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/node": "^9.5.4",
+    "@astrojs/react": "^4.4.2",
+    "@react-spring/three": "^10.0.3",
+    "@react-three/fiber": "^9.5.0",
+    "@shadergradient/react": "^2.4.20",
+    "astro": "^5.17.1",
+    "camera-controls": "^3.1.2",
+    "nodemailer": "^8.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "three": "^0.183.2",
+    "three-stdlib": "^2.36.1"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^7.0.11",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.183.1"
+  }
+}

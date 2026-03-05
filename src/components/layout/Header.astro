@@ -1,0 +1,64 @@
+---
+import LangSelector from './LangSelector.astro';
+import type { Locale } from '../../i18n';
+
+interface Props {
+  lang: Locale;
+  t: any;
+  currentPath: string;
+}
+
+const { lang, t, currentPath } = Astro.props;
+---
+<div class="navbar-wrapper">
+    <nav class="navbar navbar-expand-xl">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a class="navbar-brand" href={`/${lang}/`}><img src="/image/logo.png" class="site-logo img-fluid"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href={`/${lang}/`}>{t.nav.link1}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href={`/${lang}/about`}>{t.nav.link2}</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {t.nav.dropdown_plans} <i class="fa-solid fa-angle-down accent-color"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href={`/${lang}/solo-sound`}>{t.nav.plan1}</a></li>
+                            <li><a class="dropdown-item" href={`/${lang}/two-fusion`}>{t.nav.plan2}</a></li>
+                            <li><a class="dropdown-item" href={`/${lang}/label-epic`}>{t.nav.plan3}</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={`/${lang}/contact`}>{t.nav.link3}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-action-container">
+                <button class="navbar-toggler nav-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars "></i>
+                </button>
+                <LangSelector currentLang={lang} currentPath={currentPath} />
+                <div class="navbar-action-button">
+                    <button id="themeSwitch" class="themeswitch" aria-label="Toggle Theme">
+                        <i id="themeIcon" class="fas fa-moon"></i>
+                    </button>
+                </div>
+
+                <a href="https://portal.sophymusic.com" class="navbar-icon-wrapper">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-arrow-circle-right"></i>
+                    </div>
+                    <h6>{t.nav.button}</h6>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>

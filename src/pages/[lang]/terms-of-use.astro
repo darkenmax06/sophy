@@ -1,0 +1,51 @@
+---
+export const prerender = true;
+
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { getTranslations, locales, type Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = getTranslations(lang);
+const tr = t.terms;
+---
+<LegalLayout
+  lang={lang}
+  title={tr['page.title']}
+  dataPage="terms"
+  bannerTitle={tr['terms.bannerTitle']}
+  breadcrumbHome={tr['terms.breadcrumbHome']}
+  breadcrumbCurrent={tr['terms.breadcrumbCurrent']}
+>
+    <section class="terms" id="terms">
+        <div class="terms__container">
+            <div class="terms__c">
+                <div class="terms__textbox sc for__animate">
+                    <h2 class="terms__title">{tr['terms.mainTitle']}</h2>
+                    <p class="terms__intro">{tr['terms.intro']}</p>
+
+                    <div class="terms__content">
+                        <p>{tr['terms.effectiveDate']}</p>
+                        <p>{tr['terms.lastUpdated']}</p>
+                        <p><strong>Sophy Music LLC</strong><br>
+                        8206 Louisiana Blvd Ne, Ste A #8279, Albuquerque, New Mexico 87113 Us<br>
+                        {tr['terms.website']} <a href="https://www.sophymusic.com" target="_blank">www.sophymusic.com</a></p>
+
+                        {[1,2,3,4,5,6,7,8,9,10,11,12,13].map((n) => (
+                            <Fragment>
+                                <h3>{(tr as any)[`terms.h3_${n}`]}</h3>
+                                <p>{(tr as any)[`terms.p_${n}_1`]}</p>
+                            </Fragment>
+                        ))}
+
+                        <h3>{tr['terms.h3_14']}</h3>
+                        <p set:html={tr['terms.p_14_1']}></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</LegalLayout>

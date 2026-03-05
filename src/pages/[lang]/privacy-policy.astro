@@ -1,0 +1,51 @@
+---
+export const prerender = true;
+
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { getTranslations, locales, type Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = getTranslations(lang);
+const pr = t.privacy;
+---
+<LegalLayout
+  lang={lang}
+  title={pr['page.title']}
+  dataPage="privacy"
+  bannerTitle={pr['privacy.bannerTitle']}
+  breadcrumbHome={pr['privacy.breadcrumbHome']}
+  breadcrumbCurrent={pr['privacy.breadcrumbCurrent']}
+>
+    <section class="privacy" id="privacy">
+        <div class="privacy__container">
+            <div class="privacy__c">
+                <div class="privacy__textbox sc for__animate">
+                    <h2 class="privacy__title">{pr['privacy.mainTitle']}</h2>
+                    <p class="privacy__intro">{pr['privacy.intro']}</p>
+
+                    <div class="privacy__content">
+                        <p>{pr['privacy.effectiveDate']}</p>
+                        <p>{pr['privacy.lastUpdated']}</p>
+                        <p><strong>Sophy Music LLC</strong><br>
+                        8206 Louisiana Blvd Ne, Ste A #8279, Albuquerque, New Mexico 87113 Us<br>
+                        {pr['privacy.website']} <a href="https://www.sophymusic.com" target="_blank">www.sophymusic.com</a></p>
+
+                        {[1,2,3,4,5].map((n) => (
+                            <Fragment>
+                                <h3>{(pr as any)[`privacy.h3_${n}`]}</h3>
+                                <p>{(pr as any)[`privacy.p_${n}_1`]}</p>
+                            </Fragment>
+                        ))}
+
+                        <h3>{pr['privacy.h3_6']}</h3>
+                        <p set:html={pr['privacy.p_6_1']}></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</LegalLayout>

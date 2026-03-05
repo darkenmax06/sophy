@@ -1,0 +1,48 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroBanner from '../../components/sections/home/HeroBanner.astro';
+import Expertise from '../../components/sections/home/Expertise.astro';
+import VideoModal from '../../components/sections/shared/VideoModal.astro';
+import PartnerSwiper from '../../components/sections/home/PartnerSwiper.astro';
+import WhyChooseUs from '../../components/sections/home/WhyChooseUs.astro';
+import GuideBanner from '../../components/sections/home/GuideBanner.astro';
+import ServiceCards from '../../components/sections/home/ServiceCards.astro';
+import Testimonials from '../../components/sections/home/Testimonials.astro';
+import DigitalProcess from '../../components/sections/home/DigitalProcess.astro';
+import PricingSection from '../../components/sections/home/PricingSection.astro';
+import FAQSection from '../../components/sections/home/FAQSection.astro';
+import { getTranslations, locales, type Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = getTranslations(lang);
+---
+<BaseLayout lang={lang} title={`Sophy Music - ${t.index.hero_title}`} dataPage="index">
+    <HeroBanner t={t} lang={lang} />
+    <Expertise t={t} lang={lang} />
+    <VideoModal />
+    <PartnerSwiper t={t} />
+    <WhyChooseUs t={t} lang={lang} />
+    <GuideBanner t={t} />
+    <ServiceCards t={t} />
+    <Testimonials t={t} />
+    <DigitalProcess t={t} lang={lang} />
+    <PricingSection t={t} lang={lang} />
+    <FAQSection t={t} />
+
+    <script is:inline src="/js/vendor/swiper-bundle.min.js"></script>
+    <script>
+        import '../../scripts/scroll-animations';
+        import '../../scripts/counter';
+        import '../../scripts/swiper-init';
+        // import '../../scripts/banner-video'; // Comentado: ahora usamos shader gradient
+        import '../../scripts/video-modal';
+        import '../../scripts/theme-toggle';
+        import '../../scripts/sidebar-menu';
+    </script>
+</BaseLayout>

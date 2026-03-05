@@ -1,0 +1,41 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+  title: string;
+  dataPage: string;
+  bannerTitle: string;
+  breadcrumbHome: string;
+  breadcrumbCurrent: string;
+}
+
+const { lang, title, dataPage, bannerTitle, breadcrumbHome, breadcrumbCurrent } = Astro.props;
+---
+<BaseLayout lang={lang} title={title} dataPage={dataPage}>
+    <!-- Section Banner -->
+    <div class="section-banner">
+        <div class="banner-layout-wrapper">
+            <div class="banner-layout">
+                <div class="d-flex flex-column text-center align-items-center gspace-2">
+                    <h2 class="title-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">{bannerTitle}</h2>
+                    <nav class="breadcrumb">
+                        <a href={`/${lang}`} class="gspace-2">{breadcrumbHome}</a>
+                        <span class="separator-link">/</span>
+                        <p class="current-page">{breadcrumbCurrent}</p>
+                    </nav>
+                </div>
+                <div class="spacer"></div>
+            </div>
+        </div>
+    </div>
+
+    <slot />
+
+    <script>
+        import '../scripts/scroll-animations';
+        import '../scripts/theme-toggle';
+        import '../scripts/sidebar-menu';
+    </script>
+</BaseLayout>

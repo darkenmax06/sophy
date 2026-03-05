@@ -1,0 +1,50 @@
+---
+import ShaderGradientBackground from '../../ShaderGradientBackground';
+
+interface Props {
+  t: any;
+  lang: string;
+}
+const { t, lang } = Astro.props;
+const idx = t.index;
+---
+<div class="section-banner">
+    <div class="banner-video-container keep-dark animate-box animated animate__animated" data-animate="animate__fadeInUp">
+        <div id="banner-video-background">
+            <ShaderGradientBackground client:load />
+        </div>
+        <div class="hero-container position-relative">
+            <div class="d-flex flex-column gspace-2">
+                <h1 class="title-heading-banner animate-box animated animate__animated" data-animate="animate__fadeInLeft">{idx.hero_title}</h1>
+                <div class="banner-heading">
+                    <div class="banner-video-content order-xl-1 order-2 animate-box animated animate__animated" data-animate="animate__fadeInUp">
+                    </div>
+                    <div class="banner-content order-xl-2 order-1 animate-box animated animate__animated" data-animate="animate__fadeInRight">
+                        <p style="color: white;">{idx.hero_text}</p>
+                        <div class="d-flex flex-md-row flex-column justify-content-center justify-content-xl-start align-self-center align-self-xl-start gspace-3">
+                            <a href={`/${lang}/contact`} class="btn btn-accent">
+                                <div class="btn-title">
+                                    <span>{idx.hero_button}</span>
+                                </div>
+                                <div class="icon-circle">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                            </a>
+                            <div class="banner-reviewer">
+                                <div class="d-flex flex-row align-items-center">
+                                    <img src="/image/img1.webp" alt="Reviewer" class="avatar">
+                                    <img src="/image/img2.webp" alt="Reviewer" class="avatar">
+                                    <img src="/image/img3.webp" alt="Reviewer" class="avatar">
+                                </div>
+                                <div class="detail">
+                                    <span>{idx.hero_pharse1}</span>
+                                    <span>{idx.hero_pharse2}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

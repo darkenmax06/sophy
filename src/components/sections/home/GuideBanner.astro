@@ -1,0 +1,19 @@
+---
+interface Props {
+  t: any;
+}
+const { t } = Astro.props;
+const idx = t.index;
+---
+<div class="section-guide">
+    <div class="guide-banner">
+        <div class="hero-container">
+            <div class="guide-content animate-box animated animate__animated" data-animate="animate__fadeInUp">
+                <div class="d-flex flex-column gspace-2">
+                    <h3 class="title-heading">{idx.transform_busines_title}</h3>
+                    <p>{idx.transform_busines_text}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, locales, type Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = getTranslations(lang);
+const a = t.about;
+---
+<BaseLayout lang={lang} title={a.about_banner_title} dataPage="about">
+    <!-- Section Banner -->
+    <div class="section-banner">
+        <div class="banner-layout-wrapper">
+            <div class="banner-layout">
+                <div class="d-flex flex-column text-center align-items-center gspace-2">
+                    <h2 class="title-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">{a.about_banner_title}</h2>
+                    <nav class="breadcrumb">
+                        <a href={`/${lang}`} class="gspace-2">{a.about_breadcrumb_home}</a>
+                        <span class="separator-link">/</span>
+                        <p class="current-page">{a.about_breadcrumb_current}</p>
+                    </nav>
+                </div>
+                <div class="spacer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section About Us -->
+    <div class="section">
+        <div class="hero-container">
+            <div class="d-flex flex-column flex-xl-row gspace-5">
+                <div class="about-img-layout">
+                    <div class="image-container about-img">
+                        <img src="/image/au.jpg" alt="About Us Image" class="img-fluid animate-box animated animate__animated" data-animate="animate__fadeInUp">
+                        <div class="about-layout">
+                            <div class="d-flex flex-column">
+                                <div class="card-about-wrapper">
+                                    <div class="card card-about animate-box animated animate__animated" data-animate="animate__fadeInDown">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <span class="counter" data-target="10"></span>
+                                            <span class="counter-detail">+</span>
+                                        </div>
+                                        <h6>{a.about_experience_text}</h6>
+                                    </div>
+                                </div>
+                                <div class="about-spacer"></div>
+                            </div>
+                            <div class="about-spacer"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-title">
+                    <div class="d-flex flex-column gspace-2">
+                        <div class="sub-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">
+                            <i class="fa-regular fa-circle-dot"></i>
+                            <span>{a.about_section_title}</span>
+                        </div>
+                        <h2 class="title-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">{a.about_main_title}</h2>
+                        <p>{a.about_p1}</p>
+                        <p>{a.about_p2}</p>
+                        <div class="d-flex flex-column flex-md-row gspace-1 gspace-md-5">
+                            <div class="about-list">
+                                <ul class="check-list">
+                                    <li>{a.about_list1}</li>
+                                    <li>{a.about_list2}</li>
+                                    <li>{a.about_list3}</li>
+                                </ul>
+                            </div>
+                            <div class="about-list">
+                                <ul class="check-list">
+                                    <li>{a.about_list4}</li>
+                                    <li>{a.about_list5}</li>
+                                    <li>{a.about_list6}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import '../../scripts/scroll-animations';
+        import '../../scripts/counter';
+        import '../../scripts/theme-toggle';
+        import '../../scripts/sidebar-menu';
+    </script>
+</BaseLayout>

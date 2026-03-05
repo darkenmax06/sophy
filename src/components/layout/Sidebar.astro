@@ -1,0 +1,65 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  lang: Locale;
+  t: any;
+}
+
+const { lang, t } = Astro.props;
+---
+<div>
+    <div class="content-overlay">
+        <div class="content-edit-sidebar">
+            <div class="sidebar-header">
+                <div></div>
+                <div class="close-btn-second">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <div class="content">
+                <span>{t.sidebar['edit.notice']}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="sidebar-overlay"></div>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <img src="/image/logo.png" class="site-logo img-fluid logo" alt="Logo">
+            </div>
+            <button class="close-btn"><span>{t.sidebar.close}</span></button>
+        </div>
+        <ul class="menu">
+            <li><a href={`/${lang}/`}>{t.sidebar.home}</a></li>
+            <li><a href={`/${lang}/about`}>{t.sidebar.about}</a></li>
+
+            <li class="sidebar-dropdown">
+                <div class="dropdown-header">
+                    <a href={`/${lang}/#servicios`}>{t.sidebar.plans}</a>
+                    <button class="sidebar-dropdown-btn"><i class="fa-solid fa-angle-down"></i></button>
+                </div>
+
+                <ul class="sidebar-dropdown-menu">
+                    <li><a href={`/${lang}/solo-sound`}>{t.sidebar.solo_sound}</a></li>
+                    <li><a href={`/${lang}/two-fusion`}>{t.sidebar.two_fusion}</a></li>
+                    <li><a href={`/${lang}/label-epic`}>{t.sidebar.label_epic}</a></li>
+                </ul>
+            </li>
+
+            <li class="below-dropdown"><a href={`/${lang}/contact`}>{t.sidebar.contact}</a></li>
+
+            <li class="sidebar-dropdown">
+                <a href="https://portal.sophymusic.com" class="navbar-icon-wrapper">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-arrow-circle-right"></i>
+                    </div>
+                    <h6>{t.nav.button}</h6>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

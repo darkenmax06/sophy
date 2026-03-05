@@ -1,6 +1,5 @@
 ---
 import LangSelector from './LangSelector.astro';
-import ShaderGradientHeaderBackground from '../ShaderGradientHeaderBackground';
 import type { Locale } from '../../i18n';
 
 interface Props {
@@ -12,9 +11,6 @@ interface Props {
 const { lang, t, currentPath } = Astro.props;
 ---
 <div class="navbar-wrapper">
-    <div class="header-gradient">
-        <ShaderGradientHeaderBackground client:load />
-    </div>
     <nav class="navbar navbar-expand-xl">
         <div class="navbar-container">
             <div class="logo-container">

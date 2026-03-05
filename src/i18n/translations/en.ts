@@ -48,6 +48,8 @@ export default {
 
   index: {
     hero_title: "Your Music, Without Limits, Everywhere",
+    hero_static: "Your Music",
+    hero_morphing_words: ["Without Limits", "Without Restrictions", "All Over The World"],
     hero_text:
       "Sophy music is the ideal platform for musicians looking to streamline the process of disseminating and monetizing their songs quickly, easily, and effectively with an easy-to-use interface that allows you to keep 100% of the royalties.",
     hero_pharse1: "Empowering more than",

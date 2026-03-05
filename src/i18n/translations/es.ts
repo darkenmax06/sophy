@@ -44,7 +44,9 @@ export default {
     contact: "Contacto",
   },
   index: {
-    hero_title: "Tu M\u00fasica, Sin L\u00edmites, En Todas Partes",
+    hero_title: "Tu M\u00fasica, Sin L\u00edmites",
+    hero_static: "Tu M\u00fasica",
+    hero_morphing_words: ["Sin L\u00edmites", "Sin Restricciones", "En Todo El Mundo"],
     hero_text:
       "Sophy music es la plataforma ideal para m\u00fasicos que buscan agilizar el proceso de difusi\u00f3n y monetizaci\u00f3n de sus canciones de manera r\u00e1pida, f\u00e1cil y efectiva con una interfaz sencilla de utilizar que te permite quedarte con el 100% de las regal\u00edas.",
     hero_pharse1: "Empoderando a m\u00e1s de",

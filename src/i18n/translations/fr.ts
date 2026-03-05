@@ -43,6 +43,8 @@ export default {
   },
   index: {
     hero_title: "Votre Musique, Sans Limites, Partout",
+    hero_static: "Votre Musique",
+    hero_morphing_words: ["Sans Limites", "Sans Restrictions", "Dans Le Monde Entier"],
     hero_text: "Sophy music est la plateforme idéale pour les musiciens qui cherchent à accélérer le processus de diffusion et de monétisation de leurs chansons de manière rapide, simple et efficace avec une interface facile à utiliser et qui vous permet de conserver 100% des redevances.",
     hero_pharse1: "Dynamiser plus de",
     hero_pharse2: "1000 artistes",

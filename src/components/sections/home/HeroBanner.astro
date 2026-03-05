@@ -1,5 +1,6 @@
 ---
 import ShaderGradientBackground from '../../ShaderGradientBackground';
+import MorphingText from '../../MorphingText';
 
 interface Props {
   t: any;
@@ -15,12 +16,13 @@ const idx = t.index;
         </div>
         <div class="hero-container position-relative">
             <div class="d-flex flex-column gspace-2">
-                <h1 class="title-heading-banner animate-box animated animate__animated" data-animate="animate__fadeInLeft">{idx.hero_title}</h1>
+                <h1 class="title-heading-banner animate-box animated animate__animated" data-animate="animate__fadeInLeft">
+                    <span class="hero-static-line">{idx.hero_static}</span>
+                    <MorphingText texts={idx.hero_morphing_words} client:load />
+                </h1>
                 <div class="banner-heading">
-                    <div class="banner-video-content order-xl-1 order-2 animate-box animated animate__animated" data-animate="animate__fadeInUp">
-                    </div>
                     <div class="banner-content order-xl-2 order-1 animate-box animated animate__animated" data-animate="animate__fadeInRight">
-                        <p style="color: white;">{idx.hero_text}</p>
+                        <!-- <p style="color: white;">{idx.hero_text}</p> -->
                         <div class="d-flex flex-md-row flex-column justify-content-center justify-content-xl-start align-self-center align-self-xl-start gspace-3">
                             <a href={`/${lang}/contact`} class="btn btn-accent">
                                 <div class="btn-title">

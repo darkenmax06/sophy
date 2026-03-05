@@ -1608,18 +1608,33 @@ body.lightmode .navbar-icon-wrapper{
 }
 
 /* Glassmorphism style for login button */
+
+/* Animated rainbow border (approx 3px) + glass inner */
 .navbar-icon-wrapper.login-btn{
+    /* border thickness achieved with outer padding */
+    padding: 3px; /* border width */
+    border-radius: 12px;
+    display: inline-flex;
+    background: linear-gradient(90deg, #009BFF 0%, #FF66CC 50%, #FFB040 100%);
+    background-size: 200% 100%;
+    animation: rainbowShift 3s linear infinite;
+    align-items: center;
+}
+
+.navbar-icon-wrapper.login-btn .login-inner{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding: 10px 18px; /* inner spacing */
+    border-radius: 9px; /* slightly smaller so outer gradient shows as border */
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
     backdrop-filter: blur(8px) saturate(120%);
     -webkit-backdrop-filter: blur(8px) saturate(120%);
-    padding: 10px 18px;
-    gap: 10px;
-    align-items: center;
 }
 
 .navbar-icon-wrapper.login-btn .login-icon{
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     display: inline-block;
 }

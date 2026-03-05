@@ -1627,15 +1627,16 @@ body.lightmode .navbar-icon-wrapper{
     gap:10px;
     padding: 10px 18px; /* inner spacing */
     border-radius: 9px; /* slightly smaller so outer gradient shows as border */
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    /* match page background so it adapts to light/dark mode */
+    background-color: var(--secondary);
+    border: 1px solid rgba(255,255,255,0.06);
     backdrop-filter: blur(8px) saturate(120%);
     -webkit-backdrop-filter: blur(8px) saturate(120%);
 }
 
 .navbar-icon-wrapper.login-btn .login-icon{
     font-size: 18px;
-    color: white;
+    color: var(--primary);
     display: inline-block;
 }
 

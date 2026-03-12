@@ -1,10 +1,21 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(process.env.RESEND_API_KEY || import.meta.env.RESEND_API_KEY);
-const FROM = process.env.EMAIL_FROM || import.meta.env.EMAIL_FROM || 'Sophy Music <hi@sophymusic.com>';
+function createTransporter() {
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      type: 'OAuth2',
+      user: process.env.GMAIL_USER || import.meta.env.GMAIL_USER,
+      clientId: process.env.GOOGLE_CLIENT_ID || import.meta.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || import.meta.env.GOOGLE_CLIENT_SECRET,
+      refreshToken: process.env.GOOGLE_REFRESH_TOKEN || import.meta.env.GOOGLE_REFRESH_TOKEN,
+    },
+  });
+}
 
 export async function sendEmail(to: string, subject: string, html: string) {
-  return resend.emails.send({ from: FROM, to, subject, html });
+  const from = `"Sophy Music" <${process.env.GMAIL_USER || import.meta.env.GMAIL_USER}>`;
+  return createTransporter().sendMail({ from, to, subject, html });
 }
 
 export async function sendNewBlogNotification(
@@ -14,11 +25,10 @@ export async function sendNewBlogNotification(
   excerpt: string
 ) {
   const promises = subscribers.map((sub) =>
-    resend.emails.send({
-      from: FROM,
-      to: sub.email,
-      subject: `Nuevo artículo: ${blogTitle}`,
-      html: `
+    sendEmail(
+      sub.email,
+      `Nuevo artículo: ${blogTitle}`,
+      `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <h2 style="color: #333;">Nuevo artículo en Sophy Music Blog</h2>
         <h3>${blogTitle}</h3>
@@ -30,8 +40,8 @@ export async function sendNewBlogNotification(
           <a href="${blogUrl.split('/blog')[0]}/api/blog/unsubscribe?id=${sub.id}">cancela tu suscripción aquí</a>.
         </p>
       </div>
-      `,
-    }).catch((err: unknown) => {
+      `
+    ).catch((err: unknown) => {
       console.error(`Failed to send to ${sub.email}:`, err);
     })
   );

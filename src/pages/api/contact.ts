@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
 export const prerender = false;
 
@@ -19,11 +19,19 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const resend = new Resend(import.meta.env.RESEND_API_KEY);
-    const from = import.meta.env.EMAIL_FROM || 'Sophy Music <hi@sophymusic.com>';
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: import.meta.env.GMAIL_USER,
+        clientId: import.meta.env.GOOGLE_CLIENT_ID,
+        clientSecret: import.meta.env.GOOGLE_CLIENT_SECRET,
+        refreshToken: import.meta.env.GOOGLE_REFRESH_TOKEN,
+      },
+    });
 
-    await resend.emails.send({
-      from,
+    await transporter.sendMail({
+      from: `"Sophy Music" <${import.meta.env.GMAIL_USER}>`,
       to: import.meta.env.CONTACT_RECIPIENT || 'sophymusicdo@gmail.com',
       replyTo: `${firstName} ${lastName} <${email}>`,
       subject: `Contacto Web: ${subject}`,

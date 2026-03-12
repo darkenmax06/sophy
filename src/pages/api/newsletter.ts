@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 export const prerender = false;
 
@@ -23,18 +23,11 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const transporter = nodemailer.createTransport({
-      host: import.meta.env.SMTP_HOST || 'smtp.hostinger.com',
-      port: Number(import.meta.env.SMTP_PORT) || 587,
-      secure: false,
-      auth: {
-        user: import.meta.env.SMTP_USER || '',
-        pass: import.meta.env.SMTP_PASS || '',
-      },
-    });
+    const resend = new Resend(import.meta.env.RESEND_API_KEY);
+    const from = import.meta.env.EMAIL_FROM || 'Sophy Music <hi@sophymusic.com>';
 
-    await transporter.sendMail({
-      from: `"Sophy Music Web" <${import.meta.env.SMTP_USER}>`,
+    await resend.emails.send({
+      from,
       to: import.meta.env.CONTACT_RECIPIENT || 'sophymusicdo@gmail.com',
       subject: 'New Newsletter Subscription',
       text: `New subscriber: ${email}`,

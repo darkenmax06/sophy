@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+/src/generated/prisma
+
+# User-uploaded files (stored in R2, not in the repo)
+/public/uploads/blog/

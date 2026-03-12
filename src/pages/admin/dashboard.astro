@@ -1,0 +1,239 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import prisma from '../../lib/prisma';
+import { isAuthenticated } from '../../lib/auth';
+
+const user = isAuthenticated(Astro.request);
+if (!user) return Astro.redirect('/admin/login');
+
+const days = 30;
+const since = new Date();
+since.setDate(since.getDate() - days);
+
+const [
+  totalPageVisits,
+  totalBlogVisits,
+  totalSubscribers,
+  totalPosts,
+  publishedPosts,
+  recentPosts,
+] = await Promise.all([
+  prisma.pageVisit.count({ where: { createdAt: { gte: since } } }),
+  prisma.blogVisit.count({ where: { createdAt: { gte: since } } }),
+  prisma.blogSubscriber.count({ where: { unsubscribedAt: null } }),
+  prisma.blogPost.count(),
+  prisma.blogPost.count({ where: { published: true } }),
+  prisma.blogPost.findMany({
+    take: 5,
+    orderBy: { createdAt: 'desc' },
+    include: {
+      translations: { where: { lang: 'es' } },
+      _count: { select: { visits: true } },
+    },
+  }),
+]);
+
+// Top visited posts
+const topPosts = await prisma.blogPost.findMany({
+  take: 5,
+  orderBy: { visits: { _count: 'desc' } },
+  where: { published: true },
+  include: {
+    translations: { where: { lang: 'es' } },
+    _count: { select: { visits: true } },
+  },
+});
+---
+<AdminLayout title="Dashboard" activeTab="dashboard">
+  <div class="page-header">
+    <h1>Dashboard</h1>
+    <span style="color: var(--text-color); font-size: 14px;">Últimos {days} días</span>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <div class="stat-label">Visitas al Sitio</div>
+          <div class="stat-value">{totalPageVisits.toLocaleString()}</div>
+        </div>
+        <i class="fa-solid fa-globe stat-icon"></i>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <div class="stat-label">Visitas al Blog</div>
+          <div class="stat-value">{totalBlogVisits.toLocaleString()}</div>
+        </div>
+        <i class="fa-solid fa-eye stat-icon"></i>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <div class="stat-label">Suscriptores</div>
+          <div class="stat-value">{totalSubscribers.toLocaleString()}</div>
+        </div>
+        <i class="fa-solid fa-users stat-icon"></i>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <div class="stat-label">Posts Publicados</div>
+          <div class="stat-value">{publishedPosts} / {totalPosts}</div>
+        </div>
+        <i class="fa-solid fa-newspaper stat-icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Posts -->
+  <div class="chart-container">
+    <h3><i class="fa-solid fa-trophy" style="color: var(--accent-color); margin-right: 8px;"></i>Posts Más Visitados</h3>
+    {topPosts.length > 0 ? (
+      <div class="admin-table-container" style="border:none;">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Visitas</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {topPosts.map((post) => (
+              <tr>
+                <td>{post.translations[0]?.title || 'Sin título'}</td>
+                <td>
+                  <span class="badge badge-success">{post._count.visits}</span>
+                </td>
+                <td>
+                  <a href={`/es/blog/${post.slug}`} target="_blank" class="btn btn-secondary btn-sm">
+                    <i class="fa-solid fa-external-link-alt"></i>
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <p style="color: var(--text-color);">No hay posts publicados aún.</p>
+    )}
+  </div>
+
+  <!-- Recent Posts -->
+  <div class="chart-container">
+    <h3><i class="fa-solid fa-clock" style="color: var(--accent-color); margin-right: 8px;"></i>Posts Recientes</h3>
+    {recentPosts.length > 0 ? (
+      <div class="admin-table-container" style="border:none;">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Estado</th>
+              <th class="hide-mobile">Visitas</th>
+              <th class="hide-mobile">Fecha</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {recentPosts.map((post) => (
+              <tr>
+                <td class="truncate-cell">{post.translations[0]?.title || 'Sin título'}</td>
+                <td>
+                  <span class:list={['badge', post.published ? 'badge-success' : 'badge-warning']}>
+                    {post.published ? 'Publicado' : 'Borrador'}
+                  </span>
+                </td>
+                <td class="hide-mobile">{post._count.visits}</td>
+                <td class="hide-mobile" style="font-size:12px; color: var(--text-color); white-space: nowrap;">{new Date(post.createdAt).toLocaleDateString('es')}</td>
+                <td class="actions-cell">
+                  <div style="display: flex; gap: 4px;">
+                    <a href={`/admin/posts/${post.id}`} class="btn btn-secondary btn-sm">
+                      <i class="fa-solid fa-pen"></i>
+                    </a>
+                    <a href={`/es/blog/${post.slug}`} target="_blank" class="btn btn-secondary btn-sm">
+                      <i class="fa-solid fa-external-link-alt"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <p style="color: var(--text-color);">No hay posts creados. <a href="/admin/posts/new" style="color: var(--accent-color);">Crear primero</a></p>
+    )}
+  </div>
+
+  <!-- Daily Visits Chart -->
+  <div class="chart-container">
+    <h3><i class="fa-solid fa-chart-bar" style="color: var(--accent-color); margin-right: 8px;"></i>Visitas Diarias (Últimos {days} días)</h3>
+    <canvas id="visitsChart" height="80"></canvas>
+  </div>
+
+  <script is:inline src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script is:inline>
+    (async () => {
+      try {
+        const res = await fetch('/api/blog/stats?days=30');
+        const data = await res.json();
+        
+        if (!data.recentPageVisits || !data.recentBlogVisits) return;
+
+        const allDates = new Set();
+        data.recentPageVisits.forEach(d => allDates.add(d.date?.split('T')[0]));
+        data.recentBlogVisits.forEach(d => allDates.add(d.date?.split('T')[0]));
+        
+        const dates = Array.from(allDates).sort();
+        const pageMap = {};
+        const blogMap = {};
+        data.recentPageVisits.forEach(d => { pageMap[d.date?.split('T')[0]] = d.count; });
+        data.recentBlogVisits.forEach(d => { blogMap[d.date?.split('T')[0]] = d.count; });
+
+        const ctx = document.getElementById('visitsChart');
+        if (ctx && typeof Chart !== 'undefined') {
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: dates.map(d => new Date(d).toLocaleDateString('es', { month: 'short', day: 'numeric' })),
+              datasets: [
+                {
+                  label: 'Visitas Página',
+                  data: dates.map(d => pageMap[d] || 0),
+                  borderColor: '#C82AEF',
+                  backgroundColor: 'rgba(200,42,239,0.1)',
+                  fill: true,
+                  tension: 0.4,
+                },
+                {
+                  label: 'Visitas Blog',
+                  data: dates.map(d => blogMap[d] || 0),
+                  borderColor: '#00b894',
+                  backgroundColor: 'rgba(0,184,148,0.1)',
+                  fill: true,
+                  tension: 0.4,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { labels: { color: '#8B8B8B' } } },
+              scales: {
+                x: { ticks: { color: '#666' }, grid: { color: '#1e1e28' } },
+                y: { ticks: { color: '#666' }, grid: { color: '#1e1e28' } },
+              },
+            },
+          });
+        }
+      } catch (e) {
+        console.error('Chart error:', e);
+      }
+    })();
+  </script>
+</AdminLayout>

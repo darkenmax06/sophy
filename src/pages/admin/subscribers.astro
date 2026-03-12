@@ -1,0 +1,58 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import prisma from '../../lib/prisma';
+import { isAuthenticated } from '../../lib/auth';
+
+const user = isAuthenticated(Astro.request);
+if (!user) return Astro.redirect('/admin/login');
+
+const subscribers = await prisma.blogSubscriber.findMany({
+  orderBy: { createdAt: 'desc' },
+});
+
+const activeCount = subscribers.filter(s => !s.unsubscribedAt).length;
+---
+<AdminLayout title="Suscriptores" activeTab="subscribers">
+  <div class="page-header">
+    <h1>Suscriptores</h1>
+    <span style="color: var(--text-color); font-size: 14px;">{activeCount} activos de {subscribers.length} total</span>
+  </div>
+
+  <div class="admin-table-container">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Estado</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        {subscribers.map((sub) => (
+          <tr>
+            <td>{sub.email}</td>
+            <td>
+              {sub.unsubscribedAt ? (
+                <span class="badge badge-warning">Cancelado</span>
+              ) : sub.confirmed ? (
+                <span class="badge badge-success">Activo</span>
+              ) : (
+                <span class="badge badge-warning">Pendiente</span>
+              )}
+            </td>
+            <td style="font-size: 12px; color: var(--text-color);">
+              {new Date(sub.createdAt).toLocaleDateString('es')}
+            </td>
+          </tr>
+        ))}
+        {subscribers.length === 0 && (
+          <tr>
+            <td colspan="3" style="text-align: center; padding: 40px; color: var(--text-color);">
+              No hay suscriptores aún
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  </div>
+</AdminLayout>

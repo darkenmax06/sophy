@@ -11,21 +11,38 @@
   "dependencies": {
     "@astrojs/node": "^9.5.4",
     "@astrojs/react": "^4.4.2",
+    "@astrojs/vercel": "^8.2.11",
+    "@aws-sdk/client-s3": "^3.1007.0",
+    "@neondatabase/serverless": "^1.0.2",
+    "@prisma/adapter-neon": "^7.5.0",
+    "@prisma/adapter-pg": "^7.4.2",
+    "@prisma/client": "^7.4.2",
     "@react-spring/three": "^10.0.3",
     "@react-three/fiber": "^9.5.0",
     "@shadergradient/react": "^2.4.20",
     "astro": "^5.17.1",
+    "bcryptjs": "^3.0.3",
     "camera-controls": "^3.1.2",
+    "dotenv": "^17.3.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.1.1",
     "nodemailer": "^8.0.1",
+    "pg": "^8.20.0",
+    "prisma": "^7.4.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "three": "^0.183.2",
     "three-stdlib": "^2.36.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.1.0",
     "@types/nodemailer": "^7.0.11",
+    "@types/pg": "^8.18.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@types/three": "^0.183.1"
+    "@types/three": "^0.183.1",
+    "tsx": "^4.21.0"
   }
 }

@@ -1,0 +1,463 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { isAuthenticated } from '../../lib/auth';
+
+const user = isAuthenticated(Astro.request);
+if (!user) return Astro.redirect('/admin/login');
+---
+<AdminLayout title="Manual de Uso" activeTab="manual">
+  <div class="page-header">
+    <h1><i class="fa-solid fa-book" style="color: var(--accent-color); margin-right: 8px;"></i>Manual de Uso</h1>
+  </div>
+
+  <div class="manual-content">
+    <!-- Quick Start -->
+    <section class="manual-section">
+      <div class="manual-card">
+        <div class="manual-card-header">
+          <i class="fa-solid fa-rocket"></i>
+          <h2>Inicio Rápido</h2>
+        </div>
+        <p>Bienvenido al panel de administración de Sophy Music Blog. Aquí puedes gestionar todos los artículos del blog, categorías y suscriptores.</p>
+        <div class="manual-steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <div>
+              <strong>Crea categorías</strong>
+              <p>Ve a <a href="/admin/categories">Categorías</a> y crea las categorías para organizar tus posts.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <div>
+              <strong>Escribe un post</strong>
+              <p>Ve a <a href="/admin/posts/new">Nuevo Post</a> para crear tu primer artículo.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <div>
+              <strong>Publica</strong>
+              <p>Cuando estés satisfecho, haz clic en "Publicar" para hacerlo visible en el blog.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Creating Posts -->
+    <section class="manual-section">
+      <div class="manual-card">
+        <div class="manual-card-header">
+          <i class="fa-solid fa-pen-nib"></i>
+          <h2>Crear y Editar Posts</h2>
+        </div>
+
+        <h3>Nuevo Post</h3>
+        <ol>
+          <li>Haz clic en <strong>"Nuevo Post"</strong> en el menú lateral izquierdo.</li>
+          <li>Escribe el <strong>título</strong> y el <strong>extracto</strong> (resumen breve que aparece en la lista del blog).</li>
+          <li>Usa el <strong>editor de contenido</strong> para escribir el artículo completo.</li>
+          <li>En el panel derecho, configura el <strong>slug</strong> (URL del post), la <strong>imagen de portada</strong> y las <strong>categorías</strong>.</li>
+        </ol>
+
+        <h3>Multi-idioma</h3>
+        <p>El blog soporta <strong>4 idiomas</strong>: Español, English, Français y Português.</p>
+        <ul>
+          <li>Usa las <strong>pestañas de idioma</strong> encima del editor para cambiar entre idiomas.</li>
+          <li>Escribe el contenido en cada idioma por separado.</li>
+          <li>El idioma <strong>Español es obligatorio</strong> para publicar. Los demás son opcionales.</li>
+          <li>Si un idioma no tiene traducción, se mostrará la versión en español por defecto.</li>
+        </ul>
+
+        <h3>Editor de Texto</h3>
+        <p>La barra de herramientas del editor permite dar formato al contenido:</p>
+        <div class="toolbar-guide">
+          <div class="tool-item">
+            <i class="fa-solid fa-bold"></i>
+            <span><strong>Negrita</strong> — Resalta texto importante</span>
+          </div>
+          <div class="tool-item">
+            <i class="fa-solid fa-italic"></i>
+            <span><em>Itálica</em> — Texto en cursiva</span>
+          </div>
+          <div class="tool-item">
+            <i class="fa-solid fa-underline"></i>
+            <span><u>Subrayado</u> — Subraya texto</span>
+          </div>
+          <div class="tool-item">
+            <i class="fa-solid fa-strikethrough"></i>
+            <span><s>Tachado</s> — Marca texto eliminado</span>
+          </div>
+          <div class="tool-item">
+            <span style="font-weight:bold;">H2 H3 H4</span>
+            <span>Títulos y subtítulos para organizar secciones</span>
+          </div>
+          <div class="tool-item">
+            <i class="fa-solid fa-paragraph"></i>
+            <span>Párrafo — Convierte el bloque actual a texto normal</span>
+          </div>
+          <div class="tool-item">
+            <i class="fa-solid fa-list-ul"></i>
+            <span>Lista con viñetas</span>
+          </div>
+          <div class="tool-item">
+            <i class="fa-solid fa-list-ol"></i>
+            <span>Lista numerada</span>
+          </div>
+          <div class="tool-item">
+            <i class="fa-solid fa-link"></i>
+            <span>Insertar enlace — Selecciona texto primero, luego inserta la URL</span>
+          </div>
+          <div class="tool-item">
+            <i class="fa-solid fa-image"></i>
+            <span>Insertar imagen — Sube una imagen desde tu equipo</span>
+          </div>
+          <div class="tool-item">
+            <i class="fa-solid fa-align-left"></i>
+            <span>Alineación — Izquierda, centro o derecha</span>
+          </div>
+          <div class="tool-item">
+            <i class="fa-solid fa-quote-left"></i>
+            <span>Cita — Para destacar frases o referencias</span>
+          </div>
+          <div class="tool-item">
+            <i class="fa-solid fa-eraser"></i>
+            <span>Limpiar formato — Elimina el formato del texto seleccionado</span>
+          </div>
+        </div>
+
+        <h3>Slug (URL)</h3>
+        <ul>
+          <li>El slug es la parte de la URL que identifica el post, por ejemplo: <code>/es/blog/mi-primer-post</code></li>
+          <li>Usa solo <strong>minúsculas, números y guiones</strong>.</li>
+          <li>Puedes generarlo automáticamente con el botón <strong>"Generar Slug"</strong> desde el título en español.</li>
+          <li>El slug debe ser <strong>único</strong> — no puede haber dos posts con el mismo slug.</li>
+        </ul>
+
+        <h3>Imagen de Portada</h3>
+        <ul>
+          <li>Formatos soportados: <strong>JPG, PNG, WebP, GIF</strong>.</li>
+          <li>Tamaño recomendado: <strong>1200x630px</strong> (formato horizontal).</li>
+          <li>La imagen se muestra en la tarjeta del blog y al inicio del post.</li>
+        </ul>
+
+        <h3>Guardar y Publicar</h3>
+        <ul>
+          <li><strong>Guardar Borrador</strong> — Guarda el post sin publicarlo. Solo es visible desde el admin.</li>
+          <li><strong>Publicar</strong> — Hace el post visible en el blog público y envía notificaciones a los suscriptores.</li>
+          <li><strong>Despublicar</strong> — En el editor de un post publicado, puedes quitarlo del blog sin eliminarlo.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="manual-section">
+      <div class="manual-card">
+        <div class="manual-card-header">
+          <i class="fa-solid fa-folder"></i>
+          <h2>Categorías</h2>
+        </div>
+        <p>Las categorías organizan los posts por tema.</p>
+        <ul>
+          <li>Cada categoría tiene un <strong>slug</strong> (identificador único) y un <strong>nombre en cada idioma</strong>.</li>
+          <li>Para crear una categoría, haz clic en <strong>"Nueva Categoría"</strong>, completa los campos y haz clic en <strong>"Crear"</strong>.</li>
+          <li>Puedes asignar <strong>múltiples categorías</strong> a cada post.</li>
+          <li>La columna "Posts" muestra cuántos artículos tiene cada categoría.</li>
+        </ul>
+        <div class="manual-tip">
+          <i class="fa-solid fa-lightbulb"></i>
+          <p><strong>Consejo:</strong> Las categorías predefinidas son: Distribución Musical, Tips para Artistas, Noticias de la Industria y Marketing. Puedes agregar más según necesites.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subscribers -->
+    <section class="manual-section">
+      <div class="manual-card">
+        <div class="manual-card-header">
+          <i class="fa-solid fa-users"></i>
+          <h2>Suscriptores</h2>
+        </div>
+        <p>Los visitantes pueden suscribirse al blog desde el formulario que aparece en la página del blog y en cada post.</p>
+        <ul>
+          <li><strong>Activo</strong> — El suscriptor está confirmado y recibirá notificaciones de nuevos posts.</li>
+          <li><strong>Pendiente</strong> — Se registró pero no ha confirmado (la confirmación automática está activada por defecto).</li>
+          <li><strong>Cancelado</strong> — El suscriptor se desuscribió usando el enlace en el email.</li>
+        </ul>
+        <div class="manual-tip">
+          <i class="fa-solid fa-envelope"></i>
+          <p><strong>Notificaciones:</strong> Cuando publicas un nuevo post, se envía automáticamente un email a todos los suscriptores activos con el título, extracto y un enlace al artículo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="manual-section">
+      <div class="manual-card">
+        <div class="manual-card-header">
+          <i class="fa-solid fa-chart-line"></i>
+          <h2>Dashboard</h2>
+        </div>
+        <p>El dashboard muestra las estadísticas de los últimos 30 días:</p>
+        <ul>
+          <li><strong>Visitas al Sitio</strong> — Número total de páginas vistas en toda la web.</li>
+          <li><strong>Visitas al Blog</strong> — Visitas específicas a artículos del blog.</li>
+          <li><strong>Suscriptores</strong> — Número de suscriptores activos.</li>
+          <li><strong>Posts Publicados</strong> — Posts publicados vs. total (incluyendo borradores).</li>
+        </ul>
+        <p>También puedes ver los <strong>posts más visitados</strong> y los <strong>posts recientes</strong> con accesos rápidos a editarlos.</p>
+      </div>
+    </section>
+
+    <!-- Email Config -->
+    <section class="manual-section">
+      <div class="manual-card">
+        <div class="manual-card-header">
+          <i class="fa-solid fa-gear"></i>
+          <h2>Configuración</h2>
+        </div>
+        <p>La configuración del sistema se gestiona mediante variables de entorno en el archivo <code>.env</code>:</p>
+        <div class="config-table">
+          <div class="config-row">
+            <span class="config-key">DATABASE_URL</span>
+            <span>Conexión a la base de datos PostgreSQL</span>
+          </div>
+          <div class="config-row">
+            <span class="config-key">JWT_SECRET</span>
+            <span>Clave secreta para tokens de autenticación</span>
+          </div>
+          <div class="config-row">
+            <span class="config-key">SMTP_HOST</span>
+            <span>Servidor de correo saliente (ej: smtp.hostinger.com)</span>
+          </div>
+          <div class="config-row">
+            <span class="config-key">SMTP_PORT</span>
+            <span>Puerto del servidor SMTP (ej: 587)</span>
+          </div>
+          <div class="config-row">
+            <span class="config-key">SMTP_USER</span>
+            <span>Email para enviar notificaciones</span>
+          </div>
+          <div class="config-row">
+            <span class="config-key">SMTP_PASS</span>
+            <span>Contraseña del email SMTP</span>
+          </div>
+        </div>
+        <div class="manual-tip" style="margin-top: 16px;">
+          <i class="fa-solid fa-shield-halved"></i>
+          <p><strong>Seguridad:</strong> Cambia la contraseña de admin por defecto (admin123) lo antes posible en la base de datos. Usa un JWT_SECRET fuerte y único en producción.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Routes Reference -->
+    <section class="manual-section">
+      <div class="manual-card">
+        <div class="manual-card-header">
+          <i class="fa-solid fa-sitemap"></i>
+          <h2>Rutas del Blog</h2>
+        </div>
+        <p>Páginas públicas del blog:</p>
+        <div class="config-table">
+          <div class="config-row">
+            <span class="config-key">/{'{lang}'}/blog</span>
+            <span>Lista de artículos del blog</span>
+          </div>
+          <div class="config-row">
+            <span class="config-key">/{'{lang}'}/blog/{'{slug}'}</span>
+            <span>Artículo individual</span>
+          </div>
+        </div>
+        <p style="margin-top: 16px;">Donde <code>{'{lang}'}</code> es <strong>es</strong>, <strong>en</strong>, <strong>fr</strong> o <strong>pt</strong>, y <code>{'{slug}'}</code> es el identificador del post.</p>
+        <p>Ejemplo: <a href="/es/blog" target="_blank">/es/blog</a></p>
+      </div>
+    </section>
+  </div>
+
+  <style>
+    .manual-content {
+      max-width: 860px;
+    }
+    .manual-section {
+      margin-bottom: 24px;
+    }
+    .manual-card {
+      background: var(--accent-color-4, #0E0E0E);
+      border: 1px solid var(--accent-color-3, #1F1F1F);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .manual-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--accent-color-3, #1F1F1F);
+    }
+    .manual-card-header i {
+      font-size: 22px;
+      color: var(--accent-color, #C82AEF);
+    }
+    .manual-card-header h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent-color-2, #FFFFFF);
+      margin: 0;
+    }
+    .manual-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-color-2, #FFFFFF);
+      margin: 24px 0 10px;
+    }
+    .manual-card p {
+      color: var(--primary, #D1D1D1);
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 8px 0;
+    }
+    .manual-card ul, .manual-card ol {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+    .manual-card li {
+      font-size: 14px;
+      color: var(--primary, #D1D1D1);
+      line-height: 1.8;
+    }
+    .manual-card a {
+      color: var(--accent-color, #C82AEF);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+    .manual-card a:hover { opacity: 0.8; }
+    .manual-card code {
+      background: rgba(200, 42, 239, 0.08);
+      color: var(--accent-color, #C82AEF);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: 'Fira Code', monospace, inherit;
+    }
+
+    .manual-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .step-number {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      background: var(--accent-color, #C82AEF);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .step strong {
+      color: var(--accent-color-2, #FFFFFF);
+      font-size: 15px;
+    }
+    .step p {
+      margin: 4px 0 0;
+    }
+
+    .toolbar-guide {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .tool-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: rgba(200, 42, 239, 0.03);
+      border: 1px solid var(--accent-color-3, #1F1F1F);
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--primary, #D1D1D1);
+    }
+    .tool-item i, .tool-item > span:first-child {
+      color: var(--accent-color, #C82AEF);
+      width: 20px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .manual-tip {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      background: rgba(200, 42, 239, 0.06);
+      border: 1px solid rgba(200, 42, 239, 0.15);
+      border-radius: 12px;
+      margin: 12px 0;
+    }
+    .manual-tip i {
+      color: var(--accent-color, #C82AEF);
+      font-size: 18px;
+      margin-top: 2px;
+    }
+    .manual-tip p { margin: 0; }
+
+    .config-table {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 12px 0;
+    }
+    .config-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 10px 14px;
+      background: rgba(200, 42, 239, 0.03);
+      border: 1px solid var(--accent-color-3, #1F1F1F);
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--primary, #D1D1D1);
+    }
+    .config-key {
+      background: rgba(200, 42, 239, 0.08);
+      color: var(--accent-color, #C82AEF);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      .manual-card { padding: 20px; }
+      .toolbar-guide { grid-template-columns: 1fr; }
+      .config-row { flex-wrap: wrap; gap: 8px; }
+      .step { gap: 12px; }
+      .step-number { width: 30px; height: 30px; min-width: 30px; font-size: 14px; }
+    }
+    @media (max-width: 480px) {
+      .manual-card { padding: 16px; }
+      .manual-card-header { gap: 8px; }
+      .manual-card-header h2 { font-size: 17px; }
+      .manual-card h3 { font-size: 14px; }
+      .manual-card li, .manual-card p { font-size: 13px; }
+      .tool-item { font-size: 12px; padding: 8px 10px; }
+      .manual-tip { padding: 12px 14px; }
+    }
+  </style>
+</AdminLayout>

@@ -1,0 +1,97 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import prisma from '../../../lib/prisma';
+import { isAuthenticated } from '../../../lib/auth';
+
+const user = isAuthenticated(Astro.request);
+if (!user) return Astro.redirect('/admin/login');
+
+const posts = await prisma.blogPost.findMany({
+  orderBy: { createdAt: 'desc' },
+  include: {
+    translations: { where: { lang: 'es' } },
+    categories: { include: { category: { include: { translations: { where: { lang: 'es' } } } } } },
+    _count: { select: { visits: true } },
+  },
+});
+---
+<AdminLayout title="Blog Posts" activeTab="posts">
+  <div class="page-header">
+    <h1>Blog Posts</h1>
+    <a href="/admin/posts/new" class="btn btn-primary">
+      <i class="fa-solid fa-plus"></i> Nuevo Post
+    </a>
+  </div>
+
+  <div class="admin-table-container">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th class="hide-mobile">Slug</th>
+          <th class="hide-mobile">Categorías</th>
+          <th>Estado</th>
+          <th class="hide-mobile">Visitas</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {posts.length > 0 ? posts.map((post) => (
+          <tr>
+            <td class="truncate-cell">
+              {post.translations[0]?.title || 'Sin título'}
+            </td>
+            <td class="hide-mobile" style="font-size: 12px; color: var(--text-color);">{post.slug}</td>
+            <td class="hide-mobile">
+              {post.categories.map(c => (
+                <span class="badge badge-success" style="margin-right: 4px; font-size: 11px;">{c.category.translations[0]?.name}</span>
+              ))}
+            </td>
+            <td>
+              <span class:list={['badge', post.published ? 'badge-success' : 'badge-warning']}>
+                {post.published ? 'Publicado' : 'Borrador'}
+              </span>
+            </td>
+            <td class="hide-mobile">{post._count.visits}</td>
+            <td style="font-size: 12px; color: var(--text-color); white-space: nowrap;">
+              {new Date(post.createdAt).toLocaleDateString('es')}
+            </td>
+            <td class="actions-cell">
+              <div style="display: flex; gap: 4px;">
+                <a href={`/admin/posts/${post.id}`} class="btn btn-secondary btn-sm" title="Editar">
+                  <i class="fa-solid fa-pen"></i>
+                </a>
+                {post.published && (
+                  <a href={`/es/blog/${post.slug}`} target="_blank" class="btn btn-secondary btn-sm" title="Ver">
+                    <i class="fa-solid fa-external-link-alt"></i>
+                  </a>
+                )}
+                <button class="btn btn-danger btn-sm" onclick={`deletePost('${post.id}')`} title="Eliminar">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        )) : (
+          <tr>
+            <td colspan="7" style="text-align: center; padding: 40px; color: var(--text-color);">No hay posts creados. <a href="/admin/posts/new" style="color: var(--accent-color);">Crear el primero</a></td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  </div>
+
+  <script is:inline>
+    async function deletePost(id) {
+      if (!confirm('¿Estás seguro de eliminar este post? Esta acción no se puede deshacer.')) return;
+      try {
+        await apiCall('/api/blog/posts/' + id, 'DELETE');
+        showToast('Post eliminado');
+        setTimeout(() => window.location.reload(), 500);
+      } catch (e) {
+        // error shown by apiCall
+      }
+    }
+  </script>
+</AdminLayout>

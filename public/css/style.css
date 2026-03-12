@@ -4153,7 +4153,7 @@ body.lightmode .newsletter-layout{
     background-color: var(--secondary)                                                   ;
     border: 1px solid var(--accent-color-3);
     color: var(--text-color);
-    padding: 30px 30px 30px 0px;
+    padding: 30px;
     border-radius: 15px 15px 15px 15px;
     position: relative;
     z-index: 1;
@@ -5433,4 +5433,258 @@ iframe{
     width: max-content;
     margin: 0 auto;
     margin-top: 40px;
+}
+
+/* ================== Blog Content Styles ================== */
+
+.blog-content {
+    font-size: var(--font-size-base);
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.blog-content h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+    margin: 32px 0 16px;
+}
+
+.blog-content h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary);
+    margin: 24px 0 12px;
+}
+
+.blog-content h4 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary);
+    margin: 20px 0 10px;
+}
+
+.blog-content p {
+    margin: 12px 0;
+}
+
+.blog-content ul,
+.blog-content ol {
+    padding-left: 28px;
+    margin: 12px 0;
+}
+
+.blog-content li {
+    margin: 6px 0;
+}
+
+.blog-content a {
+    color: var(--accent-color);
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.blog-content a:hover {
+    color: var(--primary);
+}
+
+.blog-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--global-border-radius);
+    margin: 20px 0;
+}
+
+.blog-content blockquote {
+    border-left: 4px solid var(--accent-color);
+    padding: 16px 20px;
+    margin: 20px 0;
+    background: var(--accent-color-4);
+    border-radius: 0 var(--global-border-radius) var(--global-border-radius) 0;
+    font-style: italic;
+    color: var(--text-color);
+}
+
+.blog-content strong {
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Blog Subscribe Section */
+.blog-subscribe-section {
+    background-image: radial-gradient(at bottom center, var(--accent-color-3), var(--accent-color-4) 50%);
+    border: 1px solid var(--accent-color-3);
+    border-radius: var(--global-border-radius);
+    padding: 50px 40px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-subscribe-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+}
+
+.blog-subscribe-section .form-control {
+    flex: 1;
+    padding: 16px 24px;
+    border: 1px solid var(--accent-color-3);
+    border-radius: 100px;
+    background: var(--secondary);
+    color: var(--primary);
+    font-size: var(--font-size-base);
+    font-family: var(--global-font);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.blog-subscribe-section .form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(200, 42, 239, 0.1);
+}
+
+.blog-subscribe-section .form-control::placeholder {
+    color: var(--text-color);
+}
+
+.button-action {
+    padding: 16px 32px;
+    background: var(--accent-color-4);
+    color: var(--accent-color-2);
+    border: none;
+    border-radius: 100px;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    font-family: var(--global-font);
+    cursor: pointer;
+    transition: all 0.6s;
+    box-shadow: var(--box-shadow-top-left);
+    white-space: nowrap;
+}
+
+.button-action:hover {
+    box-shadow: var(--box-shadow-bottom-right);
+    color: var(--accent-color);
+}
+
+/* Blog Share */
+.blog-share a {
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.blog-share a:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Card Blog Link */
+a.card-blog {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    background-image: radial-gradient(at bottom center, var(--accent-color-3), var(--accent-color-4) 50%);
+    border: 1px solid var(--accent-color-3);
+    border-radius: var(--global-border-radius);
+    overflow: hidden;
+}
+
+a.card-blog:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--box-shadow-bottom-right-wide);
+    border-color: var(--accent-color-6);
+}
+
+a.card-blog .blog-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+a.card-blog .blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+a.card-blog:hover .blog-image img {
+    transform: scale(1.05);
+}
+
+a.card-blog .card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.meta-data {
+    font-size: var(--font-size-sm);
+    color: var(--text-color);
+}
+
+.meta-data-post {
+    font-size: var(--font-size-sm);
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.blog-link {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+    line-height: var(--line-height-snug);
+    transition: color 0.3s;
+}
+
+a.card-blog:hover .blog-link {
+    color: var(--accent-color);
+}
+
+.blog-link-post {
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+    line-height: var(--line-height-snug);
+}
+
+.read-more {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--accent-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.3s;
+}
+
+.read-more::after {
+    content: '\2192';
+    transition: transform 0.3s;
+}
+
+a.card-blog:hover .read-more::after {
+    transform: translateX(4px);
+}
+
+.post-image {
+    width: 100%;
+    border-radius: var(--global-border-radius);
+    overflow: hidden;
+    border: 1px solid var(--accent-color-3);
+}
+
+.post-image img {
+    width: 100%;
+    height: auto;
+    display: block;
 }

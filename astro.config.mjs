@@ -1,17 +1,20 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
 import react from '@astrojs/react';
+
+// Use Vercel adapter in production, Node adapter in local dev
+const isVercel = !!process.env.VERCEL;
+const adapter = isVercel
+  ? (await import('@astrojs/vercel')).default()
+  : (await import('@astrojs/node')).default({ mode: 'standalone' });
 
 export default defineConfig({
   output: 'server',
-  adapter: node({ mode: 'standalone' }),
+  adapter,
   integrations: [react()],
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en', 'fr', 'pt'],
-    routing: {
-      prefixDefaultLocale: true,
-    },
+    routing: 'manual',
   },
 });

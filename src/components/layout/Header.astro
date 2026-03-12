@@ -38,6 +38,9 @@ const { lang, t, currentPath } = Astro.props;
                     <li class="nav-item">
                         <a class="nav-link" href={`/${lang}/contact`}>{t.nav.link3}</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={`/${lang}/blog`}>{t.nav.link4 || 'Blog'}</a>
+                    </li>
                 </ul>
             </div>
             <div class="navbar-action-container">

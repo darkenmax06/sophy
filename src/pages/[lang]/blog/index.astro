@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import type { Locale } from '../../../i18n';
+import { getTranslations } from '../../../i18n';
+import prisma from '../../../lib/prisma';
+
+const lang = Astro.params.lang as Locale;
+const t = getTranslations(lang);
+
+let posts: any[] = [];
+try {
+  posts = await prisma.blogPost.findMany({
+    where: { published: true },
+    orderBy: { publishedAt: 'desc' },
+    include: {
+      translations: { where: { lang } },
+      categories: {
+        include: { category: { include: { translations: { where: { lang } } } } },
+      },
+    },
+  });
+} catch (e) {
+  console.error('Error fetching blog posts:', e);
+}
+---
+<BaseLayout lang={lang} title={`${t.blog.banner_title} - Sophy Music`} dataPage="blog">
+
+  <!-- Banner -->
+  <div class="section-banner">
+    <div class="banner-layout-wrapper">
+      <div class="banner-layout">
+        <div class="d-flex flex-column text-center align-items-center gspace-2">
+          <h2 class="title-heading animate-box animated animate__animated" data-animate="animate__fadeInRight">{t.blog.banner_title}</h2>
+          <nav class="breadcrumb">
+            <a href={`/${lang}/`} class="gspace-2">{t.blog.breadcrumb_home}</a>
+            <span class="separator-link">/</span>
+            <p class="current-page">{t.blog.breadcrumb_current}</p>
+          </nav>
+        </div>
+        <div class="spacer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Section -->
+  <div class="section">
+    <div class="hero-container">
+      <div class="d-flex flex-column gspace-5">
+        <!-- Header -->
+        <div class="row row-cols-xl-2 row-cols-1 grid-spacer-5 m-0">
+          <div class="col col-xl-8 ps-0 pe-0">
+            <div class="d-flex flex-column gspace-2 animate-box animated fast animate__animated" data-animate="animate__fadeInLeft">
+              <div class="sub-heading">
+                <i class="fa-regular fa-circle-dot"></i>
+                <span>{t.blog.subtitle}</span>
+              </div>
+              <h2 class="title-heading">{t.blog.heading}</h2>
+            </div>
+          </div>
+          <div class="col col-xl-4 ps-0 pe-0">
+            <div class="d-flex flex-column gspace-2 justify-content-end h-100 animate-box animated animate__animated" data-animate="animate__fadeInRight">
+              <p>{t.blog.description}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Cards -->
+        {posts.length > 0 ? (
+          <div class="row row-cols-md-2 row-cols-1 grid-spacer-3">
+            {posts.map((post) => {
+              const translation = post.translations[0];
+              if (!translation) return null;
+              const categories = post.categories.map(c => c.category.translations[0]?.name).filter(Boolean);
+              const date = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+              return (
+                <div class="col">
+                  <a href={`/${lang}/blog/${post.slug}`} class="card card-blog animate-box animated animate__animated" data-animate="animate__fadeInUp">
+                    {post.coverImage && (
+                      <div class="blog-image">
+                        <img src={post.coverImage} alt={translation.title} loading="lazy">
+                      </div>
+                    )}
+                    <div class="card-body">
+                      <div class="d-flex flex-row gspace-2 flex-wrap">
+                        <div class="d-flex flex-row gspace-1 align-items-center">
+                          <i class="fa-solid fa-calendar accent-color"></i>
+                          <span class="meta-data">{date}</span>
+                        </div>
+                        {categories.map((cat) => (
+                          <div class="d-flex flex-row gspace-1 align-items-center">
+                            <i class="fa-solid fa-folder accent-color"></i>
+                            <span class="meta-data">{cat}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <span class="blog-link">{translation.title}</span>
+                      <p>{translation.excerpt}</p>
+                      <span class="read-more">{t.blog.read_more}</span>
+                    </div>
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div class="text-center py-5">
+            <p>{t.blog.no_posts}</p>
+          </div>
+        )}
+
+        <!-- Subscribe Section -->
+        <div class="blog-subscribe-section animate-box animated animate__animated" data-animate="animate__fadeInUp">
+          <div class="d-flex flex-column align-items-center text-center gspace-2" style="max-width: 600px; margin: 0 auto;">
+            <h3 class="title-heading" style="font-size: var(--font-size-3xl);">{t.blog.subscribe_title}</h3>
+            <p>{t.blog.subscribe_text}</p>
+            <form id="blog-subscribe-form" class="d-flex flex-row gspace-2 w-100">
+              <input type="email" name="email" placeholder={t.blog.subscribe_placeholder} required class="form-control" />
+              <button type="submit" class="button-action">{t.blog.subscribe_button}</button>
+            </form>
+            <p id="subscribe-message" class="accent-color" style="display:none;"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Track page visit
+    fetch('/api/blog/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path: window.location.pathname })
+    }).catch(() => {});
+
+    // Subscribe form
+    document.getElementById('blog-subscribe-form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const email = form.email.value;
+      const msg = document.getElementById('subscribe-message');
+      try {
+        const res = await fetch('/api/blog/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        const data = await res.json();
+        if (msg) {
+          msg.textContent = data.message || data.error;
+          msg.style.display = 'block';
+        }
+        if (res.ok) form.reset();
+      } catch {
+        if (msg) {
+          msg.textContent = 'Error';
+          msg.style.display = 'block';
+        }
+      }
+    });
+  </script>
+</BaseLayout>
+
+<script>
+  import '../../../scripts/scroll-animations';
+  import '../../../scripts/theme-toggle';
+  import '../../../scripts/sidebar-menu';
+</script>

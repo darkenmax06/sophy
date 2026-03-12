@@ -8,8 +8,7 @@ export default {
     plan1: "Solo Sound",
     plan2: "Collaborator",
     plan3: "Label Epic",
-    link3: "Contact",
-    button: "Log In",
+    link3: "Contact",    link4: "Blog",    button: "Log In",
   },
 
   footer: {
@@ -750,5 +749,23 @@ We recommend submitting your release at least 2 or 3 weeks before your desired r
     heading: "Page Not Found!",
     text: "We couldn't find the page you're looking for. It might have been removed, renamed, or never existed.",
     button: "Back to Home",
+  },
+  blog: {
+    banner_title: "Our Blog",
+    breadcrumb_home: "Home",
+    breadcrumb_current: "Blog",
+    subtitle: "Insights & Trends",
+    heading: "Latest Music Industry Strategies & Tips",
+    description: "Explore our latest blog articles covering industry trends, expert insights, and actionable strategies to elevate your music career.",
+    view_all: "View All Articles",
+    read_more: "Read More",
+    subscribe_title: "Subscribe to the Blog",
+    subscribe_text: "Get notified when we publish new content.",
+    subscribe_placeholder: "Your email address",
+    subscribe_button: "Subscribe",
+    subscribe_success: "Successfully subscribed!",
+    no_posts: "No published articles yet.",
+    share: "Share",
+    related: "Related Articles",
   },
 } as const;

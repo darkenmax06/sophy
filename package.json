@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "prisma generate && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "seed": "npx tsx prisma/seed.ts"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.4",

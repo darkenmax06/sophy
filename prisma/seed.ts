@@ -1,13 +1,6 @@
 import 'dotenv/config';
-import { PrismaClient } from '../src/generated/prisma/client';
-import { PrismaPg } from '@prisma/adapter-pg';
+import { prisma } from '../src/lib/prisma';
 import bcrypt from 'bcryptjs';
-
-
-const connectionString = 'postgresql://neondb_owner:npg_H5WzA1vZClks@ep-empty-meadow-adfi7j1x-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=requirepostgresql://neondb_owner:npg_H5WzA1vZClks@ep-empty-meadow-adfi7j1x.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
-console.log("log desde seed: ",{connectionString})
-const adapter = new PrismaPg({ connectionString });
-const prisma = new PrismaClient({ adapter });
 
 async function main() {
   const email = process.env.ADMIN_EMAIL || 'admin@sophymusic.com';

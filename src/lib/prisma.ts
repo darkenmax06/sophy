@@ -11,20 +11,27 @@ neonConfig.webSocketConstructor = ws;
 const globalForPrisma = globalThis as unknown as { prisma: InstanceType<typeof PrismaClient> };
 
 function createPrismaClient(): InstanceType<typeof PrismaClient> {
-  const envConnection = process.env.DATABASE_URL || process.env.NEON_DATABASE_URL || process.env.NEON_URL;
+  // Prefer an explicit pooled URL when available (Neon pooler)
+  const envConnection = process.env.DATABASE_URL_POOLED || process.env.DATABASE_URL || process.env.NEON_DATABASE_URL || process.env.NEON_URL;
   const defaultLocal = 'postgresql://postgres:dark@localhost:5432/sophymusic';
   const connectionString = envConnection || defaultLocal;
 
-  console.log({ connectionString });
+  // Non-secret runtime diagnostics (do not print the actual secret)
+  console.log({ hasDatabaseUrl: Boolean(envConnection), usesPooler: Boolean(envConnection && /pooler|neon.tech/.test(envConnection)) });
 
   // Use Neon adapter when the connection string looks like a Neon endpoint
   if (process.env.VERCEL || connectionString.includes('neon.tech')) {
     if (!connectionString) {
       throw new Error('[prisma] DATABASE_URL is not set. Check environment variables.');
     }
-    const pool = new Pool({ connectionString });
-    const adapter = new PrismaNeon(pool);
-    return new PrismaClient({ adapter });
+    try {
+      const pool = new Pool({ connectionString });
+      const adapter = new PrismaNeon(pool);
+      return new PrismaClient({ adapter });
+    } catch (e) {
+      console.error('[prisma] Neon pool init error:', e?.message ?? e);
+      throw e;
+    }
   }
 
   // Local dev: use standard pg driver

@@ -735,8 +735,14 @@ We recommend submitting your release at least 2 or 3 weeks before your desired r
     breadcrumb_current: "Team",
     main_title: "Meet The Team Behind Sophy Music",
     intro: "A team passionate about music and technology, dedicated to empowering artists' careers worldwide.",
-    placeholder_name: "Coming Soon",
-    placeholder_role: "Role to be confirmed",
+    members: [
+      { name: "Franklin Vásquez", role: "Rights & Royalties Manager", img: "/1.png" },
+      { name: "Jerson Peralta", role: "Artist Support Manager", img: "/2.png" },
+      { name: "Natasha Sok", role: "Catalog Manager", img: "/3.png" },
+      { name: "Rafael Pena", role: "Community Manager", img: "/4.png" },
+      { name: "Jeffry Vasquez", role: "CEO & Founder", img: "/5.png" },
+      { name: "Ramses Gonzalez", role: "Web Developer", img: "/6.png" },
+    ],
   },
   search: {
     banner_title: "Search",

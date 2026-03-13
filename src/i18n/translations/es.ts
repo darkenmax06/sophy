@@ -741,8 +741,14 @@ export default {
     breadcrumb_current: "Equipo",
     main_title: "Conoce Al Equipo Detrás De Sophy Music",
     intro: "Un equipo apasionado por la música y la tecnología, dedicado a impulsar la carrera de artistas en todo el mundo.",
-    placeholder_name: "Próximamente",
-    placeholder_role: "Rol por confirmar",
+    members: [
+      { name: "Franklin Vásquez", role: "Responsable de Derechos y Regalías", img: "/1.png" },
+      { name: "Jerson Peralta", role: "Gerente de Soporte a Artistas", img: "/2.png" },
+      { name: "Natasha Sok", role: "Gerente de Catálogo", img: "/3.png" },
+      { name: "Rafael Pena", role: "Community Manager", img: "/4.png" },
+      { name: "Jeffry Vasquez", role: "CEO y fundador", img: "/5.png" },
+      { name: "Ramses Gonzalez", role: "Desarrollador Web", img: "/6.png" },
+    ],
   },
   search: {
     banner_title: "Búsqueda",

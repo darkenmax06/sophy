@@ -12,7 +12,7 @@ const { lang } = Astro.params as { lang: Locale };
 const t = getTranslations(lang);
 const tm = t.team;
 
-const members = [1, 2, 3, 4, 5, 6];
+const members = t.team.members || [];
 ---
 <BaseLayout lang={lang} title={tm.banner_title} dataPage="team">
     <!-- Section Banner -->
@@ -41,17 +41,15 @@ const members = [1, 2, 3, 4, 5, 6];
                     <p class="heading-container heading-container-medium">{tm.intro}</p>
                 </div>
                 <div class="row row-cols-xl-3 row-cols-md-2 row-cols-1 grid-spacer-2">
-                    {members.map((n) => (
+                    {members.map((m) => (
                         <div class="col">
                             <div class="card card-team animate-box animated animate__animated" data-animate="animate__fadeInUp">
                                 <div class="team-img">
-                                    <div class="team-placeholder" style="width:100%;height:280px;background:var(--card-bg);display:flex;align-items:center;justify-content:center;border-radius:12px;">
-                                        <i class="fa-solid fa-user" style="font-size:4rem;opacity:0.3;"></i>
-                                    </div>
+                                    <img src={m.img} alt={m.name} style="width:100%;height:280px;object-fit:cover;border-radius:12px;" />
                                 </div>
                                 <div class="team-info">
-                                    <h5>{tm.placeholder_name}</h5>
-                                    <p>{tm.placeholder_role}</p>
+                                    <h5>{m.name}</h5>
+                                    <p>{m.role}</p>
                                 </div>
                             </div>
                         </div>

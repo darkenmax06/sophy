@@ -4,6 +4,7 @@ export default {
   nav: {
     link1: "Home",
     link2: "About Us",
+    link5: "Team",
     dropdown_plans: "Plans",
     plan1: "Solo Sound",
     plan2: "Collaborator",
@@ -37,6 +38,7 @@ export default {
     edit_notice: "Click on the Edit Content button to edit or add content.",
     close: "X",
     home: "Home",
+    team: "Team",
     about: "About Us",
     plans: "Plans",
     solo_sound: "Solo Sound",

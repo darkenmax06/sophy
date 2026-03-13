@@ -36,6 +36,7 @@ const { lang, t } = Astro.props;
         <ul class="menu">
             <li><a href={`/${lang}/`}>{t.sidebar.home}</a></li>
             <li><a href={`/${lang}/about`}>{t.sidebar.about}</a></li>
+            <li><a href={`/${lang}/team`}>{t.sidebar.team || 'Team'}</a></li>
 
             <li class="sidebar-dropdown">
                 <div class="dropdown-header">

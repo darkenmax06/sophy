@@ -3,6 +3,7 @@ export default {
   nav: {
     link1: "Início",
     link2: "Sobre nós",
+    link5: "Equipe",
     dropdown_plans: "Planos",
     plan1: "Solo Sound",
     plan2: "Colaborador",
@@ -35,6 +36,7 @@ export default {
     edit_notice: "Clique no botão Editar Conteúdo para editar ou adicionar conteúdo.",
     close: "X",
     home: "Início",
+    team: "Equipe",
     about: "Sobre nós",
     plans: "Planos",
     solo_sound: "Solo Sound",

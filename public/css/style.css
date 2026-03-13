@@ -2763,6 +2763,22 @@ body.lightmode .case-studies-content::before{
     border-radius: 25px 25px 0px 0px;
 }
 
+/* Team card image positioning and card background */
+.card-team{
+    background-color: rgba(255,255,255,0.10);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-team .team-img img,
+.image-team img{
+    width:100%;
+    height:280px;
+    object-fit: cover;
+    object-position: left top;
+    display: block;
+}
+
 .team-profile{
     background-color: transparent;
     background-image: linear-gradient(180deg, var(--accent-color-3) 0%, var(--accent-color-4) 100%);

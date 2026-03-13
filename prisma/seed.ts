@@ -3,7 +3,9 @@ import { PrismaClient } from '../src/generated/prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
 import bcrypt from 'bcryptjs';
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:dark@localhost:5432/sophymusic?schema=public';
+
+const connectionString = 'postgresql://neondb_owner:npg_H5WzA1vZClks@ep-empty-meadow-adfi7j1x-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+console.log("log desde seed: ",{connectionString})
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 

@@ -11,7 +11,7 @@ neonConfig.webSocketConstructor = ws;
 const globalForPrisma = globalThis as unknown as { prisma: InstanceType<typeof PrismaClient> };
 
 function createPrismaClient(): InstanceType<typeof PrismaClient> {
-  const connectionString = 'postgresql://neondb_owner:npg_H5WzA1vZClks@ep-empty-meadow-adfi7j1x-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+  const connectionString = 'postgresql://neondb_owner:npg_H5WzA1vZClks@ep-empty-meadow-adfi7j1x.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
   console.log({connectionString})
 
   if (process.env.VERCEL || connectionString?.includes('neon.tech')) {

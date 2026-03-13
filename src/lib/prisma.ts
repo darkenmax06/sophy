@@ -1,43 +1,46 @@
+import 'dotenv/config';
 import { PrismaClient } from '../generated/prisma/client';
 import { PrismaNeon } from '@prisma/adapter-neon';
-import { Pool, neonConfig } from '@neondatabase/serverless';
-import { PrismaPg } from '@prisma/adapter-pg';
-import pg from 'pg';
+import { neonConfig } from '@neondatabase/serverless';
 import ws from 'ws';
 
-// Required for Vercel Node.js 18/20 Lambda — no native WebSocket
+// Required for Node runtimes without native WebSocket support
 neonConfig.webSocketConstructor = ws;
 
-const globalForPrisma = globalThis as unknown as { prisma: InstanceType<typeof PrismaClient> };
+const globalForPrisma = globalThis as {
+  prisma?: PrismaClient;
+};
 
-function createPrismaClient(): InstanceType<typeof PrismaClient> {
-  // Prefer an explicit pooled URL when available (Neon pooler)
-  const envConnection = process.env.DATABASE_URL_POOLED || process.env.DATABASE_URL || process.env.NEON_DATABASE_URL || process.env.NEON_URL;
-  const defaultLocal = 'postgresql://postgres:dark@localhost:5432/sophymusic';
-  const connectionString = envConnection || defaultLocal;
+function getConnectionString() {
+  const url =
+    process.env.DATABASE_URL_POOLED ||
+    process.env.DATABASE_URL ||
+    process.env.NEON_DATABASE_URL ||
+    process.env.NEON_URL;
 
-  // Non-secret runtime diagnostics (do not print the actual secret)
-  console.log({ hasDatabaseUrl: Boolean(envConnection), usesPooler: Boolean(envConnection && /pooler|neon.tech/.test(envConnection)) });
+    console.log({url})
 
-  // Use Neon adapter when the connection string looks like a Neon endpoint
-  if (process.env.VERCEL || connectionString.includes('neon.tech')) {
-    if (!connectionString) {
-      throw new Error('[prisma] DATABASE_URL is not set. Check environment variables.');
-    }
-    try {
-      const pool = new Pool({ connectionString });
-      const adapter = new PrismaNeon(pool);
-      return new PrismaClient({ adapter });
-    } catch (e) {
-      console.error('[prisma] Neon pool init error:', e?.message ?? e);
-      throw e;
-    }
+  if (!url) {
+    throw new Error(
+      '[prisma] Missing DATABASE_URL_POOLED / DATABASE_URL / NEON_DATABASE_URL / NEON_URL'
+    );
   }
 
-  // Local dev: use standard pg driver
-  const localUrl = connectionString || defaultLocal;
-  const pool = new pg.Pool({ connectionString: localUrl });
-  const adapter = new PrismaPg(pool);
+  return url.trim().replace(/^['"]|['"]$/g, '');
+}
+
+function createPrismaClient() {
+  const connectionString = getConnectionString();
+
+  console.log({
+    hasDatabaseUrl: !!connectionString,
+    usesPooler: connectionString.includes('-pooler'),
+  });
+
+  const adapter = new PrismaNeon({
+    connectionString,
+  });
+
   return new PrismaClient({ adapter });
 }
 

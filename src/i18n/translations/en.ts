@@ -739,7 +739,7 @@ We recommend submitting your release at least 2 or 3 weeks before your desired r
       { name: "Franklin Vásquez", role: "Rights & Royalties Manager", img: "/1.png" },
       { name: "Jerson Peralta", role: "Artist Support Manager", img: "/2.png" },
       { name: "Natasha Sok", role: "Catalog Manager", img: "/3.png" },
-      { name: "Rafael Pena", role: "Community Manager", img: "/4.png" },
+      { name: "Rafael Pena", role: "Community Manager", img: "/4.jpg" },
       { name: "Jeffry Vasquez", role: "CEO & Founder", img: "/5.png" },
       { name: "Ramses Gonzalez", role: "Web Developer", img: "/6.png" },
     ],

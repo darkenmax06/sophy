@@ -621,7 +621,7 @@ Recomendamos enviar seu lançamento pelo menos 2 ou 3 semanas antes da data de l
       { name: "Franklin Vásquez", role: "Gerente de Direitos e Royalties", img: "/1.png" },
       { name: "Jerson Peralta", role: "Gerente de Suporte ao Artista", img: "/2.png" },
       { name: "Natasha Sok", role: "Gerente de Catálogo", img: "/3.png" },
-      { name: "Rafael Pena", role: "Community Manager", img: "/4.png" },
+      { name: "Rafael Pena", role: "Community Manager", img: "/4.jpg" },
       { name: "Jeffry Vasquez", role: "CEO e fundador", img: "/5.png" },
       { name: "Ramses Gonzalez", role: "Desenvolvedor Web", img: "/6.png" },
     ],

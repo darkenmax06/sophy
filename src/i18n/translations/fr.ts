@@ -616,7 +616,7 @@ Nous vous recommandons de soumettre votre lancement au moins 2 ou 3 semaines ava
       { name: "Franklin Vásquez", role: "Responsable des droits et redevances", img: "/1.png" },
       { name: "Jerson Peralta", role: "Responsable du support aux artistes", img: "/2.png" },
       { name: "Natasha Sok", role: "Responsable du catalogue", img: "/3.png" },
-      { name: "Rafael Pena", role: "Community Manager", img: "/4.png" },
+      { name: "Rafael Pena", role: "Community Manager", img: "/4.jpg" },
       { name: "Jeffry Vasquez", role: "PDG et fondateur", img: "/5.png" },
       { name: "Ramses Gonzalez", role: "Développeur Web", img: "/6.png" },
     ],

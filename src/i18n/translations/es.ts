@@ -747,7 +747,7 @@ export default {
       { name: "Franklin Vásquez", role: "Responsable de Derechos y Regalías", img: "/1.png" },
       { name: "Jerson Peralta", role: "Gerente de Soporte a Artistas", img: "/2.png" },
       { name: "Natasha Sok", role: "Gerente de Catálogo", img: "/3.png" },
-      { name: "Rafael Pena", role: "Community Manager", img: "/4.jpg" },
+      { name: "Rafael Pena", role: "A&R Europa", img: "/4.jpg" },
       { name: "Ramses Gonzalez", role: "Desarrollador Web", img: "/6.png" },
     ],
   },

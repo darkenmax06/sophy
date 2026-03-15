@@ -11,6 +11,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params as { lang: Locale };
 const t = getTranslations(lang);
 const s = t.solo;
+const registrationUrl = "https://www.sophydistro.com/es";
 ---
 <BaseLayout lang={lang} title={s.solo_sound} dataPage="solo">
     <!-- Section Banner -->
@@ -143,7 +144,7 @@ const s = t.solo;
                                 <h3 class="title-heading">{s.rompe_barreras}</h3>
                                 <p>{s.solicita_descripcion}</p>
                                 <div class="link-wrapper">
-                                    <a href={`/${lang}/contact`}>{s.solicitar}</a>
+                                    <a href={registrationUrl}>{s.solicitar}</a>
                                     <i class="fa-solid fa-circle-arrow-right"></i>
                                 </div>
                             </div>

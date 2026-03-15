@@ -1700,9 +1700,15 @@ body.lightmode .navbar-icon-wrapper{
     100%{background-position: 0% 50%;}
 }
 
-/* Header-wide uppercase and centered text for header elements */
+/* Header text: keep capitalization natural and bold (no global uppercase). */
 .navbar-wrapper{
-    text-transform: uppercase;
+    text-transform: none;
+}
+
+.navbar-wrapper .navbar-nav .nav-link,
+.navbar-wrapper .navbar-nav .dropdown-toggle{
+    text-transform: capitalize;
+    font-weight: var(--font-weight-bold);
 }
 
 /* Center login label inside the inner glass block */

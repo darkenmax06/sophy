@@ -5,6 +5,8 @@ interface Props {
 }
 const { t, lang } = Astro.props;
 const idx = t.index;
+const registrationUrl = "https://www.sophydistro.com/es";
+const plan3Items = [idx.plan3_el1, idx.plan3_el2, idx.plan3_el3, idx.plan3_el4, idx.plan3_el5].filter(Boolean);
 ---
 <div class="section" id="servicios">
     <div class="hero-container">
@@ -37,7 +39,7 @@ const idx = t.index;
                                 <h3>$20</h3>
                                 <p>{idx.plan1_year}</p>
                             </div>
-                            <a href={`/${lang}/contact`} class="btn btn-accent">
+                            <a href={registrationUrl} class="btn btn-accent">
                                 <div class="btn-title">
                                     <span>{idx.plan1_button}</span>
                                 </div>
@@ -67,7 +69,7 @@ const idx = t.index;
                             <h3>$50</h3>
                             <p>{idx.plan2_year}</p>
                         </div>
-                        <a href={`/${lang}/contact`} class="btn btn-accent">
+                        <a href={registrationUrl} class="btn btn-accent">
                             <div class="btn-title">
                                 <span>{idx.plan2_button}</span>
                             </div>
@@ -130,7 +132,7 @@ const idx = t.index;
                                 <h3>{idx.plan3_price}</h3>
                                 <p>{idx.plan3_year}</p>
                             </div>
-                            <a href={`/${lang}/contact`} class="btn btn-accent">
+                            <a href={registrationUrl} class="btn btn-accent">
                                 <div class="btn-title">
                                     <span>{idx.plan3_button}</span>
                                 </div>
@@ -139,9 +141,9 @@ const idx = t.index;
                                 </div>
                             </a>
                             <ul class="check-list">
-                                <li><a href={`/${lang}/two-fusion`}>{idx.plan3_el1}</a></li>
-                                <li><a href={`/${lang}/two-fusion`}>{idx.plan3_el2}</a></li>
-                                <li><a href={`/${lang}/two-fusion`}>{idx.plan3_el3}</a></li>
+                                {plan3Items.map((item) => (
+                                    <li><a href={`/${lang}/two-fusion`}>{item}</a></li>
+                                ))}
                             </ul>
                             <div class="link-wrapper align-self-center">
                                 <a href={`/${lang}/two-fusion`}>{idx.services_card1_view_more}</a>

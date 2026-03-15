@@ -195,9 +195,10 @@ export default {
     plan3_price: "Free",
     plan3_year: "/ forever",
     plan3_button: "Request access",
-    plan3_el1: "100% of your royalty splits",
-    plan3_el2: "Distribution to more stores",
-    plan3_el3: "Instant Royalty Advance",
+    plan3_el1: "100% of your royalty splits.",
+    plan3_el2: "Your artist must already have an account created and request access to this type of account.",
+    plan3_el3: "Distribution to more stores",
+    plan3_el4: "Instant Royalty Advance",
 
     questions_title: "Frequently Asked Questions",
     questions_sub_title:
@@ -736,11 +737,11 @@ We recommend submitting your release at least 2 or 3 weeks before your desired r
     main_title: "Meet The Team Behind Sophy Music",
     intro: "A team passionate about music and technology, dedicated to empowering artists' careers worldwide.",
     members: [
+      { name: "Jeffrey Vasquez", role: "CEO & Founder", img: "/5.png" },
       { name: "Franklin Vásquez", role: "Rights & Royalties Manager", img: "/1.png" },
       { name: "Jerson Peralta", role: "Artist Support Manager", img: "/2.png" },
       { name: "Natasha Sok", role: "Catalog Manager", img: "/3.png" },
       { name: "Rafael Pena", role: "Community Manager", img: "/4.jpg" },
-      { name: "Jeffry Vasquez", role: "CEO & Founder", img: "/5.png" },
       { name: "Ramses Gonzalez", role: "Web Developer", img: "/6.png" },
     ],
   },

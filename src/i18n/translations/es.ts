@@ -161,7 +161,7 @@ export default {
     plan1_description:
       "Distribuci\u00f3n exclusiva y herramientas para artistas individuales",
     plan1_year: "/Por a\u00f1o",
-    plan1_button: "Solicitar acceso",
+    plan1_button: "Registrarse",
     plan1_el1: "Canciones y \u00e1lbumes ilimitados",
     plan1_el2: "C\u00f3digos IRSC y UPC incluidos",
     plan1_el3: "Te quedas con el 100% de tus regal\u00edas",
@@ -170,7 +170,7 @@ export default {
     plan2_description:
       "Gesti\u00f3n total y distribuci\u00f3n para un n\u00famero ilimitado de artistas.",
     plan2_year: "/Por a\u00f1o",
-    plan2_button: "Solicitar acceso",
+    plan2_button: "Registrarse",
     plan2_el1:
       "Suite completa de gesti\u00f3n y distribuci\u00f3n para un sello discogr\u00e1fico con un n\u00famero ilimitado de artistas.",
     plan2_el2: "Interfaz avanzada y f\u00e1cil de usar",
@@ -195,10 +195,11 @@ export default {
     plan3_description: "Gratis para siempre. Cobra el 100% de tus splits de regal\u00edas. Sube de plan cuando quieras para crear tus propios lanzamientos.",
     plan3_price: "Gratis",
     plan3_year: "/ para siempre",
-    plan3_button: "Solicitar acceso",
-    plan3_el1: "100% de tus splits de regal\u00edas",
-    plan3_el2: "Distribuci\u00f3n a m\u00e1s tiendas",
-    plan3_el3: "Adelanto instant\u00e1neo de regal\u00edas",
+    plan3_button: "Registrarse",
+    plan3_el1: "100% de tus splits de regal\u00edas.",
+    plan3_el2: "Tu artista tiene que tener una cuenta ya creada y solicitar el acceso a este tipo de cuentas.",
+    plan3_el3: "Distribuci\u00f3n a m\u00e1s tiendas",
+    plan3_el4: "Adelanto instant\u00e1neo de regal\u00edas",
 
     questions_title: "Preguntas Frecuentes",
     questions_sub_title: "\u00bfTienes dudas? Aqu\u00ed algunas de las m\u00e1s comunes",
@@ -325,7 +326,7 @@ export default {
     solicita_descripcion:
       "Solicit\u00e1 tu acceso y form\u00e1 parte de nuestra plataforma",
 
-    solicitar: "Solicitar",
+    solicitar: "Registrarse",
   },
 
   two: {
@@ -404,7 +405,7 @@ export default {
     request_description:
       "Solicit\u00e1 tu acceso para formar parte de nuestra plataforma",
 
-    request_button: "Solicitar",
+    request_button: "Registrarse",
   },
 
   label: {
@@ -454,7 +455,7 @@ export default {
 
     cta_title: "Rompe barreras con nosotros",
     cta_text: "Solicit\u00e1 tu acceso para formar parte de nuestra plataforma",
-    cta_button: "Solicitar",
+    cta_button: "Registrarse",
   },
 
   contact: {
@@ -742,11 +743,11 @@ export default {
     main_title: "Conoce Al Equipo Detrás De Sophy Music",
     intro: "Un equipo apasionado por la música y la tecnología, dedicado a impulsar la carrera de artistas en todo el mundo.",
     members: [
+      { name: "Jeffrey Vasquez", role: "CEO y fundador", img: "/5.png" },
       { name: "Franklin Vásquez", role: "Responsable de Derechos y Regalías", img: "/1.png" },
       { name: "Jerson Peralta", role: "Gerente de Soporte a Artistas", img: "/2.png" },
       { name: "Natasha Sok", role: "Gerente de Catálogo", img: "/3.png" },
       { name: "Rafael Pena", role: "Community Manager", img: "/4.jpg" },
-      { name: "Jeffry Vasquez", role: "CEO y fundador", img: "/5.png" },
       { name: "Ramses Gonzalez", role: "Desarrollador Web", img: "/6.png" },
     ],
   },

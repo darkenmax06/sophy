@@ -1,15 +1,39 @@
 import type { APIRoute } from 'astro';
 import { isAuthenticated } from '../../../lib/auth';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { mkdir, writeFile } from 'node:fs/promises';
+import path from 'node:path';
 
-const s3 = new S3Client({
-  region: 'auto',
-  endpoint: process.env.R2_ENDPOINT, // https://<account-id>.r2.cloudflarestorage.com
-  credentials: {
-    accessKeyId: process.env.R2_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
-  },
-});
+function hasR2Config() {
+  return Boolean(
+    process.env.R2_ENDPOINT &&
+    process.env.R2_ACCESS_KEY_ID &&
+    process.env.R2_SECRET_ACCESS_KEY &&
+    process.env.R2_BUCKET_NAME
+  );
+}
+
+function createS3Client() {
+  return new S3Client({
+    region: 'auto',
+    endpoint: process.env.R2_ENDPOINT,
+    credentials: {
+      accessKeyId: process.env.R2_ACCESS_KEY_ID!,
+      secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
+    },
+  });
+}
+
+async function saveLocalCopy(filename: string, buffer: Buffer) {
+  const localRelativeDir = path.join('uploads', 'blog');
+  const localAbsoluteDir = path.join(process.cwd(), 'public', localRelativeDir);
+  const basename = path.basename(filename);
+
+  await mkdir(localAbsoluteDir, { recursive: true });
+  await writeFile(path.join(localAbsoluteDir, basename), buffer);
+
+  return `/${localRelativeDir.replace(/\\/g, '/')}/${basename}`;
+}
 
 export const POST: APIRoute = async ({ request }) => {
   const user = isAuthenticated(request);
@@ -42,15 +66,32 @@ export const POST: APIRoute = async ({ request }) => {
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
-    await s3.send(new PutObjectCommand({
-      Bucket: process.env.R2_BUCKET_NAME!,
-      Key: filename,
-      Body: buffer,
-      ContentType: file.type,
-    }));
+    let url: string;
 
-    // Public URL via R2 custom domain or public bucket URL
-    const url = `${process.env.R2_PUBLIC_URL}/${filename}`;
+    if (hasR2Config()) {
+      const s3 = createS3Client();
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+
+      try {
+        await s3.send(new PutObjectCommand({
+          Bucket: process.env.R2_BUCKET_NAME!,
+          Key: filename,
+          Body: buffer,
+          ContentType: file.type,
+        }), { abortSignal: controller.signal });
+
+        // Use internal proxy route so files are visible even if bucket is private.
+        url = `/api/blog/image/${filename}`;
+      } catch (r2Error) {
+        console.error('R2 upload failed, falling back to local storage:', r2Error);
+        url = await saveLocalCopy(filename, buffer);
+      } finally {
+        clearTimeout(timeout);
+      }
+    } else {
+      url = await saveLocalCopy(filename, buffer);
+    }
 
     return new Response(JSON.stringify({ url }), {
       headers: { 'Content-Type': 'application/json' },

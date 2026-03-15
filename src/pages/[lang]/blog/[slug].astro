@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import type { Locale } from '../../../i18n';
 import { getTranslations } from '../../../i18n';
 import prisma from '../../../lib/prisma';
+import { normalizeBlogContentHtml, normalizeBlogImageUrl } from '../../../lib/blog-images';
 
 const lang = Astro.params.lang as Locale;
 const slug = Astro.params.slug as string;
@@ -34,6 +35,8 @@ if (!translation) {
 
 const categories = post.categories.map(c => c.category.translations[0]?.name).filter(Boolean);
 const date = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+const coverImage = normalizeBlogImageUrl(post.coverImage);
+const contentHtml = normalizeBlogContentHtml(translation.content);
 
 // Get related posts (same categories)
 const categoryIds = post.categories.map(c => c.categoryId);
@@ -97,15 +100,15 @@ const relatedPosts = categoryIds.length > 0
         </div>
 
         <!-- Cover Image -->
-        {post.coverImage && (
+        {coverImage && (
           <div class="post-image animate-box animated animate__animated" data-animate="animate__fadeInUp">
-            <img src={post.coverImage} alt={translation.title}>
+            <img src={coverImage} alt={translation.title}>
           </div>
         )}
 
         <!-- Content -->
         <div class="blog-content animate-box animated animate__animated" data-animate="animate__fadeInUp">
-          <Fragment set:html={translation.content} />
+          <Fragment set:html={contentHtml} />
         </div>
 
         <!-- Share -->
@@ -149,7 +152,7 @@ const relatedPosts = categoryIds.length > 0
                     <a href={`/${lang}/blog/${rp.slug}`} class="card card-blog">
                       {rp.coverImage && (
                         <div class="blog-image">
-                          <img src={rp.coverImage} alt={rt.title} loading="lazy">
+                          <img src={normalizeBlogImageUrl(rp.coverImage) || rp.coverImage} alt={rt.title} loading="lazy">
                         </div>
                       )}
                       <div class="card-body">

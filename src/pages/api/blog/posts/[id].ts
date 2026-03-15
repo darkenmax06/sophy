@@ -3,6 +3,10 @@ import prisma from '../../../../lib/prisma';
 import { isAuthenticated } from '../../../../lib/auth';
 import { sendNewBlogNotification } from '../../../../lib/email';
 
+function plainTextFromHtml(html: string | null | undefined): string {
+  return (html || '').replace(/<[^>]*>/g, '').trim();
+}
+
 // GET single post
 export const GET: APIRoute = async ({ params, request }) => {
   const { id } = params;
@@ -43,6 +47,25 @@ export const PUT: APIRoute = async ({ params, request }) => {
       return new Response(JSON.stringify({ error: 'Post no encontrado' }), { status: 404 });
     }
 
+    if (published) {
+      const esTranslation = translations?.find((t: any) => t.lang === 'es');
+      const esTitle = esTranslation?.title?.trim();
+      const esContent = plainTextFromHtml(esTranslation?.content);
+      if (!esTitle || !esContent) {
+        return new Response(JSON.stringify({
+          error: 'Para publicar, completa Titulo y Contenido en espanol',
+          fieldErrors: {
+            esTitle: !esTitle ? 'Titulo en espanol requerido' : null,
+            esContent: !esContent ? 'Contenido en espanol requerido' : null,
+          },
+        }), { status: 400 });
+      }
+    }
+
+    const normalizedCoverImage = coverImage !== undefined
+      ? (typeof coverImage === 'string' && coverImage.trim() ? coverImage.trim().replace(/\\/g, '/') : null)
+      : undefined;
+
     const wasPublished = existing.published;
 
     // Update post
@@ -50,7 +73,7 @@ export const PUT: APIRoute = async ({ params, request }) => {
       where: { id },
       data: {
         slug: slug || undefined,
-        coverImage: coverImage !== undefined ? coverImage : undefined,
+        coverImage: normalizedCoverImage,
         published: published !== undefined ? published : undefined,
         publishedAt: published && !existing.publishedAt ? new Date() : undefined,
       },

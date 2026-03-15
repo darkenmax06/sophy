@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import type { Locale } from '../../../i18n';
 import { getTranslations } from '../../../i18n';
 import prisma from '../../../lib/prisma';
+import { normalizeBlogImageUrl } from '../../../lib/blog-images';
 
 const lang = Astro.params.lang as Locale;
 const t = getTranslations(lang);
@@ -77,7 +78,7 @@ try {
                   <a href={`/${lang}/blog/${post.slug}`} class="card card-blog animate-box animated animate__animated" data-animate="animate__fadeInUp">
                     {post.coverImage && (
                       <div class="blog-image">
-                        <img src={post.coverImage} alt={translation.title} loading="lazy">
+                        <img src={normalizeBlogImageUrl(post.coverImage) || post.coverImage} alt={translation.title} loading="lazy">
                       </div>
                     )}
                     <div class="card-body">

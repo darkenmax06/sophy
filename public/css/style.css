@@ -5491,6 +5491,13 @@ iframe{
     margin: 12px 0;
 }
 
+.blog-content p,
+.blog-content li,
+.blog-content span,
+.blog-content div {
+    color: var(--primary);
+}
+
 .blog-content ul,
 .blog-content ol {
     padding-left: 28px;
@@ -5531,6 +5538,20 @@ iframe{
 .blog-content strong {
     color: var(--primary);
     font-weight: var(--font-weight-bold);
+}
+
+/* Force readable text when the editor stores inline dark colors/backgrounds. */
+.blog-content [style*="color"] {
+    color: var(--primary) !important;
+}
+
+.blog-content [style*="background-color"] {
+    background-color: transparent !important;
+}
+
+.blog-content a,
+.blog-content a[style*="color"] {
+    color: var(--accent-color) !important;
 }
 
 /* Blog Subscribe Section */

@@ -1,6 +1,11 @@
 import type { APIRoute } from 'astro';
 import prisma from '../../../lib/prisma';
 import { isAuthenticated } from '../../../lib/auth';
+import { sendNewBlogNotification } from '../../../lib/email';
+
+function plainTextFromHtml(html: string | null | undefined): string {
+  return (html || '').replace(/<[^>]*>/g, '').trim();
+}
 
 // GET all posts (admin)
 export const GET: APIRoute = async ({ request, url }) => {
@@ -52,10 +57,29 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(JSON.stringify({ error: 'Slug inválido. Use solo minúsculas, números y guiones' }), { status: 400 });
     }
 
+    if (published) {
+      const esTranslation = translations.find((t: any) => t.lang === 'es');
+      const esTitle = esTranslation?.title?.trim();
+      const esContent = plainTextFromHtml(esTranslation?.content);
+      if (!esTitle || !esContent) {
+        return new Response(JSON.stringify({
+          error: 'Para publicar, completa Titulo y Contenido en espanol',
+          fieldErrors: {
+            esTitle: !esTitle ? 'Titulo en espanol requerido' : null,
+            esContent: !esContent ? 'Contenido en espanol requerido' : null,
+          },
+        }), { status: 400 });
+      }
+    }
+
+    const normalizedCoverImage = typeof coverImage === 'string' && coverImage.trim()
+      ? coverImage.trim().replace(/\\/g, '/')
+      : null;
+
     const post = await prisma.blogPost.create({
       data: {
         slug,
-        coverImage: coverImage || null,
+        coverImage: normalizedCoverImage,
         published: published || false,
         publishedAt: published ? new Date() : null,
         translations: {
@@ -75,6 +99,24 @@ export const POST: APIRoute = async ({ request }) => {
         categories: { include: { category: { include: { translations: true } } } },
       },
     });
+
+    if (published) {
+      const subscribers = await prisma.blogSubscriber.findMany({
+        where: { confirmed: true, unsubscribedAt: null },
+        select: { id: true, email: true },
+      });
+
+      if (subscribers.length > 0) {
+        const esTranslation = translations.find((t: any) => t.lang === 'es') || translations[0];
+        const blogUrl = `${new URL(request.url).origin}/es/blog/${post.slug}`;
+        sendNewBlogNotification(
+          subscribers,
+          esTranslation?.title || 'New post',
+          blogUrl,
+          esTranslation?.excerpt || ''
+        );
+      }
+    }
 
     return new Response(JSON.stringify(post), {
       status: 201,

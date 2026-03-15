@@ -25,7 +25,7 @@ const langs = [
       <button class="btn btn-secondary" onclick="saveDraft()">
         <i class="fa-solid fa-floppy-disk"></i> Guardar Borrador
       </button>
-      <button class="btn btn-primary" onclick="publishPost()">
+      <button class="btn btn-primary" id="publish-btn" onclick="publishPost()">
         <i class="fa-solid fa-paper-plane"></i> Publicar
       </button>
     </div>
@@ -92,6 +92,7 @@ const langs = [
         <div class="form-group">
           <label>Slug (URL)</label>
           <input type="text" class="form-input" id="post-slug" placeholder="mi-primer-post" />
+          <small id="error-post-slug" class="field-error"></small>
           <small style="color: var(--text-color); font-size: 11px;">Solo minúsculas, números y guiones</small>
         </div>
       </div>
@@ -103,9 +104,10 @@ const langs = [
             <img id="cover-img" style="width: 100%; border-radius: 8px;" />
           </div>
           <input type="file" id="cover-upload" accept="image/jpeg,image/png,image/webp,image/gif" style="display: none;" />
-          <button class="btn btn-secondary btn-sm" style="width: 100%;" onclick="document.getElementById('cover-upload').click()">
+          <button class="btn btn-secondary btn-sm" id="cover-upload-btn" style="width: 100%;" onclick="triggerCoverUpload()">
             <i class="fa-solid fa-upload"></i> Subir Imagen
           </button>
+          <small id="cover-upload-status" style="display:block; margin-top:8px; color: var(--text-color); font-size: 12px;"></small>
         </div>
       </div>
 
@@ -200,6 +202,16 @@ const langs = [
       font-style: italic;
       border-radius: 0 8px 8px 0;
     }
+    .field-error {
+      display: none;
+      color: var(--error-color, #e63946);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+    .input-error {
+      border-color: var(--error-color, #e63946) !important;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15) !important;
+    }
     @media (max-width: 768px) {
       .content-editor { min-height: 260px; padding: 14px; }
       .toolbar-sep { display: none; }
@@ -214,6 +226,36 @@ const langs = [
   <script is:inline>
     let coverImageUrl = '';
     let currentEditorLang = null;
+    let isUploadingCover = false;
+    const editorImageRanges = {};
+
+    function setFieldError(inputId, message) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById('error-' + inputId);
+      if (input) input.classList.add('input-error');
+      if (error) {
+        error.textContent = message;
+        error.style.display = 'block';
+      }
+    }
+
+    function clearFieldError(inputId) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById('error-' + inputId);
+      if (input) input.classList.remove('input-error');
+      if (error) {
+        error.textContent = '';
+        error.style.display = 'none';
+      }
+    }
+
+    function clearAllErrors() {
+      clearFieldError('post-slug');
+      ['es', 'en', 'fr', 'pt'].forEach((lang) => {
+        document.getElementById('title-' + lang)?.classList.remove('input-error');
+        document.getElementById('editor-' + lang)?.classList.remove('input-error');
+      });
+    }
 
     function switchLang(lang) {
       document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
@@ -262,7 +304,35 @@ const langs = [
 
     function insertImage(lang) {
       currentEditorLang = lang;
+      const editor = document.getElementById('editor-' + lang);
+      const sel = window.getSelection();
+      if (sel && sel.rangeCount > 0) {
+        const range = sel.getRangeAt(0);
+        if (editor && editor.contains(range.commonAncestorContainer)) {
+          editorImageRanges[lang] = range.cloneRange();
+        }
+      }
       document.getElementById('editor-image-upload').click();
+    }
+
+    function triggerCoverUpload() {
+      if (isUploadingCover) return;
+      document.getElementById('cover-upload').click();
+    }
+
+    async function uploadImageWithTimeout(formData) {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 20000);
+      try {
+        return await fetch('/api/blog/upload', {
+          method: 'POST',
+          body: formData,
+          credentials: 'same-origin',
+          signal: controller.signal,
+        });
+      } finally {
+        clearTimeout(timeout);
+      }
     }
 
     function insertBlockquote(lang) {
@@ -280,9 +350,22 @@ const langs = [
       formData.append('image', file);
       
       try {
-        const res = await fetch('/api/blog/upload', { method: 'POST', body: formData });
-        const data = await res.json();
-        if (!res.ok) { showToast(data.error, 'error'); return; }
+        const res = await uploadImageWithTimeout(formData);
+        const contentType = res.headers.get('content-type') || '';
+        const data = contentType.includes('application/json') ? await res.json() : { error: 'Respuesta inesperada del servidor' };
+        if (res.status === 401) {
+          showToast('Tu sesion expirada. Inicia sesion de nuevo.', 'error');
+          setTimeout(() => window.location.href = '/admin/login', 800);
+          return;
+        }
+        if (res.status === 403) {
+          showToast('Upload bloqueado por origen (403). Usa la misma URL para login y admin.', 'error');
+          return;
+        }
+        if (!res.ok) {
+          showToast(data.error || 'Error al subir imagen', 'error');
+          return;
+        }
         
         const editor = document.getElementById('editor-' + currentEditorLang);
         editor.focus();
@@ -292,16 +375,34 @@ const langs = [
         img.style.maxWidth = '100%';
         
         const sel = window.getSelection();
-        if (sel.rangeCount > 0) {
+        const savedRange = editorImageRanges[currentEditorLang];
+        if (savedRange) {
+          sel.removeAllRanges();
+          sel.addRange(savedRange);
           const range = sel.getRangeAt(0);
           range.insertNode(img);
           range.setStartAfter(img);
+          range.collapse(true);
+          sel.removeAllRanges();
+          sel.addRange(range);
+          delete editorImageRanges[currentEditorLang];
+        } else if (sel.rangeCount > 0) {
+          const range = sel.getRangeAt(0);
+          range.insertNode(img);
+          range.setStartAfter(img);
+          range.collapse(true);
+          sel.removeAllRanges();
+          sel.addRange(range);
         } else {
           editor.appendChild(img);
         }
         showToast('Imagen insertada');
-      } catch {
-        showToast('Error al subir imagen', 'error');
+      } catch (error) {
+        if (error?.name === 'AbortError') {
+          showToast('La carga de imagen excedio el tiempo limite', 'error');
+        } else {
+          showToast('Error al subir imagen', 'error');
+        }
       }
       e.target.value = '';
     });
@@ -313,18 +414,50 @@ const langs = [
       
       const formData = new FormData();
       formData.append('image', file);
+      const uploadBtn = document.getElementById('cover-upload-btn');
+      const uploadStatus = document.getElementById('cover-upload-status');
+      isUploadingCover = true;
+      uploadBtn.disabled = true;
+      uploadStatus.textContent = 'Subiendo imagen...';
       
       try {
-        const res = await fetch('/api/blog/upload', { method: 'POST', body: formData });
-        const data = await res.json();
-        if (!res.ok) { showToast(data.error, 'error'); return; }
+        const res = await uploadImageWithTimeout(formData);
+        const contentType = res.headers.get('content-type') || '';
+        const data = contentType.includes('application/json') ? await res.json() : { error: 'Respuesta inesperada del servidor' };
+        if (res.status === 401) {
+          uploadStatus.textContent = 'Sesion expirada. Inicia sesion nuevamente.';
+          showToast('Tu sesion expirada. Inicia sesion de nuevo.', 'error');
+          setTimeout(() => window.location.href = '/admin/login', 800);
+          return;
+        }
+        if (res.status === 403) {
+          uploadStatus.textContent = 'Bloqueado por origen (403).';
+          showToast('Upload bloqueado por origen (403). Usa la misma URL para login y admin.', 'error');
+          return;
+        }
+        if (!res.ok) {
+          uploadStatus.textContent = data.error || 'No se pudo subir la imagen.';
+          showToast(data.error || 'Error al subir imagen', 'error');
+          return;
+        }
         
         coverImageUrl = data.url;
         document.getElementById('cover-img').src = data.url;
         document.getElementById('cover-preview').style.display = 'block';
+        uploadStatus.textContent = 'Imagen cargada correctamente.';
         showToast('Imagen de portada cargada');
-      } catch {
-        showToast('Error al subir imagen', 'error');
+      } catch (error) {
+        if (error?.name === 'AbortError') {
+          uploadStatus.textContent = 'Tiempo de espera agotado al subir imagen.';
+          showToast('La carga de imagen excedio el tiempo limite', 'error');
+        } else {
+          uploadStatus.textContent = 'No se pudo subir la imagen.';
+          showToast('Error al subir imagen', 'error');
+        }
+      } finally {
+        isUploadingCover = false;
+        uploadBtn.disabled = false;
+        e.target.value = '';
       }
     });
 
@@ -341,8 +474,15 @@ const langs = [
     }
 
     function getPostData(published) {
+      clearAllErrors();
+
       const slug = document.getElementById('post-slug').value.trim();
-      if (!slug) { showToast('El slug es requerido', 'error'); return null; }
+      if (!slug) {
+        setFieldError('post-slug', 'El slug es requerido');
+        showToast('Faltan campos requeridos', 'error');
+        return null;
+      }
+      clearFieldError('post-slug');
 
       const langs = ['es', 'en', 'fr', 'pt'];
       const translations = [];
@@ -362,6 +502,28 @@ const langs = [
         return null;
       }
 
+      if (published) {
+        const esTitleEl = document.getElementById('title-es');
+        const esEditorEl = document.getElementById('editor-es');
+        const esTitle = esTitleEl.value.trim();
+        const esContentText = esEditorEl.textContent.trim();
+        let hasError = false;
+
+        if (!esTitle) {
+          esTitleEl.classList.add('input-error');
+          hasError = true;
+        }
+        if (!esContentText) {
+          esEditorEl.classList.add('input-error');
+          hasError = true;
+        }
+        if (hasError) {
+          switchLang('es');
+          showToast('Para publicar, completa Titulo y Contenido en espanol', 'error');
+          return null;
+        }
+      }
+
       const categoryIds = Array.from(document.querySelectorAll('.cat-checkbox:checked')).map(cb => cb.value);
 
       return { slug, coverImage: coverImageUrl || null, published, translations, categoryIds };
@@ -378,13 +540,18 @@ const langs = [
     }
 
     async function publishPost() {
+      if (isUploadingCover) {
+        showToast('Espera a que termine la carga de la imagen de portada', 'error');
+        return;
+      }
       const data = getPostData(true);
       if (!data) return;
       
       // Validate at least spanish version
       const esTranslation = data.translations.find(t => t.lang === 'es');
-      if (!esTranslation || !esTranslation.title) {
-        showToast('La versión en español es requerida para publicar', 'error');
+      if (!esTranslation || !esTranslation.title || !esTranslation.content?.replace(/<[^>]*>/g, '').trim()) {
+        switchLang('es');
+        showToast('La version en espanol requiere titulo y contenido', 'error');
         return;
       }
 

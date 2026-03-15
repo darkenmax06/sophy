@@ -11,6 +11,10 @@ const adapter = isVercel
 export default defineConfig({
   output: 'server',
   adapter,
+  security: {
+    // Avoid false 403s for multipart uploads in local preview/dev environments.
+    checkOrigin: isVercel ? true : false,
+  },
   integrations: [react()],
   i18n: {
     defaultLocale: 'es',

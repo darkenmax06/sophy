@@ -553,10 +553,20 @@ if (!user) {
     }
 
     async function apiCall(url, method = 'GET', body = null) {
-      const opts = { method, headers: { 'Content-Type': 'application/json' } };
+      const opts = { method, headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin' };
       if (body) opts.body = JSON.stringify(body);
       const res = await fetch(url, opts);
-      const data = await res.json();
+      const contentType = res.headers.get('content-type') || '';
+      const data = contentType.includes('application/json')
+        ? await res.json()
+        : { error: 'Respuesta inesperada del servidor' };
+
+      if (res.status === 401) {
+        showToast('Tu sesión expiró. Inicia sesión de nuevo.', 'error');
+        setTimeout(() => { window.location.href = '/admin/login'; }, 800);
+        throw new Error('No autorizado');
+      }
+
       if (!res.ok) {
         showToast(data.error || 'Error', 'error');
         throw new Error(data.error);

@@ -12,8 +12,9 @@ export default defineConfig({
   output: 'server',
   adapter,
   security: {
-    // Avoid false 403s for multipart uploads in local preview/dev environments.
-    checkOrigin: isVercel ? true : false,
+    // Disabled: Astro's checkOrigin causes 403 on multipart uploads in Vercel
+    // when no `site` is configured. Each API route has its own auth checks.
+    checkOrigin: false,
   },
   integrations: [react()],
   i18n: {

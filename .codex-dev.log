@@ -1,0 +1,85 @@
+
+> astro-app@0.0.1 dev:local
+> astro dev --host 0.0.0.0 --port 4321
+
+[2m12:31:23[22m [34m[@astrojs/node][39m Enabling sessions with filesystem storage
+[2m12:31:24[22m [34m[types][39m Generated [2m1ms[22m
+[2m12:31:24[22m [34m[content][39m Syncing content
+[2m12:31:24[22m [34m[content][39m Synced content
+[2m12:31:24[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[33m[1m12:31:24[22m [WARN] [vite][39m Failed to resolve dependency: [36m@astrojs/react/client.js[39m, present in client 'optimizeDeps.include'
+[33m[1m12:31:24[22m [WARN] [vite][39m Failed to resolve dependency: [36m@astrojs/react/client.js[39m, present in client 'optimizeDeps.include'
+[33m[1m12:31:24[22m [WARN] [vite][39m Failed to resolve dependency: [36mreact[39m, present in client 'optimizeDeps.include'
+[33m[1m12:31:24[22m [WARN] [vite][39m Failed to resolve dependency: [36mreact-dom[39m, present in client 'optimizeDeps.include'
+[33m[1m12:31:24[22m [WARN] [vite][39m Failed to resolve dependency: [36mreact/jsx-dev-runtime[39m, present in client 'optimizeDeps.include'
+[33m[1m12:31:24[22m [WARN] [vite][39m Failed to resolve dependency: [36mreact/jsx-runtime[39m, present in client 'optimizeDeps.include'
+[33m[1m12:31:24[22m [WARN] [vite][39m Failed to resolve dependency: [36mastro > cssesc[39m, present in client 'optimizeDeps.include'
+[33m[1m12:31:24[22m [WARN] [vite][39m Failed to resolve dependency: [36mastro > aria-query[39m, present in client 'optimizeDeps.include'
+[33m[1m12:31:24[22m [WARN] [vite][39m Failed to resolve dependency: [36mastro > axobject-query[39m, present in client 'optimizeDeps.include'
+
+[42m[1m astro [22m[49m [32mv5.18.0[39m [2mready in[22m 267 [2mms[22m
+
+[2m┃[22m Local    [36mhttp://localhost:4321/[39m
+[2m┃[22m Network  [36mhttp://10.0.0.109:4321/[39m
+
+[2m12:31:24[22m [32mwatching for file changes...[39m
+[31m[1m12:31:24[22m [ERROR] [vite][39m Error: [31m  Failed to scan for dependencies from entries:
+  C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/MorphingText.tsx
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/ShaderGradientBackground.tsx
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/layouts/AdminLayout.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/layouts/BaseLayout.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/layouts/LegalLayout.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/404.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/index.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/layout/Footer.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/layout/Header.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/layout/LangSelector.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/layout/SearchForm.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/layout/Sidebar.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/admin/categories.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/admin/dashboard.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/admin/index.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/admin/login.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/admin/manual.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/admin/subscribers.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/about.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/anti-fraud-policy.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/contact.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/gdpr.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/index.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/label-epic.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/privacy-policy.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/search.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/service.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/solo-sound.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/team.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/terms-of-use.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/two-fusion.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/sections/home/DigitalProcess.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/sections/home/Expertise.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/sections/home/FAQSection.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/sections/home/GuideBanner.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/sections/home/HeroBanner.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/sections/home/PartnerSwiper.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/sections/home/PricingSection.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/sections/home/ServiceCards.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/sections/home/Testimonials.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/sections/home/WhyChooseUs.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/components/sections/shared/VideoModal.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/admin/posts/index.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/admin/posts/new.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/admin/posts/[id].astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/blog/index.astro
+C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy Music/astro-app/src/pages/[lang]/blog/[slug].astro
+
+  [39mspawn EPERM
+    at ChildProcess.spawn (node:internal/child_process:421:11)
+    at Object.spawn (node:child_process:796:9)
+    at ensureServiceIsRunning (C:\Users\ramse\Documents\Proyectos\Desarrollo\Sophy Music\astro-app\node_modules\vite\node_modules\esbuild\lib\main.js:1978:29)
+    at Object.context (C:\Users\ramse\Documents\Proyectos\Desarrollo\Sophy Music\astro-app\node_modules\vite\node_modules\esbuild\lib\main.js:1877:33)
+    at prepareEsbuildScanner (file:///C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy%20Music/astro-app/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:14266:24)
+    at async file:///C:/Users/ramse/Documents/Proyectos/Desarrollo/Sophy%20Music/astro-app/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:47014:28
+[31m[1m12:31:24[22m [ERROR][39m Failed to load url @astrojs/react/server.js (resolved id: @astrojs/react/server.js). Does the file exist?
+  [1mStack trace:[22m
+[2m    at C:\Users\ramse\Documents\Proyectos\Desarrollo\Sophy Music\astro-app\C:\Users\ramse\Documents\Proyectos\Desarrollo\Sophy Music\astro-app\node_modules\vite\dist\node\chunks\dep-D4NMHUTW.js:35729:17
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m

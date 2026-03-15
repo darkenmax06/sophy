@@ -28,7 +28,7 @@ export default {
     address:
       "8206 Louisiana Blvd Ne, Ste A #8279, Albuquerque, New Mexico 87113 Us",
     social: "Social Media",
-    copyright: "\u00A9 2025 Sophy music. All rights reserved.",
+    copyright: "\u00A9 2026 Sophy music. All rights reserved.",
     terms: "Terms of Service",
     privacy: "Privacy Policy",
     fraud: "Policy Anti Fraud",
@@ -55,11 +55,11 @@ export default {
       "Sophy music is the ideal platform for musicians looking to streamline the process of disseminating and monetizing their songs quickly, easily, and effectively with an easy-to-use interface that allows you to keep 100% of the royalties.",
     hero_pharse1: "Empowering more than",
     hero_pharse2: "1000 artists",
-    hero_button: "Request access",
+    hero_button: "Sign up",
 
     strategy_box_title: "Ready to get known?",
     strategy_box_text: "With our tools, it is just a few clicks away",
-    strategy_box_button: "Request access",
+    strategy_box_button: "Sign up",
 
     experience_title: "Our experience",
     experience_subtitle: "Strategies based on experience",
@@ -93,7 +93,7 @@ export default {
       "In the fast-paced digital world, working without a proper distribution channel can make a negative difference. At Sophy Music, we not only distribute your songs, but we design strategies that streamline the entire process of managing and distributing them.",
     choose_us_card_title:
       "Become a partner and take your brand to the next level.",
-    choose_us_card_button: "Request access",
+    choose_us_card_button: "Sign up",
 
     transform_busines_title: "Transform Your Business With Us!",
     transform_busines_text:
@@ -160,7 +160,7 @@ export default {
     plan1_description:
       "Exclusive distribution and tools for individual artists",
     plan1_year: "/Per year",
-    plan1_button: "Request access",
+    plan1_button: "Sign up",
     plan1_el1: "Unlimited songs and albums",
     plan1_el2: "IRSC & UPC Codes included",
     plan1_el3: "You keep 100% of your royalties",
@@ -169,7 +169,7 @@ export default {
     plan2_description:
       "Total management and distribution for an unlimited number of artists.",
     plan2_year: "/Per year",
-    plan2_button: "Request access",
+    plan2_button: "Sign up",
     plan2_el1:
       "Complete management and distribution suite for a record label with an unlimited number of artists.",
     plan2_el2: "Easy-to-use advanced interface",
@@ -194,7 +194,7 @@ export default {
     plan3_description: "Free forever. Collect 100% of your royalty splits. Upgrade any time to create your own releases.",
     plan3_price: "Free",
     plan3_year: "/ forever",
-    plan3_button: "Request access",
+    plan3_button: "Sign up",
     plan3_el1: "100% of your royalty splits.",
     plan3_el2: "Your artist must already have an account created and request access to this type of account.",
     plan3_el3: "Distribution to more stores",

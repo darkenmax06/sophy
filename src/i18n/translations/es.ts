@@ -28,7 +28,7 @@ export default {
     address:
       "8206 Louisiana Blvd Ne, Ste A #8279, Albuquerque, New Mexico 87113 Us",
     social: "Redes sociales",
-    copyright: "\u00a9 2025 Sophy music. Todos los derechos reservados.",
+    copyright: "\u00a9 2026 Sophy music. Todos los derechos reservados.",
     terms: "Terminos de servicios",
     privacy: "Politicas de privacidad",
     fraud: "Politicas Anti Fraude",
@@ -54,12 +54,12 @@ export default {
       "Sophy music es la plataforma ideal para m\u00fasicos que buscan agilizar el proceso de difusi\u00f3n y monetizaci\u00f3n de sus canciones de manera r\u00e1pida, f\u00e1cil y efectiva con una interfaz sencilla de utilizar que te permite quedarte con el 100% de las regal\u00edas.",
     hero_pharse1: "Empoderando a m\u00e1s de",
     hero_pharse2: "1000 artistas",
-    hero_button: "Solicitar acceso",
+    hero_button: "Regístrate",
 
     strategy_box_title: "\u00bfListo para darte a conocer?",
     strategy_box_text:
       "Con nuestras herramientas, est\u00e1 a solo unos clics de distancia",
-    strategy_box_button: "Solicitar acceso",
+    strategy_box_button: "Regístrate",
 
     experience_title: "Nuestra experiencia",
     experience_subtitle: "Estrategias basadas en la experiencia",
@@ -93,7 +93,7 @@ export default {
       "En el acelerado mundo digital, trabajar sin un canal de distribuci\u00f3n adecuado puede marcar una diferencia negativa. En Sophy Music, no solo distribuimos tus canciones, sino que dise\u00f1amos estrategias que agilizan todo el proceso de gesti\u00f3n y distribuci\u00f3n de las mismas.",
     choose_us_card_title:
       "Convi\u00e9rtete en socio y lleva tu marca al siguiente nivel.",
-    choose_us_card_button: "Solicitar acceso",
+    choose_us_card_button: "Regístrate",
 
     transform_busines_title: "\u00a1Transforma Tu Negocio Con Nosotros!",
     transform_busines_text:

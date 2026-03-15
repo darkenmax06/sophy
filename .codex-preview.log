@@ -1,0 +1,30 @@
+
+> astro-app@0.0.1 preview
+> astro preview --host 0.0.0.0 --port 4322
+
+[2m14:44:41[22m [34m[@astrojs/node][39m Enabling sessions with filesystem storage
+[2m14:44:41[22m [34m[@astrojs/node][39m Server listening on 
+  local: http://localhost:4322 	
+  network: http://10.0.0.109:4322
+
+{
+  url: 'postgresql://neondb_owner:npg_7IDoNxlrk4Kh@ep-empty-meadow-adfi7j1x.c-2.us-east-1.aws.neon.tech/sophymusic?sslmode=require&channel_binding=require'
+}
+{ hasDatabaseUrl: true, usesPooler: false }
+Current path segments: [ 'es', 'blog' ]
+Updated path segments: [ 'es', 'blog' ]
+Current path segments: [ 'es', 'blog' ]
+Updated path segments: [ 'en', 'blog' ]
+Current path segments: [ 'es', 'blog' ]
+Updated path segments: [ 'fr', 'blog' ]
+Current path segments: [ 'es', 'blog' ]
+Updated path segments: [ 'pt', 'blog' ]
+Current path segments: [ 'es', 'blog' ]
+Updated path segments: [ 'es', 'blog' ]
+Current path segments: [ 'es', 'blog' ]
+Updated path segments: [ 'en', 'blog' ]
+Current path segments: [ 'es', 'blog' ]
+Updated path segments: [ 'fr', 'blog' ]
+Current path segments: [ 'es', 'blog' ]
+Updated path segments: [ 'pt', 'blog' ]
+^C^C

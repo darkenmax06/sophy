@@ -145,7 +145,10 @@ export const DELETE: APIRoute = async ({ params, request }) => {
 
   const { id } = params;
 
-  await prisma.blogPost.delete({ where: { id } });
+  const result = await prisma.blogPost.deleteMany({ where: { id } });
+  if (result.count === 0) {
+    return new Response(JSON.stringify({ error: 'Post no encontrado' }), { status: 404 });
+  }
 
   return new Response(JSON.stringify({ success: true }), {
     headers: { 'Content-Type': 'application/json' },

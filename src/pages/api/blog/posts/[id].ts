@@ -110,7 +110,8 @@ export const PUT: APIRoute = async ({ params, request }) => {
 
       if (subscribers.length > 0) {
         const esTranslation = translations?.find((t: any) => t.lang === 'es') || translations?.[0];
-        const blogUrl = `${new URL(request.url).origin}/es/blog/${post.slug}`;
+        const siteUrl = (process.env.SITE_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` || new URL(request.url).origin).replace(/\/+$/, '');
+        const blogUrl = `${siteUrl}/es/blog/${post.slug}`;
         sendNewBlogNotification(subscribers, esTranslation?.title || 'New post', blogUrl, esTranslation?.excerpt || '');
       }
     }

@@ -432,6 +432,14 @@ post.translations.forEach(t => { translationMap[t.lang] = t; });
       }
     });
 
+    window.switchLang = switchLang;
+    window.execCmd = execCmd;
+    window.execBlock = execBlock;
+    window.insertLink = insertLink;
+    window.insertImage = insertImage;
+    window.insertBlockquote = insertBlockquote;
+    window.triggerCoverUpload = triggerCoverUpload;
+
     async function saveChanges(publish, unpublish) {
       clearAllErrors();
 
@@ -485,5 +493,6 @@ post.translations.forEach(t => { translationMap[t.lang] = t; });
         setTimeout(() => window.location.reload(), 800);
       } catch (e) { /* handled */ }
     }
+    window.saveChanges = saveChanges;
   </script>
 </AdminLayout>

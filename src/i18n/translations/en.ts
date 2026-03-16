@@ -177,7 +177,7 @@ export default {
     plan2_el4: "Unlimited artist profiles under your label",
     plan2_el5:
       "Complete label dashboard with filters by artist, release, and territory",
-    plan2_el6: "Multi-user access (team accounts with different roles)",
+    
     plan2_el7:
       "Advanced analytics (playlists, countries, platforms, revenue breakdown)",
     plan2_el8:

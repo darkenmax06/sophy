@@ -152,7 +152,7 @@ export default {
     plan2_el3: "Inclui tudo do Colaborador, mais",
     plan2_el4: "Perfis de artistas ilimitados sob seu selo",
     plan2_el5: "Painel completo do selo com filtros por artista, lançamento e território",
-    plan2_el6: "Acesso multiusuário (contas de equipe com diferentes funções)",
+    
     plan2_el7: "Análises avançadas (playlists, países, plataformas, detalhamento de receita)",
     plan2_el8: "Acesso ao YouTube Content ID e ao Gerenciador de Direitos do Facebook/Instagram*",
     plan2_el9: "Controle de qualidade prioritário e suporte de metadados para catálogos grandes",

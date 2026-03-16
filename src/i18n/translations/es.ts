@@ -178,7 +178,7 @@ export default {
     plan2_el4: "Perfiles de artistas ilimitados bajo tu sello",
     plan2_el5:
       "Panel de control completo de sello con filtros por artista, lanzamiento y territorio",
-    plan2_el6: "Acceso multiusuario (cuentas de equipo con diferentes roles)",
+    
     plan2_el7:
       "Anal\u00edticas avanzadas (listas de reproducci\u00f3n, pa\u00edses, plataformas, desglose de ingresos)",
     plan2_el8:

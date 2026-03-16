@@ -152,7 +152,7 @@ export default {
     plan2_el3: "Comprend tout du Collaborateur, plus",
     plan2_el4: "Profils d'artistes illimités sous votre label",
     plan2_el5: "Tableau de bord complet du label avec filtres par artiste, lancement et territoire",
-    plan2_el6: "Accès multi-utilisateur (comptes d'équipe avec différents rôles)",
+    
     plan2_el7: "Analyses avancées (playlists, pays, plateformes, ventilation des revenus)",
     plan2_el8: "Accès à YouTube Content ID et au Gestionnaire de droits Facebook/Instagram*",
     plan2_el9: "Contrôle qualité prioritaire et support des métadonnées pour les grands catalogues",

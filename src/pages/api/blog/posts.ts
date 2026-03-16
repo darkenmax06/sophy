@@ -108,9 +108,9 @@ export const POST: APIRoute = async ({ request }) => {
 
       if (subscribers.length > 0) {
         const esTranslation = translations.find((t: any) => t.lang === 'es') || translations[0];
-        const siteUrl = (process.env.SITE_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` || new URL(request.url).origin).replace(/\/+$/, '');
+        const siteUrl = (process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : null) || 'https://www.sophymusic.com').replace(/\/+$/, '');
         const blogUrl = `${siteUrl}/es/blog/${post.slug}`;
-        sendNewBlogNotification(
+        await sendNewBlogNotification(
           subscribers,
           esTranslation?.title || 'New post',
           blogUrl,

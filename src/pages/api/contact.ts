@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import nodemailer from 'nodemailer';
+import { sendEmail } from '../../lib/email';
 
 export const prerender = false;
 
@@ -19,31 +19,22 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        type: 'OAuth2',
-        user: import.meta.env.GMAIL_USER,
-        clientId: import.meta.env.GOOGLE_CLIENT_ID,
-        clientSecret: import.meta.env.GOOGLE_CLIENT_SECRET,
-        refreshToken: import.meta.env.GOOGLE_REFRESH_TOKEN,
-      },
-    });
-
-    await transporter.sendMail({
-      from: `"Sophy Music" <${import.meta.env.GMAIL_USER}>`,
-      to: import.meta.env.CONTACT_RECIPIENT || 'sophymusicdo@gmail.com',
-      replyTo: `${firstName} ${lastName} <${email}>`,
-      subject: `Contacto Web: ${subject}`,
-      text: `Nombre: ${firstName} ${lastName}\nEmail: ${email}\n\nMensaje:\n${message}`,
-    });
+    const recipient = import.meta.env.CONTACT_RECIPIENT || 'sophymusicdo@gmail.com';
+    await sendEmail(
+      recipient,
+      `Contacto Web: ${subject}`,
+      `<p><strong>Nombre:</strong> ${firstName} ${lastName}</p>
+       <p><strong>Email:</strong> ${email}</p>
+       <p><strong>Mensaje:</strong></p>
+       <p>${message}</p>`
+    );
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error: any) {
-    console.error('Contact form error:', error);
+    console.error('Contact form error:', error?.response?.data ?? error?.message ?? error);
     return new Response(JSON.stringify({ error: 'Failed to send email' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

@@ -5551,6 +5551,12 @@ iframe{
     color: var(--primary) !important;
 }
 
+/* Force the site font when the editor stores an inline font-family. */
+.blog-content,
+.blog-content * {
+    font-family: var(--global-font) !important;
+}
+
 .blog-content [style*="background-color"] {
     background-color: transparent !important;
 }

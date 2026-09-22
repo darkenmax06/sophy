@@ -18,20 +18,25 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // Check if URL has a valid locale prefix
   const segments = pathname.split('/').filter(Boolean);
   const firstSegment = segments[0];
+  const hasLocale = locales.includes(firstSegment);
+  const lang = hasLocale ? firstSegment : 'es';
 
-  if (firstSegment && !locales.includes(firstSegment)) {
-    // No locale prefix - redirect to default locale
-    return context.redirect(`/es${pathname}`);
-  }
-
-  const response = await next();
+  // Resolve the request internally first (no client-visible redirect yet),
+  // so we only ever need to send ONE redirect back to the browser instead
+  // of chaining "add locale" + "not found" redirects.
+  const response = hasLocale ? await next() : await next(`/es${pathname}`);
 
   if (response.status === 404) {
-    const lang = locales.includes(firstSegment) ? firstSegment : 'es';
     // Avoid redirect loop if the 404 page itself is missing
-    if (pathname !== `/${lang}/404` && pathname !== `/${lang}/404/`) {
-      return context.redirect(`/${lang}/404`);
+    if (pathname === `/${lang}/404` || pathname === `/${lang}/404/`) {
+      return response;
     }
+    return context.redirect(`/${lang}/404`);
+  }
+
+  if (!hasLocale) {
+    // No locale prefix - redirect to the canonical locale-prefixed URL
+    return context.redirect(`/es${pathname}`);
   }
 
   return response;

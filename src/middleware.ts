@@ -24,5 +24,15 @@ export const onRequest = defineMiddleware(async (context, next) => {
     return context.redirect(`/es${pathname}`);
   }
 
-  return next();
+  const response = await next();
+
+  if (response.status === 404) {
+    const lang = locales.includes(firstSegment) ? firstSegment : 'es';
+    // Avoid redirect loop if the 404 page itself is missing
+    if (pathname !== `/${lang}/404` && pathname !== `/${lang}/404/`) {
+      return context.redirect(`/${lang}/404`);
+    }
+  }
+
+  return response;
 });
